@@ -1,0 +1,221 @@
+.c_sign-up-frame {
+  width: 100%;
+  overflow: hidden;
+  max-width: 1440px;
+  box-sizing: border-box;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: #bae8da;
+}
+
+.c_sign-up-rectangle {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  display: block;
+  max-width: 562px;
+}
+
+.c_sign-up-text,
+.c_sign-up-text01 {
+  margin-top: 0;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.c_sign-up-text {
+  width: 100%;
+  max-width: 257px;
+  min-height: 82px;
+}
+
+.c_sign-up-text01 {
+  color: #000;
+  font-size: 50px;
+  font-style: normal;
+  font-family: "Moul",sans-serif;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.c_sign-up-text02 {
+  width: 100%;
+  max-width: 482px;
+  min-height: 38px;
+}
+
+.c_sign-up-text02,
+.c_sign-up-text03 {
+  margin-top: 0;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.c_sign-up-text04,
+.c_sign-up-text05 {
+  color: #000;
+  font-size: 18px;
+  font-style: normal;
+  font-family: "Moulpali",sans-serif;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.c_sign-up-text05 {
+  color: #1f27e8;
+}
+
+.c_sign-up-vector,
+.c_sign-up-vector1 {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  display: block;
+  max-width: 466.7784118652344px;
+  transform: rotate(-.21deg);
+  max-height: 68.378662109375px;
+}
+
+.c_sign-up-vector1 {
+  max-width: 466.7740173339844px;
+  max-height: 69.519287109375px;
+}
+
+.c_sign-up-text06 {
+  width: 100%;
+  max-width: 239px;
+  min-height: 31px;
+}
+
+.c_sign-up-text06,
+.c_sign-up-text07,
+.c_sign-up-text08 {
+  margin-top: 0;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.c_sign-up-text07 {
+  color: #000;
+  font-size: 22px;
+  font-style: normal;
+  font-family: "Moulpali",sans-serif;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.c_sign-up-text08 {
+  width: 100%;
+  max-width: 239px;
+  min-height: 31px;
+}
+
+.c_sign-up-text09 {
+  color: #000;
+  font-size: 22px;
+  font-style: normal;
+  font-family: "Moulpali",sans-serif;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.c_sign-up-text09,
+.c_sign-up-text10 {
+  margin-top: 0;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.c_sign-up-text11 {
+  width: 100%;
+  max-width: 239px;
+  min-height: 31px;
+}
+
+.c_sign-up-text11,
+.c_sign-up-text12,
+.c_sign-up-text13 {
+  margin-top: 0;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.c_sign-up-text12 {
+  color: #000;
+  font-size: 22px;
+  font-style: normal;
+  font-family: "Moulpali",sans-serif;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.c_sign-up-text13 {
+  width: 100%;
+  max-width: 239px;
+  min-height: 31px;
+}
+
+.c_sign-up-text14 {
+  color: #000;
+  font-size: 22px;
+  font-style: normal;
+  font-family: "Moulpali",sans-serif;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.c_sign-up-text14,
+.c_sign-up-text15,
+.c_sign-up-text16 {
+  margin-top: 0;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.c_sign-up-text15 {
+  width: 100%;
+  max-width: 161px;
+  min-height: 31px;
+}
+
+.c_sign-up-text16 {
+  color: #000;
+  font-size: 22px;
+  font-style: normal;
+  font-family: "Moulpali",sans-serif;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.c_sign-up-rectangle1 {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  display: block;
+  max-width: 562px;
+}
+
+.c_sign-up-instance,
+.c_sign-up-instance1 {
+  width: 100%;
+  max-width: 24px;
+  box-sizing: border-box;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+}
