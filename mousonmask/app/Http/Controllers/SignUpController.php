@@ -7,18 +7,17 @@ use Illuminate\Http\Request;
 class SignUpController extends Controller
 {
 
-    public function showSignUpForm()
+   public function showSignUpForm()
     {
-        return view('auth.signup');
+        return view('signup.signup');
     }
 
-    public function signUp(Request $request)
+    public function processSignUp(Request $request)
     {
-        // Validasi request
+        // Validasi data formulir signup di sini
+        // Simpan data ke database atau lakukan tindakan lainnya
 
-        // Proses penyimpanan user ke database
-
-        return redirect()->route('home');
+        return redirect('/')->with('success', 'Pendaftaran berhasil!');
     }
 
 }

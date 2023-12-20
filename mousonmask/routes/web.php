@@ -21,6 +21,13 @@ Route::get('/', function () {
 Route::get('/profile', function () {
     return view('Profile');
 });
-Route::get('/signup', function () {
-    return view('signup.signup');
+Route::get('/login', function () {
+    return view('login.login');
 });
+Route::get('/home', function () {
+    return view('home');
+});
+
+Route::get('/signup', [SignUpController::class, 'showSignUpForm']);
+Route::post('/signup', [SignUpController::class, 'processSignUp']);
+
