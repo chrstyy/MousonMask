@@ -1,0 +1,240 @@
+.c_login-frame {
+    display: flex;
+  overflow: hidden;
+  max-width: 100%;
+  box-sizing: border-box;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #bae8da;
+}
+
+ body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.c_login-rectangle {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  margin: 0;
+  display: block;
+  height: 679px;
+  align-items: center;
+  justify-content: center;
+}
+
+.c_login-text,
+.c_login-text01 {
+  margin-top: 10;
+  text-align: center;
+  margin-bottom: 200;
+}
+
+.c_login-text {
+  width: 100%;
+  max-width: 257px;
+  min-height: 82px;
+}
+
+.c_login-text01 {
+  color: #000;
+  font-size: 50px;
+  font-style: normal;
+  font-family: "Moul",sans-serif;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.c_login-text02 {
+  width: 100%;
+  max-width: 482px;
+  min-height: 38px;
+}
+
+.c_login-text02,
+.c_login-text03 {
+  margin-top: 0;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.c_login-text04,
+.c_login-text05 {
+  color: #000;
+  font-size: 18px;
+  font-style: normal;
+  font-family: "Moulpali",sans-serif;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.c_login-text05 {
+  color: #1f27e8;
+}
+
+.c_login-vector {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  display: block;
+  max-width: 466.81304931640625px;
+  transform: rotate(-.21deg);
+  max-height: 125.7080078125px;
+}
+
+.c_login-text06 {
+  width: 100%;
+  max-width: 239px;
+  min-height: 31px;
+}
+
+.c_login-text06,
+.c_login-text07,
+.c_login-text08 {
+  margin-top: 0;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.c_login-text07 {
+  color: #000;
+  font-size: 22px;
+  font-style: normal;
+  font-family: "Moulpali",sans-serif;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.c_login-text08 {
+  width: 100%;
+  max-width: 239px;
+  min-height: 31px;
+}
+
+.c_login-text09 {
+  color: #000;
+  font-size: 22px;
+  font-style: normal;
+  font-family: "Moulpali",sans-serif;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.c_login-text09,
+.c_login-text10,
+.c_login-text11 {
+  margin-top: 0;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.c_login-text11 {
+  width: 100%;
+  max-width: 239px;
+  min-height: 15px;
+}
+
+.c_login-text12 {
+  color: #000;
+  font-size: 22px;
+  font-style: normal;
+  font-family: "Moulpali",sans-serif;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.c_login-text12,
+.c_login-text13,
+.c_login-text14 {
+  margin-top: 0;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.c_login-text13 {
+  width: 100%;
+  max-width: 141px;
+  min-height: 40px;
+}
+
+.c_login-text14 {
+  color: #1f27e8;
+  font-size: 20px;
+  font-style: normal;
+  font-family: "Moulpali",sans-serif;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.c_login-rectangle1 {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  display: block;
+  max-width: 40px;
+  border-top: 1px solid #000;
+  box-shadow: 0 4px 4px 0 rgba(0,0,0,.25);
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.c_login-text15,
+.c_login-text16 {
+  margin-top: 0;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.c_login-text15 {
+  width: 100%;
+  max-width: 130px;
+  min-height: 31px;
+}
+
+.c_login-text16 {
+  color: #000;
+  font-size: 22px;
+  font-style: normal;
+  font-family: "Moulpali",sans-serif;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.c_login-rectangle2 {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  display: block;
+  max-width: 562px;
+}
+
+.c_login-component {
+  width: 100%;
+  max-width: 24px;
+  box-sizing: border-box;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+}

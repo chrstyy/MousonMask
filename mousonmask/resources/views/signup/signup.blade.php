@@ -4,131 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SignUp</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+
 </head>
 <body>
-    <!--bg paling luar-->
-    <div class="kotak1">
-        margin: 0;
-        overflow: hidden;
+<div class="body">
+        <h2>Sign Up</h2>
+        <form action="/signup" method="post">
+            @csrf
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Sign Up</button>
+            </div>
+        </form>
     </div>
 
-    <!--kotak logo kiri-->
-
-    <!--kotak kanan -->
-    <div class="container" >
-        <div class="kotak3"></div>
-        <p class="signUp-txt">Sign Up</p> <br>
-        Already have an account?
-        <a href="login.html" class="login-link">Log In</a>
-        <br><br>
-        <p class="username">Username</p><br>
-        <div class="line"></div><br><br>
-        <p class="email">Email Address</p><br>
-        <div class="line"></div><br><br>
-        <p class="password">Password</p>
-        <!--icon mata-->
-            <input type="password" id="pass" class="form-control">
-            <div class="input-group-append">
-                <!-- onclick untuk merubah icon buka/tutup mata setiap diklik-->
-                <span id="mybutton" onclick="change()" class="input-group-text">
-                    <!-- icon mata bawaan bootstrap  -->
-                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye-fill" fill="currentColor"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
-                        <path fill-rule="evenodd"
-                            d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
-                    </svg>
-                </span>
-            </div>
-
-          <!--ubah text pw-->
-            <script>
-                // membuat fungsi change
-                function change() {
-                    // membuat variabel berisi tipe input dari id='pass', id='pass' adalah form input password
-                    var x = document.getElementById('pass').type;
-
-                    //membuat if kondisi, jika tipe x adalah password maka jalankan perintah di bawahnya
-                    if (x == 'password') {
-                        document.getElementById('pass').type = 'text';
-                        document.getElementById('mybutton').innerHTML = `<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye-slash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                                        <path d="M10.79 12.912l-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z"/>
-                                                                        <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708l-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829z"/>
-                                                                        <path fill-rule="evenodd" d="M13.646 14.354l-12-12 .708-.708 12 12-.708.708z"/>
-                                                                        </svg>`;
-                    }
-                    else {
-                        document.getElementById('pass').type = 'password';
-                        document.getElementById('mybutton').innerHTML = `<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-                                                                        <path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-                                                                        </svg>`;
-                    }
-                }
-            </script>
-        <br><div class="line"></div><br><br>
-        <p class="password">Confirm Password</p>
-            <!--icon mata-->
-            <input type="password" id="pass" class="form-control">
-            <div class="input-group-append">
-                <!-- onclick untuk merubah icon buka/tutup mata setiap diklik-->
-                <span id="mybutton" onclick="change()" class="input-group-text">
-                    <!-- icon mata bawaan bootstrap  -->
-                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye-fill" fill="currentColor"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
-                        <path fill-rule="evenodd"
-                            d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
-                    </svg>
-                </span>
-            </div>
-
-          <!--ubah text pw-->
-            <script>
-                // membuat fungsi change
-                function change() {
-                    // membuat variabel berisi tipe input dari id='pass', id='pass' adalah form input password
-                    var x = document.getElementById('pass').type;
-
-                    //membuat if kondisi, jika tipe x adalah password maka jalankan perintah di bawahnya
-                    if (x == 'password') {
-                        document.getElementById('pass').type = 'text';
-                        document.getElementById('mybutton').innerHTML = `<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye-slash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                                        <path d="M10.79 12.912l-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z"/>
-                                                                        <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708l-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829z"/>
-                                                                        <path fill-rule="evenodd" d="M13.646 14.354l-12-12 .708-.708 12 12-.708.708z"/>
-                                                                        </svg>`;
-                    }
-                    else {
-                        document.getElementById('pass').type = 'password';
-                        document.getElementById('mybutton').innerHTML = `<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-                                                                        <path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-                                                                        </svg>`;
-                    }
-                }
-            </script>
-            <br><div class="line"></div>
-            <br><br><br>
-
-            <div class="button">
-                <p class="button-txt">Sign Up</p>
-            </div>
-
-            <p class="or-txt" >Or Sign Up with</p>
-
-            <!-- gugel -->
-            <button class="btn-su">
-                <div class="logo-ggl">
-            </button>
-            <!-- phone -->
-            <button class="btn-su">
-                <div class="logo-phone"></div>
-            </button>
-
-
-
-    </div>
 </body>
 </html>
