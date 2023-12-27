@@ -41,4 +41,8 @@ Route::get('/phone', function () {
     return view('phone');
 })->name('phone');
 
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
 Route::post('/signup', 'AuthController@signup')->name('signup.post');
