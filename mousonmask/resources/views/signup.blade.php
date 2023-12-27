@@ -15,7 +15,7 @@
 .container {
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100px;
+    width: 576px;
     
     margin: 200px auto;
     padding: 20px;
