@@ -6,5 +6,9 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    //
+    public function signup(Request $request)
+    {
+
+        return redirect()->route('signup');
+    }
 }
