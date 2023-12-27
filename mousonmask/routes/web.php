@@ -22,12 +22,23 @@ Route::get('/profile', function () {
     return view('Profile');
 });
 Route::get('/login', function () {
-    return view('login.login');
-});
+    return view('login');
+})->name('login');
+
 Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/signup', [SignUpController::class, 'showSignUpForm']);
-Route::post('/signup', [SignUpController::class, 'processSignUp']);
+Route::get('/signup', function () {
+    return view('signup');
+})->name('signup');
 
+Route::get('/google', function () {
+    return view('google');
+})->name('google');
+
+Route::get('/phone', function () {
+    return view('phone');
+})->name('phone');
+
+Route::post('/signup', 'AuthController@signup')->name('signup.post');

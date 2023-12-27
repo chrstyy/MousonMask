@@ -20,7 +20,7 @@
             <div class="c_login-text"><p class="c_login-text01">Login</p></div>
             <div class="c_login-text02">
             <p class="c_login-text03">
-                <span class="c_login-text04">Don’t have an account?</span>
+                <span class="c_login-text04">Don't have an account?</span>
                 <span class="c_login-text05">Create your account</span>
             </p>
             </div>
