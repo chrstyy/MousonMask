@@ -10,21 +10,19 @@
     <!-- Tambahkan library Smooth Scroll -->
     <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.0/dist/smooth-scroll.polyfills.min.js"></script>
 </head>
-
 <body>
-
     <header>
         <div class="logo">
-            <img src="{{ asset('images/catije.png') }}" alt="Tulisan Logo">
+            <img src="images/catije.png" alt="Catije Logo" id="logo">
         </div>
-        <div class="menu">
-            <a href="#home-section" class="menu-link active">HOME</a>
-            <a href="#about-section" class="menu-link">ABOUT US</a>
-            <a href="#menu-section" class="menu-link">MENU</a>
-            <a href="#contact-section" class="menu-link">CONTACT US</a>
-            <div class="order"><a href="#order-section" class="menu-link">ORDER YOUR FOOD</a></div>
-            <div class="my-account"><a href="#account-section" class="menu-link">My Account</a></div>
-        </div>
+        <nav>
+            <a href="home" class="nav-link active">HOME</a>
+            <a href="#menu-section">MENU</a>
+            <a href="about" >ABOUT US</a>
+            <a href="contact">CONTACT US</a>
+            <div class="order"><a href="#order-section">ORDER YOUR FOOD</a></div>
+            <div class="myAccount"><a href="#account-section">My Account</a></div>
+        </nav>
     </header>
 
     <section id="home-section" class="hero-section">
@@ -74,5 +72,4 @@
     </script>
 
 </body>
-
 </html>

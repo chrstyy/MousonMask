@@ -7,19 +7,148 @@
     <link rel="stylesheet" href="{{ asset('css/about.css') }}">
     <title>About Us - Catije Bar & Restaurant</title>
 </head>
+<style>
+    
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #BAE8DA;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 1;
+    color: #000000;
+}
+
+.logo img {
+    height: 80px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: black;
+    text-decoration: none;
+    align-items: center;
+    margin-right: 80px; /*jarak antar nama nav*/
+    font-family: 'Moul', regular;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+nav .active {
+    color: red;
+}
+
+.order {
+    display: inline-block; /* Membuat kotak sesuai dengan besarnya teks */
+    background: #DFD7D7;
+    mix-blend-mode: multiply;
+    line-height: normal;
+}
+
+.myAccount {
+    margin-left: auto;
+    margin-bottom: 50px;
+}
+.myAccount a {
+    color: black;
+    text-decoration: none;
+}
+
+.about-container {
+    display: flex;
+}
+
+.about-content {
+    width: 45%;
+    text-align: center;
+    padding: 40px;
+    margin-left: 45px;            
+}
+
+.about-content h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    font-family: Moul;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.about-content p {
+    font-size: 18px;
+    font-family: 'Book Antiqua', sans-serif ;
+    line-height: 1.6;
+    
+}
+
+.image-container {
+    width: 50%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1; 
+}
+
+.background-image {
+    width: 570px;
+    height: 745px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0.5;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(47, 124, 103, 0.57);
+    color: #fff;
+    z-index: 2; 
+}
+
+footer a#link {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 20px;
+}
+
+footer a#link:hover {
+    color: #00f;
+}
+
+footer a img {
+    width: 25px;
+    height: auto;
+    margin: 0 20px;
+}
+
+</style>
 <body>
     <header>
         <div class="logo">
             <img src="images/catije.png" alt="Catije Logo" id="logo">
-      
         </div>
-          <nav>
-            <a href="home">Home</a>
-            <a href="about">About Us</a>
-            <a href="menu">Menu</a>
-            <a href="contact">Contact Us</a>
-            <a href="order">Order Your Food</a>
-            <a href="myacc">My Account</a>
+        <nav>
+            <a href="home">HOME</a>
+            <a href="menu">MENU</a>
+            <a href="about" class="nav-link active">ABOUT US</a>
+            <a href="contact">CONTACT US</a>
+            <div class="order"><a href="#order-section">ORDER YOUR FOOD</a></div>
+            <div class="myAccount"><a href="#account-section">My Account</a></div>
         </nav>
     </header>
 

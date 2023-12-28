@@ -7,30 +7,53 @@ body {
 }
 
 header {
-    background-color: rgba(255, 255, 255, 0.5);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 1;
+    color: #000000;
 }
 
 .logo img {
-    width: auto; 
-    height: 60px;
-    margin-left: 20px;
-    margin-top: 5px;
+    height: 80px;
 }
 
 nav {
-    margin-right: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 nav a {
-    margin: 0 40px;
+    color: black;
     text-decoration: none;
-    color: #333;
+    align-items: center;
+    margin-right: 80px; /*jarak antar nama nav*/
+    font-family: 'Moul', regular;
+    font-size: 25px;
     font-weight: bold;
-    font-size: 14px; 
+}
+
+nav .active {
+    color: red;
+}
+
+.order {
+    display: inline-block; /* Membuat kotak sesuai dengan besarnya teks */
+    background: #DFD7D7;
+    mix-blend-mode: multiply;
+    line-height: normal;
+}
+
+.myAccount {
+    margin-left: auto;
+    margin-bottom: 50px;
+}
+.myAccount a {
+    color: black;
+    text-decoration: none;
 }
 
 .about-container {

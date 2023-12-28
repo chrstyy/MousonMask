@@ -33,10 +33,10 @@
             <div class="or">Or Sign Up with</div>
             <div class="social-buttons">
                 <button class="social-button img" onclick="window.location.href='{{ route('google') }}'">
-                    <img src="{{ asset('images/google.png') }}" alt="Google Logo">
+                    <img src="{{ asset('icons/google.png') }}" alt="Google Logo">
                 </button>
                 <button class="social-button img" onclick="window.location.href='{{ route('phone') }}'">
-                    <img src="{{ asset('images/phone.png') }}" alt="Phone Logo">
+                    <img src="{{ asset('icons/phone.png') }}" alt="Phone Logo">
                 </button>
             </div>
         </div>

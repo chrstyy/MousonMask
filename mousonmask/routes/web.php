@@ -43,6 +43,7 @@ Route::get('/phone', function () {
 })->name('phone');
 
 Route::get('/about', function () {
+
     return view('about.about');
 })->name('about');
 
