@@ -6,107 +6,7 @@
     <link rel="stylesheet" href="{{ asset('css/signup.css') }}">
     <title>Catije - Sign Up</title>
     
-    <style>
-        body {
-    background-color: #BAE8DA;
-    margin: 0;
-    font-family: 'Moulpali';
-}
-.container {
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 576px;
-    
-    margin: 200px auto;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.logo-container {
-    flex-shrink: 0;
-    color: #fff;
-}
-.logo {
-    width: 400px;
-    height: 500px;
-    margin-right: 20px;
-}
-.content-container {
-    flex-grow: 1;
-    margin-left: 20px;
-}
-.title {
-    font-size: 40px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    font-family: 'Moul';
-}
-.subtitle {
-    font-size: 20px;
-    color: #555;
-    margin-bottom: 20px;
-    font-family: 'Moulpali';
-}
-.input-container {
-    position: relative;
-}
-input {
-    width: calc(100% - 30px);
-    padding: 10px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding-right: 30px;
-    /* Untuk memberi ruang bagi ikon mata (eye) */
-}
-.password-icon {
-            position: absolute;
-            top: 50%;
-            right: 10px;
-            transform: translateY(-50%);
-            cursor: pointer;
-        }
-button {
-    background-color: #65AB96;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.or {
-    margin: 20px 0;
-}
-.social-buttons {
-    display: flex;
-    justify-content: space-between;
-}
-.social-button {
-    background-color: #D9D9D9;
-    border-radius: 5px;
-    padding: 5px;
-    flex-grow: 1;
-    margin: 0 5px;
-    width: 50px;
-    /* Ubah sesuai kebutuhan */
-    height: 30px;
-    /* Ubah sesuai kebutuhan */
-    cursor: pointer;
-}
-.social-button img {
-    width: 30px;
-    /* Ubah sesuai kebutuhan */
-    height: 30px;
-    /* Ubah sesuai kebutuhan */
-}
-.login-link {
-    color: #1F27E8;
-    text-decoration: underline;
-    cursor: pointer;
-}
-    </style>
+  
 </head>
 
 <body>
@@ -142,10 +42,10 @@ button {
             <div class="or">Or Sign Up with</div>
             <div class="social-buttons">
                 <button class="social-button" onclick="window.location.href='{{ route('google') }}'">
-                    <img src="{{ asset('images/google.png') }}" alt="Google Logo">
+                    <img src="{{ asset('icons/google.png') }}" alt="Google Logo">
                 </button>
                 <button class="social-button" onclick="window.location.href='{{ route('phone') }}'">
-                    <img src="{{ asset('images/phone.png') }}" alt="Phone Logo">
+                    <img src="{{ asset('icons/phone.png') }}" alt="Phone Logo">
                 </button>
             </div>
         </div>

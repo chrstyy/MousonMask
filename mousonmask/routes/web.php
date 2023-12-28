@@ -21,6 +21,7 @@ Route::get('/', function () {
 Route::get('/profile', function () {
     return view('Profile');
 });
+
 Route::get('/login', function () {
     return view('login');
 })->name('login');
@@ -40,5 +41,21 @@ Route::get('/google', function () {
 Route::get('/phone', function () {
     return view('phone');
 })->name('phone');
+
+Route::get('/about', function () {
+    return view('about.about');
+})->name('about');
+
+Route::get('/terms', function () {
+    return view('about.termsAndConditions');
+})->name('terms');
+
+Route::get('/privacy', function () {
+    return view('about.privacyPolicy');
+})->name('privacy');
+
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
 
 Route::post('/signup', 'AuthController@signup')->name('signup.post');
