@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
     <link rel="stylesheet" href="https://fonts.google.com/specimen/Moul?query=moul">
-    <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.0/dist/smooth-scroll.polyfills.min.js"></script>
 </head>
 
 <body>
@@ -15,15 +15,15 @@
             <img src="images/catije.png" alt="Catije Logo" id="logo">
         </div>
         <nav>
-            <a href="home" class="nav-link active">HOME</a>
-            <a href="menu">MENU</a>
-            <a href="about">ABOUT US</a>
-            <a href="contact">CONTACT US</a>
-            <a href="#order-section" id="order">ORDER YOUR FOOD</a></div>
-            <a href="#account-section" id="myAccount">My Account</a></div>
+            <a href="home" class="menu-link active">HOME</a>
+            <a href="menu" class="menu-link">MENU</a>
+            <a href="about" class="menu-link">ABOUT US</a>
+            <a href="contact" class="menu-link">CONTACT US</a>
+            <a href="order" id="order">ORDER YOUR FOOD</a>
+            <a href="account" id="myAccount">My Account</a>
         </nav>
     </header>
-    <section id="home-section" class="hero-section">
+    <section id="home" class="hero-section">
         <div class="text-container">
             <div class="text">EAT</div>
             <div class="text">DRINK</div>
@@ -31,24 +31,43 @@
         </div>
         <div class="overlay"></div>
     </section>
-    <script>
+
+     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const header = document.getElementById('main-header');
-            const homeLink = document.querySelector('.nav-link');
+            // Inisialisasi Smooth Scroll
+            const scroll = new SmoothScroll('a[href*="#"]', {
+                speed: 800,
+                speedAsDuration: true,
+            });
 
-            homeLink.addEventListener('click', function (e) {
-                e.preventDefault();
+            // Ambil semua link menu
+            const menuLinks = document.querySelectorAll('.menu-link');
 
-                // Toggle class 'hidden' on the header
-                header.classList.toggle('hidden');
+            // Tambahkan event listener pada setiap link menu
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    // Hapus kelas 'active' dari semua link menu
+                    menuLinks.forEach(otherLink => {
+                        otherLink.classList.remove('active');
+                    });
 
-                // Scroll to the home section (assuming the first section has id 'home-section')
-                document.getElementById('home-section').scrollIntoView({
-                    behavior: 'smooth'
+                    // Tambahkan kelas 'active' pada link yang dipencet
+                    this.classList.add('active');
+
+                    // Tentukan halaman yang sedang aktif
+                    const currentPage = window.location.pathname.split('/').pop();
+
+                    // Tambahkan kelas 'active' pada link menu yang sesuai dengan halaman aktif
+                    menuLinks.forEach(link => {
+                        const linkPage = link.getAttribute('href').split('/').pop();
+                        if (linkPage === currentPage) {
+                            link.classList.add('active');
+                        }
+                    });
                 });
             });
         });
     </script>
 </body>
-</html>
 
+</html>

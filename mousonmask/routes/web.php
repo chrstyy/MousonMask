@@ -58,8 +58,8 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
-Route::get('/landing', function () {
-    return view('landing');
-})->name('landing');
+Route::get('/menu', function () {
+    return view('menu');
+})->name('menu');
 
 Route::post('/signup', 'AuthController@signup')->name('signup.post');
