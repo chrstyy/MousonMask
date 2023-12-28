@@ -1,6 +1,5 @@
 body {
     margin: 0;
-    padding: 0;
     background-image: url('/images/bg.png');
     background-size: 100% auto;
     background-attachment: fixed;
@@ -14,48 +13,44 @@ header {
     align-items: center;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.5);
-    z-index: 1;
-    color: #000000;
 }
 
 .logo img {
     height: 80px;
 }
 
-.order {
-    display: inline-block; /* Membuat kotak sesuai dengan besarnya teks */
-    background: #DFD7D7;
-    mix-blend-mode: multiply;
-    line-height: normal;
-}
-
 nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
 }
 
 nav a {
     color: black;
     text-decoration: none;
-    align-items: center;
-    margin-right: 80px; /*jarak antar nama nav*/
     font-family: 'Moul', regular;
     font-size: 25px;
     font-weight: bold;
+    margin: 0 40px;
 }
 
 nav .active {
     color: red;
 }
 
-.myAccount {
-    margin-left: auto;
-    margin-bottom: 50px;
+nav a#order {
+    display: inline-block;
+    background: #DFD7D7;
+    mix-blend-mode: multiply;
+    line-height: normal;
 }
-.myAccount a {
-    color: black;
-    text-decoration: none;
+
+nav a#myAccount {
+    font-family: 'Moul', regular;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: -55px;
+    margin-right: 5px;
 }
 
 
@@ -74,6 +69,7 @@ nav .active {
     display: flex;
     justify-content: space-around;
 }
+
 .hero-section .text {
     font-size: 75px;
     color: black;
@@ -94,4 +90,8 @@ nav .active {
     opacity: 0.5;
     mix-blend-mode: screen;
 
+}
+
+header.hidden {
+    display: none;
 }

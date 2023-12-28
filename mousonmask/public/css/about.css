@@ -1,25 +1,17 @@
-<<<<<<< Updated upstream
-
 body {
     margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
     background-color: #BAE8DA;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
 }
 
 header {
-=======
-header {
-    position: fixed;
->>>>>>> Stashed changes
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-<<<<<<< Updated upstream
     background-color: rgba(255, 255, 255, 0.5);
-    z-index: 1;
-    color: #000000;
 }
 
 .logo img {
@@ -28,38 +20,36 @@ header {
 
 nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
 }
 
 nav a {
     color: black;
     text-decoration: none;
-    align-items: center;
-    margin-right: 80px; /*jarak antar nama nav*/
     font-family: 'Moul', regular;
     font-size: 25px;
     font-weight: bold;
+    margin: 0 40px;
 }
 
 nav .active {
     color: red;
 }
 
-.order {
-    display: inline-block; /* Membuat kotak sesuai dengan besarnya teks */
+nav a#order {
+    display: inline-block;
     background: #DFD7D7;
     mix-blend-mode: multiply;
     line-height: normal;
 }
 
-.myAccount {
-    margin-left: auto;
-    margin-bottom: 50px;
-}
-.myAccount a {
-    color: black;
-    text-decoration: none;
+nav a#myAccount {
+    font-family: 'Moul', regular;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: -55px;
+    margin-right: 5px;
 }
 
 .about-container {
@@ -85,7 +75,6 @@ nav .active {
     font-size: 18px;
     font-family: 'Book Antiqua', sans-serif ;
     line-height: 1.6;
-    
 }
 
 .image-container {
@@ -113,7 +102,10 @@ footer {
     padding: 20px;
     background-color: rgba(47, 124, 103, 0.57);
     color: #fff;
-    z-index: 2; 
+    z-index: 2;
+    position: fixed; 
+    bottom: 0; 
+    width: 100%; 
 }
 
 footer a#link {
@@ -131,13 +123,3 @@ footer a img {
     height: auto;
     margin: 0 20px;
 }
-=======
-    background-color: rgba(155, 142, 152, 0.75);
-    z-index: 1;
-    font-family: 'Moul';
-    font-style: normal;
-    font-weight: bold;
-    font-size: 25px;
-    color: #000000;
-}
->>>>>>> Stashed changes
