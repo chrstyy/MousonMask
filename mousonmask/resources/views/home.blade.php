@@ -1,6 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
+@section('title', 'Home')
+@section('content')
 
+<<<<<<< Updated upstream
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +13,17 @@
     <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.0/dist/smooth-scroll.polyfills.min.js"></script>
 </head>
 <body>
+=======
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>About Us</title>
+        <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+        <link rel="stylesheet" href="https://fonts.google.com/specimen/Moul?query=moul">
+        <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.0/dist/smooth-scroll.polyfills.min.js"></script>
+    </head>
+
+>>>>>>> Stashed changes
     <header>
         <div class="logo">
             <img src="images/catije.png" alt="Catije Logo" id="logo">
@@ -36,40 +49,41 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Inisialisasi Smooth Scroll
-            const scroll = new SmoothScroll('a[href*="#"]', {
-                speed: 800,
-                speedAsDuration: true,
-            });
-
-            // Ambil semua link menu
+            const sections = document.querySelectorAll('section');
             const menuLinks = document.querySelectorAll('.menu-link');
 
-            // Tambahkan event listener pada setiap link menu
             menuLinks.forEach(link => {
                 link.addEventListener('click', function (e) {
-                    // Hapus kelas 'active' dari semua link menu
-                    menuLinks.forEach(otherLink => {
-                        otherLink.classList.remove('active');
-                    });
+                    e.preventDefault();
 
-                    // Tambahkan kelas 'active' pada link yang dipencet
-                    this.classList.add('active');
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
 
-                    // Tentukan halaman yang sedang aktif
-                    const currentPage = window.location.pathname.split('/').pop();
-
-                    // Tambahkan kelas 'active' pada link menu yang sesuai dengan halaman aktif
-                    menuLinks.forEach(link => {
-                        const linkPage = link.getAttribute('href').split('/').pop();
-                        if (linkPage === currentPage) {
-                            link.classList.add('active');
-                        }
-                    });
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
                 });
+            });
+
+            // Add event listener for scrolling back to the header
+            window.addEventListener('scroll', function () {
+                const scrollTop = window.scrollY;
+
+                if (scrollTop === 0) {
+                    menuLinks.forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    menuLinks[0].classList.add('active'); // Assuming the first link is Home
+                }
             });
         });
     </script>
+<<<<<<< Updated upstream
 
 </body>
 </html>
+=======
+@endsection
+>>>>>>> Stashed changes

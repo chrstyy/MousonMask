@@ -47,6 +47,7 @@ Route::get('/about', function () {
     return view('about.about');
 })->name('about');
 
+<<<<<<< Updated upstream
 Route::get('/terms', function () {
     return view('about.termsAndConditions');
 })->name('terms');
@@ -58,5 +59,10 @@ Route::get('/privacy', function () {
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
+=======
+Route::get('/landing', function () {
+    return view('landing');
+})->name('landing');
+>>>>>>> Stashed changes
 
 Route::post('/signup', 'AuthController@signup')->name('signup.post');
