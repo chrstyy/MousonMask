@@ -18,13 +18,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/profile', function () {
+    return view('Profile');
+});
 
-Route::get('/signin', function () {
-    return view('signin');
-})->name('signin');
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+
+Route::get('/home', function () {
+    return view('home');
+});
 
 Route::get('/signup', function () {
-    return view('signup.signup');
+    return view('signup');
 })->name('signup');
 
 Route::get('/google', function () {
@@ -34,5 +41,29 @@ Route::get('/google', function () {
 Route::get('/phone', function () {
     return view('phone');
 })->name('phone');
+
+Route::get('/about', function () {
+    return view('about.about');
+})->name('about');
+
+Route::get('/terms', function () {
+    return view('about.terms');
+})->name('terms');
+
+Route::get('/privacy', function () {
+    return view('about.privacy');
+})->name('privacy');
+
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+
+Route::get('/menu', function () {
+    return view('menu');
+})->name('menu');
+
+Route::get('/menu2', function () {
+    return view('menu2');
+})->name('menu2');
 
 Route::post('/signup', 'AuthController@signup')->name('signup.post');

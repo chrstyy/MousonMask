@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="{{ asset('css/signup.css') }}"> -->
-    <title>Catije - Sign Up</title>
-  <style>
+    <!-- <link rel="stylesheet" href="{{ asset('css/login.css') }}"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-K7T/QD6IfRliU6AtN4gHvdaDR1KkEXPFYLNTm7ofVEK5wDuv2pCievZeaXioqP29V9b7s7I/InMduh+OtMUOMyQ==" crossorigin="anonymous" />
+    <title>Catije - Login</title>
+</head>
+<style>
     body {
   background-color: #BAE8DA;
   margin: 0;
@@ -28,26 +30,32 @@
 .logo {
   margin-right: 20px;
 }
+
 .content-container {
-    flex-grow: 1;
-    margin-left: 20px;
-    
+  flex-grow: 1;
+  margin-left: 20px;
+
 }
+
 .title {
     font-size: 40px;
     font-weight: bold;
     margin-bottom: 10px;
     font-family: 'Moul';
 }
+
 .subtitle {
     font-size: 20px;
     color: #555;
     margin-bottom: 20px;
     font-family: 'Moulpali';
 }
+
 .input-container {
-    position: relative;
+  position: relative;
+  
 }
+
 .input-container input {
     width: calc(100% - 30px);
   margin-top: 10px;
@@ -62,10 +70,10 @@
 }
 
 .password-icon {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
 }
 
 button {
@@ -106,46 +114,37 @@ button:hover {
   height: 30px;
 }
 
-.login-link {
-    color: #1F27E8;
-    text-decoration: underline;
-    cursor: pointer;
+.signup-link {
+  color: #1F27E8;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
-  </style>
-</head>
-
+</style>
 <body>
     <div class="container">
         <div class="logo-container">
             <img src="{{ asset('images/logo.png') }}" alt="Catije Logo" class="logo">
         </div>
         <div class="content-container">
-            <div class="title">Sign Up</div>
+            <div class="title">Login</div>
             <div class="subtitle">
-                Already have an account? <span class="login-link"
-                    onclick="window.location.href='{{ route('login') }}'">Log in</span>
+                Don't have an account? <span class="signup-link" onclick="window.location.href='{{ route('signup') }}'">Create your account</span>
             </div>
-            <form action="{{ route('signup') }}" method="post">
+            <form action="{{ route('login') }}" method="post">
                 @csrf
                 <div class="input-container">
                     <input type="text" name="username" placeholder="Username" required>
                 </div>
                 <div class="input-container">
-                    <input type="email" name="email" placeholder="Email Address" required>
-                </div>
-                <div class="input-container">
                     <input type="password" name="password" id="password" placeholder="Password" required>
-                    <span class="password-icon" onclick="togglePassword('password')"></span>
+                    <span class="password-icon" onclick="togglePassword('password')">
+                       
+                    </span>
                 </div>
-                <div class="input-container">
-                    <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password"
-                        required>
-                    <span class="password-icon" onclick="togglePassword('confirm_password')"></span>
-                </div>
-                <button type="submit">Sign Up</button>
+                <button type="submit">Login</button>
             </form>
-            <div class="or">Or Sign Up with</div>
+            <div class="or">Or Login with</div>
             <div class="social-buttons">
                 <button class="social-button" onclick="window.location.href='{{ route('google') }}'">
                     <img src="{{ asset('icons/google.png') }}" alt="Google Logo">
@@ -158,18 +157,20 @@ button:hover {
     </div>
 
     <script>
-        function togglePassword(id) {
-            var input = document.getElementById(id);
-            var icon = document.getElementById("icon_" + id);
+    function togglePassword(inputId) {
+        const passwordInput = document.getElementById(inputId);
+        const icon = document.querySelector(`#${inputId} + .password-icon i`);
 
-            if (input.type === "password") {
-                input.type = "text";
-                icon.innerHTML = "&#x1F441;"; // Unicode for open eye
-            } else {
-                input.type = "password";
-                icon.innerHTML = "&#x1F576;"; // Unicode for hidden eye
-            }
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        } else {
+            passwordInput.type = 'password';
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
         }
+    }
     </script>
 </body>
 </html>
