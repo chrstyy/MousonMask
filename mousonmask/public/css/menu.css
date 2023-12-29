@@ -8,10 +8,12 @@ body {
 }
 
 header {
+    position: fixed;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
+    width: 97.5%;
     background-color: rgba(255, 255, 255, 0.5);
 }
 
@@ -74,13 +76,13 @@ nav a#myAccount {
 }
 
 .search-bar {
-    position: absolute;
+    position: fixed;
     width: 371px;
     height: 63px;
     border-radius: 10.63px;
     background-color: #1F1D2B;
     margin-left: 1000px;
-    margin-top: 10px;
+    margin-top: 140px;
     transform: rotate(0.17deg);
 }
 
@@ -108,8 +110,9 @@ nav a#myAccount {
 }
 
 .menu-categories {
-    position: absolute;
-    margin-top: 20px;
+    position: fixed;
+    margin-top: 150px;
+    margin-bottom: 300px;
     margin-right: 50px;
     margin-left: 30px;
     font-size: 25px;
@@ -124,6 +127,9 @@ nav a#myAccount {
     color: #468B01;
 }
 
+.menu-categories span.active {
+    color: green;
+}
 
 .menu-section {
     padding: 50px;
@@ -131,14 +137,15 @@ nav a#myAccount {
 
 .menu-item {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 }
 
 .menu-container {
-    padding: 80px;
+    padding: 180px;
+    margin-top: 40px;
     display: grid;
     grid-template-columns: repeat(4, 3fr);
-    gap: 50px; /* Jarak antar kolom dan baris */
+    gap: 50px;
 }
 .menu-cb {
     background: #1F1D2B;
@@ -182,20 +189,42 @@ nav a#myAccount {
     background-color: #e8491d;
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 10px 10px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.cart-popup img {
+    width: 50px;
+    height: 63px;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .cart-popup {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #e8491d;
-    color: white;
-    padding: 10px;
+    background-color: white;
     border-radius: 50%;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    margin-top: 10px;
+    overflow: visible;
+}
+
+
+.cart-count {
+    background-color: #BAE8DA;
+    color: black;
+    border-radius: 50%;
+    padding: 5px 8px;
+    font-size: 14px;
+    margin-top: -55px;
+    margin-left: -20px;
+    z-index: 1;
 }
 
 .line{
