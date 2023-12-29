@@ -1,20 +1,19 @@
-
 body {
     background-color: #BAE8DA;
     margin: 0;
     font-family: 'Moulpali';
 }
 .container {
-    background-color: #fff;
+    background-color: #ffffff63;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 576px;
-
-    margin: 200px auto;
+    width: auto;
+    margin: 300px 300px;
     padding: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
+
 .logo-container {
     flex-shrink: 0;
     color: #fff;
@@ -59,6 +58,7 @@ input {
     transform: translateY(-50%);
     cursor: pointer;
 }
+
 button {
     background-color: #65AB96;
     color: #fff;
@@ -79,9 +79,9 @@ button {
     border-radius: 5px;
     padding: 5px;
     flex-grow: 1;
-    margin: 0 5px;
+    margin: 0px 50px;
     width: 50px;
-    height: 30px;
+    height: 40px;
     cursor: pointer;
 }
 .social-button img {
