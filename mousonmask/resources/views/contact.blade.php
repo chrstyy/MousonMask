@@ -5,156 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Catije Bar & Restaurant</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #BAE8DA;
-        }
-
-        header {
-            background-color: rgba(255, 255, 255, 0.5);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-        }
-
-        .logo img {
-            width: auto;
-            height: 60px;
-            margin-left: 20px;
-            margin-top: 5px;
-        }
-
-        nav {
-            margin-right: 20px;
-        }
-
-        nav a {
-            margin: 0 40px;
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-            font-size: 14px;
-            transition: color 0.3s; /* Efek transisi warna */
-        }
-
-        nav a:hover {
-            color: maroon; /* Warna saat kursor diarahkan */
-        }
-
-        .contact-container {
-            display: flex;
-            justify-content: space-around;
-            padding: 80px 0;
-            color: #000;
-            text-align: center;
-            text-shadow: 2px 2px 4px #ffffff;
-        }
-
-        .contact h2 {
-            color: black;
-            font-size: 36px;
-            font-weight: bold;
-            margin-bottom: 40px;
-        }
-
-        .contact-form {
-            padding: 20px;
-            border-radius: 10px;
-            background-color: rgba(255, 255, 255, 0.8);
-            width: 45%;
-        }
-
-        .contact-info {
-            width: 45%;
-        }
-
-        .contact-form h4 {
-            color: black;
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: none;
-            border-radius: 10px;
-
-        }
-
-        .contact-form textarea {
-            height: 150px;
-        }
-
-        .contact-form button {
-            padding: 10px 20px;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .contact-form label {
-            display: block;
-            margin-bottom: 10px;
-            text-align: left;
-        }
-
-        .contact-info p {
-            color: black;
-            margin-bottom: 10px;
-        }
-
-        .contact-form button:hover {
-            background-color: #7c7c7c;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: rgba(47, 124, 103, 0.57);
-            color: #fff;
-            z-index: 2;
-        }
-
-        footer a#link {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 20px;
-        }
-
-        footer a#link:hover {
-            color: #00f;
-        }
-
-        footer a img {
-            width: 25px;
-            height: auto;
-            margin: 0 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/contact.css') }}">
+    
 </head>
 
 <body>
-    <header>
+<header>
         <div class="logo">
             <img src="images/catije.png" alt="Catije Logo" id="logo">
         </div>
         <nav>
-            <a href="home">Home</a>
-            <a href="about">About Us</a>
-            <a href="menu">Menu</a>
-            <a href="contact">Contact Us</a>
-            <a href="order">Order Your Food</a>
-            <a href="myacc">My Account</a>
+            <a href="home">HOME</a>
+            <a href="menu">MENU</a>
+            <a href="about">ABOUT US</a>
+            <a href="contact"  class="nav-link active">CONTACT US</a>
+            <a href="#order-section" id="order">ORDER YOUR FOOD</a></div>
+            <a href="#account-section" id="myAccount">My Account</a></div>
         </nav>
     </header>
 

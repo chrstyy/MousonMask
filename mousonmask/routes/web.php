@@ -62,4 +62,8 @@ Route::get('/menu', function () {
     return view('menu');
 })->name('menu');
 
+Route::get('/menu2', function () {
+    return view('menu2');
+})->name('menu2');
+
 Route::post('/signup', 'AuthController@signup')->name('signup.post');
