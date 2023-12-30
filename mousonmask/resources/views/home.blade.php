@@ -19,8 +19,8 @@
             <a href="menu" class="menu-link">MENU</a>
             <a href="about" class="menu-link">ABOUT US</a>
             <a href="contact" class="menu-link">CONTACT US</a>
-            <a href="order" id="order">ORDER YOUR FOOD</a>
-            <a href="account" id="myAccount">My Account</a>
+            <a href="order" id="order">ORDER YOUR FOOD</a></div>
+            <a href="myacc" id="myAccount">My Account</a></div>
         </nav>
     </header>
     <section id="home" class="hero-section">

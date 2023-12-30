@@ -4,13 +4,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu - CATIJE</title>
-    <link rel="stylesheet" href="{{ asset('css/menu.css') }}">
+    <title>Menu - Catije</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #BAE8DA;
+        }
 
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .logo img {
+            height: 80px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        nav a {
+            color: black;
+            text-decoration: none;
+            font-family: 'Moul', regular;
+            font-size: 25px;
+            font-weight: bold;
+            margin: 0 40px;
+        }
+
+        nav .active {
+            color: red;
+        }
+
+        nav a#order {
+            display: inline-block;
+            background: #DFD7D7;
+            mix-blend-mode: multiply;
+            line-height: normal;
+        }
+
+        nav a#myAccount {
+            font-family: 'Moul', regular;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: -55px;
+            margin-right: 5px;
+        }
+
+        .menu-container {
+            display: flex;
+            align-items: flex-start;
+            padding: 20px;
+            
+        }
+
+        .menu-options {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            
+        }
+
+        .menu-options a {
+            display: block;
+            color: black;
+            text-decoration: none;
+            font-family: 'Moul', regular;
+            font-size: 25px;
+            font-weight: bold;
+            margin-right: 50px;
+           
+        }
+
+        .menu-options a.active {
+            color: red;
+        }
+
+        .search {
+            display: flex;
+            background-color: black;
+            color: white;
+            align-items: center;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            
+        }
+
+        .search input {
+            border: none;
+            background: none;
+            color: white;
+            padding: 0;
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .search img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        .menu-list {
+            margin-left: 50px;
+            display: grid;
+            grid-template-columns: repeat(4, 3fr);
+            transition: transform 0.5s ease; /* Tambahkan transisi untuk efek slide */
+        }
+
+        .menu-list.slide-in {
+            transform: translateX(0); /* Atur transformasi ke posisi awal */
+        }
+
+        .menu-list.slide-out {
+            transform: translateX(-100%); /* Atur transformasi ke posisi menyembunyikan */
+        }
+
+
+        .menu-card {
+            width: 300px;
+            height: 350px;
+            margin-top: 100px;
+            margin-bottom: 50px;
+            background-color: #000;
+            border-radius: 20px;
+            flex-direction: column;
+            
+        }
+
+        .menu-card:hover {
+            transform: scale(1.05);
+        }
+
+        .menu-card:hover {
+            transform: scale(1.05);
+        }
+
+        .menu-card img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-top: -100px;
+            margin-left: 50px;
+            margin-right: 45px;
+            margin-bottom: 10px;
+            object-fit: cover;
+        }
+
+        .menu-card-content {
+            color: white;
+            margin-left: 40px;
+            margin-right: 40px;
+            margin-bottom: 10px;
+            text-align: center; 
+        }
+
+        .menu-card-content h3 {
+            font-family: 'Barlow';
+            font-size: 20px;
+        }
+
+        .menu-card-content p {
+            margin-top: 10px;
+            font-family: 'Barlow';
+            font-size: 20px;
+        }
+
+        #cart-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            background-color: #DFD7D7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        #cart-icon img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .quantity-container {
+            display: flex;
+            align-items: center;
+            margin-top: 10px; 
+            justify-content: center;
+        }
+
+        .quantity-container button {
+            background-color: #DFD7D7;
+            border: none;
+            cursor: pointer;
+            margin: 0 5px; 
+        }
+
+        .menu-card-content button {
+            font-family: 'Moul', regular;
+            background-color: #DFD7D7;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-block;
+            font-size: 18px;
+            border-radius: 10px;
+        }
+    </style>
 </head>
 
 <body>
-
     <header>
         <div class="logo">
             <img src="images/catije.png" alt="Catije Logo" id="logo">
@@ -20,504 +234,224 @@
             <a href="menu" class="nav-link active">MENU</a>
             <a href="about">ABOUT US</a>
             <a href="contact">CONTACT US</a>
-            <a href="#order-section" id="order">ORDER YOUR FOOD</a>
-            <a href="#account-section" id="myAccount">My Account</a>
+            <a href="order" id="order">ORDER YOUR FOOD</a></div>
+            <a href="myacc" id="myAccount">My Account</a></div>
         </nav>
     </header>
 
-    <section class="menu-categories">
-        <span data-category="appetizer">Appetizer</span>
-        <span data-category="snacks">Snacks</span>
-        <span data-category="alcohol">Alcohol Drink</span>
-        <span data-category="non">Non-Alcohol Drink</span>
-        <span data-category="dessert">Dessert</span>
-        <div class="line"></div>
-    </section>
-
-    <div class="search-bar">
-        <img src="{{ asset('images/search.png') }}" alt="Search Icon">
-        <input type="text" placeholder="Search for food or drinks">
-    </div>
-
-    <section id="appetizer" class="menu-section">
-        <div class="menu-container">
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://www.tasteofhome.com/wp-content/uploads/2018/04/Fruit-Charcuterie-Board_EXPS_JMZ18_224813_C03_07_8b.jpg?fit=335,335" alt="Fruit">
-                 </div>
-                 <div class="item-description">
-                    Fruit Charcuterie Board
-                     <p>$ 1.99</p>
-                 </div>
-             </div>
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://www.tasteofhome.com/wp-content/uploads/2018/01/Hot-Artichoke-Spinach-Dip_EXPS_DIYD21_26044_E-MK08_24_1b-1.jpg?fit=335,335" alt="Spinach">
-                 </div>
-                 <div class="item-description">
-                    Hot Spinach Artichoke Dip
-                     <p>$ 2.22</p>
-                 </div>
-             </div>
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://www.tasteofhome.com/wp-content/uploads/2018/07/Orange-Glazed-Meatballs_EXPS_THSO18_228881_D04_19_9b-1.jpg?fit=700%2C1024" alt="Meatball">
-                 </div>
-                 <div class="item-description">
-                    Orange-Glazed Meatballs
-                     <p>$ 3.00</p>
-                 </div>
-             </div>
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://www.tasteofhome.com/wp-content/uploads/2018/01/Turkey-Sliders-with-Sesame-Slaw_EXPS_HC17_119056_D07_29_7b-9.jpg?fit=335,335" alt="Turkey Sliders">
-                 </div>
-                 <div class="item-description">
-                    Turkey Sliders with Sesame Slaw
-                     <p>$ 2.53</p>
-                 </div>
-             </div>
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://www.tasteofhome.com/wp-content/uploads/2018/01/exps149909_HCA153382B11_02_5b.jpg?fit=335,335" alt="Bread">
-                 </div>
-                 <div class="item-description">
-                    Sesame Herb Pull-Apart Bread
-                     <p>$ 1.56</p>
-                 </div>
-             </div>
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://www.tasteofhome.com/wp-content/uploads/2018/01/Cheesy-Skillet-Pizza-Dip_EXPS_FRBZ17_205524_D03_28_4b-1.jpg?fit=335,335" alt="Pizza">
-                 </div>
-                 <div class="item-description">
-                    Cheesy Skillet Pizza Dip
-                     <p>$ 3.58</p>
-                 </div>
-             </div>
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://www.tasteofhome.com/wp-content/uploads/2018/01/Homemade-Guacamole_EXPS_THJJ18_38391_D01_31_3b-11.jpg?fit=335,335" alt="Guacamole">
-                 </div>
-                 <div class="item-description">
-                    Homemade Guacamole
-                     <p>$ 2.25</p>
-                 </div>
-             </div>
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://www.tasteofhome.com/wp-content/uploads/2018/01/exps54603_TH163620C11_11_6b-2.jpg?fit=335,335" alt="BLT Dip">
-                 </div>
-                 <div class="item-description">
-                    Layered BLT Dip
-                     <p>$ 2.10</p>
-                 </div>
-             </div>
-         </div>
-     </section>
-
-     <section class="menu-categories">
-        <span data-category="appetizer">Appetizer</span>
-        <span data-category="snacks">Snacks</span>
-        <span data-category="alcohol">Alcohol Drink</span>
-        <span data-category="non">Non-Alcohol Drink</span>
-        <span data-category="dessert">Dessert</span>
-        <div class="line"></div>
-    </section>
-
-    <section id="snacks" class="menu-section">
-       <div class="menu-container">
-            <div class="menu-cb">
-                <div class="item-image" >
-                    <img src="{{ asset('images/tortilla.png') }}" alt="Tortilla">
-                </div>
-                <div class="item-description">
-                    Torilla with Bolognese and Cheese
-                    <p>$ 2.99</p>
-                </div>
-            </div>
-            <div class="menu-cb">
-                <div class="item-image" >
-                    <img src="{{ asset('images/wonton.jpg') }}" alt="Wonton">
-                </div>
-                <div class="item-description">
-                    Fried Wonton with Sour Spicy Sauce
-                    <p>$ 2.69</p>
-                </div>
-            </div>
-            <div class="menu-cb">
-                <div class="item-image" >
-                    <img src="{{ asset('images/potatosticks.jpg') }}" alt="Potato">
-                </div>
-                <div class="item-description">
-                    Potato Sticks with Dipping Sauce
-                    <p>$ 2.00</p>
-                </div>
-            </div>
-            <div class="menu-cb">
-                <div class="item-image" >
-                    <img src="https://www.cookingclassy.com/wp-content/uploads/2019/01/chicken-nuggets-7.jpg" alt="Popcorn">
-                </div>
-                <div class="item-description">
-                    Popcorn Chicken
-                    <p>$ 3.00</p>
-                </div>
-            </div>
-            <div class="menu-cb">
-                <div class="item-image" >
-                    <img src="https://heartbeetkitchen.com/foodblog/wp-content/uploads/2018/01/crispy-gluten-free-chicken-wings-a.jpg" alt="Spicy Honey">
-                </div>
-                <div class="item-description">
-                    Spicy Honey Chicken Wings
-                    <p>$ 3.22</p>
-                </div>
-            </div>
-            <div class="menu-cb">
-                <div class="item-image" >
-                    <img src="https://www.thelittleepicurean.com/wp-content/uploads/2018/02/turon-filipino-fried-banana-roll-0.jpg" alt="Banana">
-                </div>
-                <div class="item-description">
-                    Banana Turon with  Caramel
-                    <p>$ 1.69</p>
-                </div>
-            </div>
-            <div class="menu-cb">
-                <div class="item-image" >
-                    <img src="https://www.healthymummy.com/wp-content/uploads/2017/03/Easy-Chicken-Nachos.jpg" alt="Nachos">
-                </div>
-                <div class="item-description">
-                    Loaded Nachos with  Chicken Mayo
-                    <p>$ 2.35</p>
-                </div>
-            </div>
-            <div class="menu-cb">
-                <div class="item-image" >
-                    <img src="https://i.pinimg.com/originals/0e/c9/dc/0ec9dc764fd953371dabcd7f90843f83.jpg" alt="Garlic">
-                </div>
-                <div class="item-description">
-                    Garlic Cheese Bread
-                    <p>$ 2.10</p>
-                </div>
-            </div>
+    <div class="menu-container">
+        <div class="menu-options" id="menu-options">
+            <a href="#" onclick="showMenu('appetizer')">Appetizer</a>
+            <a href="#" onclick="showMenu('snack')">Snacks</a>
+            <a href="#" onclick="showMenu('alcohol')">Alcohol Drinks</a>
+            <a href="#" onclick="showMenu('nonAlcohol')">Non-Alcohol Drinks</a>
+            <a href="#" onclick="showMenu('dessert')">Dessert</a>
         </div>
-    </section>
-
-    <section class="menu-categories">
-        <span data-category="appetizer">Appetizer</span>
-        <span data-category="snacks">Snacks</span>
-        <span data-category="alcohol">Alcohol Drink</span>
-        <span data-category="non">Non-Alcohol Drink</span>
-        <span data-category="dessert">Dessert</span>
-        <div class="line"></div>
-    </section>
-
-    <section id="alcohol" class="menu-section">
-        <div class="menu-container">
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://www.tasteofhome.com/wp-content/uploads/2019/07/black-russian-cocktail-vodka-coffee-shutterstock_1035562495.jpg?fit=700%2C700?fit=335,335" alt="Black Russian">
-                 </div>
-                 <div class="item-description">
-                    Black Russian
-                     <p>$ 2.12</p>
-                 </div>
-             </div>
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://www.tasteofhome.com/wp-content/uploads/2019/08/Negroni-shutterstock_694436281.jpg?fit=700%2C700?fit=335,335" alt="Boulevardier">
-                 </div>
-                 <div class="item-description">
-                    Boulevardier
-                     <p>$ 2.69</p>
-                 </div>
-             </div>
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://www.tasteofhome.com/wp-content/uploads/2019/08/Bronx-Cocktail-shutterstock_1093340795.jpg?fit=700%2C700?fit=335,335" alt="Bronx Cocktail">
-                 </div>
-                 <div class="item-description">
-                    Bronx Cocktail
-                     <p>$ 2.39</p>
-                 </div>
-             </div>
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://www.tasteofhome.com/wp-content/uploads/2019/08/Clover-Club-shutterstock_1239236710.jpg?fit=700%2C700?fit=335,335" alt="Clover Club">
-                 </div>
-                 <div class="item-description">
-                    Clover Club
-                     <p>$ 2.18</p>
-                 </div>
-             </div>
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://www.tasteofhome.com/wp-content/uploads/2019/06/dark-stormy-rum-cocktail-lime-ginger-shutterstock_385915783.jpg?fit=700%2C700?fit=335,335" alt="Dark and Stormy">
-                 </div>
-                 <div class="item-description">
-                    Dark and Stormy
-                     <p>$ 2.55</p>
-                 </div>
-             </div>
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://www.tasteofhome.com/wp-content/uploads/2019/08/Mai-Tai-shutterstock_449441362.jpg?fit=700%2C700?fit=335,335" alt="Mai Tai">
-                 </div>
-                 <div class="item-description">
-                    Mai Tai
-                     <p>$ 2.34</p>
-                 </div>
-             </div>
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://www.tasteofhome.com/wp-content/uploads/2017/10/Pina-Coladas_EXPS_THFM18_37191_C09_15_6b.jpg?fit=700%2C700?fit=335,335" alt="Pina Colada">
-                 </div>
-                 <div class="item-description">
-                    Pina Colada
-                     <p>$ 2.69</p>
-                 </div>
-             </div>
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://www.tasteofhome.com/wp-content/uploads/2019/08/shutterstock_431092117.jpg?fit=700%2C700?fit=335,335" alt="Tom Collins">
-                 </div>
-                 <div class="item-description">
-                    Tom Collins
-                     <p>$ 2.75</p>
-                 </div>
-             </div>
-         </div>
-     </section>
-
-     <section class="menu-categories">
-        <span data-category="appetizer">Appetizer</span>
-        <span data-category="snacks">Snacks</span>
-        <span data-category="alcohol">Alcohol Drink</span>
-        <span data-category="non">Non-Alcohol Drink</span>
-        <span data-category="dessert">Dessert</span>
-        <div class="line"></div>
-    </section>
-
-    <section id="non" class="menu-section">
-        <div class="menu-container">
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1693501137-61LOX5t-KgL.jpg?crop=1xw:1.00xh;center,top&resize=980:*" alt="De Soi Très Roséy">
-                 </div>
-                 <div class="item-description">
-                    De Soi Très Rosé By Katy Perry
-                     <p>$ 23</p>
-                 </div>
-             </div>
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://www.marthastewart.com/thmb/Ju1uWWQmghK-gqI2tUuVWzchgRc=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/iced-passion-fruit-green-tea-c1ad95db-0619-efc3863b8b6048bfa17414cbfd71e314.jpg" alt="Iced Passion-Fruit Green Tea">
-                 </div>
-                 <div class="item-description">
-                    Iced Passion-Fruit Green Tea
-                     <p>$ 2.10</p>
-                 </div>
-             </div>
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1693505235-IMG_0222_2048x.png?crop=1xw:1.00xh;center,top&resize=980:*" alt="Pilot Kombucha Celery Juniper Kombucha">
-                 </div>
-                 <div class="item-description">
-                    Pilot Kombucha Celery Juniper Kombucha
-                     <p>$ 33</p>
-                 </div>
-             </div>
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://www.marthastewart.com/thmb/H9nyn8UxYtZm1SkYtWMLFUhFKW0=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/blackberry-plum-smash-c1ad95db-0619-5e9362c79fb0458b8a510ee7ee9a5093.jpg" alt="Blackberry-Plum Smash with Basil">
-                 </div>
-                 <div class="item-description">
-                    Blackberry-Plum Smash with Basil
-                     <p>$ 2.18</p>
-                 </div>
-             </div>
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://www.marthastewart.com/thmb/sSkq0A0epjw2ac3AwNeyiLyu2E8=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/grapefruit-sanbitter-spritz-0419-5c14156e-silo-7080fa606d90479d81c5f8a7268752cb.jpg" alt="Grapefruit-Sanbitter Spritz">
-                 </div>
-                 <div class="item-description">
-                    Grapefruit-Sanbitter Spritz
-                     <p>$ 2.08</p>
-                 </div>
-             </div>
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://www.marthastewart.com/thmb/P8R2sEv0vUatxRN5pKxh4jS19Uk=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/mediterranean-cucumber-tonic-0419-5c14156e-silo-8dccdbd640664772988276de66c053ff.jpg" alt="Mediterranean Cucumber Tonic">
-                 </div>
-                 <div class="item-description">
-                    Mediterranean Cucumber Tonic
-                     <p>$ 2.14</p>
-                 </div>
-             </div>
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://assets.epicurious.com/photos/5deea5938a496c0008295f8a/1:1/w_2560%2Cc_limit/Batch%2520Cocktails_The%2520Blaylock.jpg" alt="The Blaylock">
-                 </div>
-                 <div class="item-description">
-                    The Blaylock
-                     <p>$ 2.69</p>
-                 </div>
-             </div>
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://assets.epicurious.com/photos/63979f46bf08d0d402aa183f/1:1/w_2560%2Cc_limit/BushwickThirstKiller_RECIPE_120822_43963.jpg" alt="Bushwick Thirst Killer">
-                 </div>
-                 <div class="item-description">
-                    Bushwick Thirst Killer
-                     <p>$ 2.28</p>
-                 </div>
-             </div>
-         </div>
-     </section>
-
-
-     <section class="menu-categories">
-        <span data-category="appetizer">Appetizer</span>
-        <span data-category="snacks">Snacks</span>
-        <span data-category="alcohol">Alcohol Drink</span>
-        <span data-category="non">Non-Alcohol Drink</span>
-        <span data-category="dessert">Dessert</span>
-        <div class="line"></div>
-    </section>
-
-    <section id="dessert" class="menu-section">
-        <div class="menu-container">
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://www.tasteofhome.com/wp-content/uploads/2020/03/Easy-Key-Lime-Pie_EXPS_QEBZ20_247123_E01_24_5b.jpg?fit=335,335" alt="Key Lime Pie">
-                 </div>
-                 <div class="item-description">
-                    Key Lime Pie
-                     <p>$ 1.89</p>
-                 </div>
-             </div>
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://www.tasteofhome.com/wp-content/uploads/2018/01/Pineapple-Upside-Down-Dump-Cake_EXPS_TOHcom19_204281_B10_04_5b-8.jpg?fit=335,335" alt="Pineapple Upside-Down Dump Cake">
-                 </div>
-                 <div class="item-description">
-                    Pineapple Upside-Down Dump Cake
-                     <p>$ 1.71</p>
-                 </div>
-             </div>
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://www.tasteofhome.com/wp-content/uploads/2018/01/Marshmallow-Fudge_EXPS_HCCBZ19_15095_B05_30_6b-1.jpg?fit=335,335" alt="Marshmallow Fudge">
-                 </div>
-                 <div class="item-description">
-                    Marshmallow Fudge
-                     <p>$ 1.24</p>
-                 </div>
-             </div>
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://www.tasteofhome.com/wp-content/uploads/2018/01/Frozen-Margarita-Bars_EXPS_THCA18_205484_C09_22_2b-2.jpg?fit=335,335" alt=Frozen Margarita Mousse">
-                 </div>
-                 <div class="item-description">
-                    Frozen Margarita Mousse
-                     <p>$ 1.37</p>
-                 </div>
-             </div>
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://www.tasteofhome.com/wp-content/uploads/2018/01/Grilled-Banana-Brownie-Sundaes_EXPS_THSO18_85233_D04_19_3b-4.jpg?fit=335,335g" alt="Grilled Banana Brownie Sundaes">
-                 </div>
-                 <div class="item-description">
-                    Grilled Banana Brownie Sundaes
-                     <p>$ 1.92</p>
-                 </div>
-             </div>
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://www.tasteofhome.com/wp-content/uploads/2018/01/exps143154_THCA153054A09_11_2b-1.jpg?fit=335,335" alt="Nutella-Stuffed Strawberries">
-                 </div>
-                 <div class="item-description">
-                    Nutella-Stuffed Strawberries
-                     <p>$ 1.85</p>
-                 </div>
-             </div>
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://www.tasteofhome.com/wp-content/uploads/2018/01/Butterscotch-Toffee-Cookies_exps89586_THCM14D08_09_3bC_RMS-4.jpg?fit=335,335" alt="Butterscotch Toffee Cookies">
-                 </div>
-                 <div class="item-description">
-                    Butterscotch Toffee Cookies
-                     <p>$ 1.18</p>
-                 </div>
-             </div>
-             <div class="menu-cb">
-                 <div class="item-image" >
-                     <img src="https://www.tasteofhome.com/wp-content/uploads/2017/09/Ribbon-Pudding-Pie_EXPS_DSBZ17_14700_C01_19_2b.jpg?fit=335,335" alt="Ribbon Pudding Pie">
-                 </div>
-                 <div class="item-description">
-                    Ribbon Pudding Pie
-                     <p>$ 1.42</p>
-                 </div>
-             </div>
-         </div>
-     </section>
-
-    <div class="cart-popup">
-        <img src={{ asset('images/cart-icon.png') }} alt="Shopping Cart">
-        <span class="cart-count">0</span>
+        <div class="search">
+            <img src="icons/search.png" alt="Search Icon">
+            <input type="text" placeholder="Search...">
+        </div>
+        
+    </div>
+    <div class="menu-list" id="menu-list">
+            
+    </div>
+    <div id="cart-icon" onclick="addToCart()">
+        <img src="icons/cart-icon.png" alt="Add to Cart Icon">
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-    const addToCartButtons = document.querySelectorAll('.add-to-cart');
-    const cartPopup = document.querySelector('.cart-popup');
-    const cartCount = document.querySelector('.cart-count');
-    const menuCategories = document.querySelectorAll('.menu-categories span');
+        let selectedItems = [];
+        function showMenu(category) {
+            const menuData = {
+                'snack': [
+                    { name: 'Torilla with Bolognese and Cheese', price: '$2.99', image: 'https://tse3.mm.bing.net/th?id=OIP.CiuAgf6j3D1taLtQ3EzN9AHaFj&pid=Api&P=0&h=180' },
+                    { name: 'Fried Wonton with Sour Spicy Sauce', price: '$2.69', image: 'https://cravingsjournal.com/wp-content/uploads/2020/06/fried-wontons-1.jpg' },
+                    { name: 'Potato Sticks with Dipping Sauce', price: '$2.00', image: 'https://tse4.mm.bing.net/th?id=OIP.G0-VSkKoFW5BHHlmbWBKBwHaFP&pid=Api&P=0&h=180'},
+                    { name: 'Popcorn Chicken', price: '$3.00', image: 'https://tse4.mm.bing.net/th?id=OIP.yi3uQb4_pdGvgoLxT9vpjAHaHa&pid=Api&P=0&h=180' },
+                    { name: 'Spicy Honey Chicken Wings', price: '$3.22', image: 'https://tse2.mm.bing.net/th?id=OIP.XmbsOTbH3m-zM6Rpx80HgAHaHa&pid=Api&P=0&h=180' },
+                    { name: 'Banana Turon with Caramel', price: '$1.69', image: 'https://tse2.mm.bing.net/th?id=OIP.c6VRUTOCpyAC_6coVwn-DwHaHa&pid=Api&P=0&h=180' },
+                    { name: 'Loaded Nachos with Chicken Mayo', price: '$2.35', image: 'https://tse1.mm.bing.net/th?id=OIP.p5z4FtE-LH__3jXheaCV6QHaH5&pid=Api&P=0&h=180' },
+                    { name: 'Garlic Cheese Bread', price: '$2.10', image: 'https://tse3.mm.bing.net/th?id=OIP.DXIj4r5NEb72P0smgNGMigHaFF&pid=Api&P=0&h=180' }
+                ],
+                'appetizer': [
+                    { name: 'Artisan Cheese Plate', price: '$15.00', image: 'https://tse3.mm.bing.net/th?id=OIP.yj0lsGkIN5QtZi3Jo9rc7wHaGR&pid=Api&P=0&h=180' },
+                    { name: 'Bruschetta', price: '$8.00', image: 'https://tse4.mm.bing.net/th?id=OIP.4-aDQrUwyM6B6vxTZrXAJAHaEz&pid=Api&P=0&h=180' },
+                    { name: 'Caesar Salad', price: '$5.12', image: 'https://tse4.mm.bing.net/th?id=OIP.QmHw_37gNHByVUGMekg3awHaHa&pid=Api&P=0&h=180g' },
+                    { name: 'Shrimp Cocktail', price: '$10.00', image: 'https://tse2.mm.bing.net/th?id=OIP.R3QKd3XafMBUMH_tktFQEgHaE8&pid=Api&P=0&h=180' },
+                    { name: 'Caprese Skewers', price: '$7.50', image: 'https://tse1.mm.bing.net/th?id=OIP.7cIwTBHkkYJt2JSFHib3UAHaHa&pid=Api&P=0&h=180' },
+                    { name: 'Spinach and Artichoke Dip', price: '$9.00', image: 'https://tse4.mm.bing.net/th?id=OIP._C5NTz1y153qrsJmiDeKNgHaFC&pid=Api&P=0&h=180' },
+                    { name: 'Stuffed Mushrooms', price: '$6.35', image: 'https://tse3.mm.bing.net/th?id=OIP.8CyOKwbqSKXZwsPSPLO6EgHaE8&pid=Api&P=0&h=180g' },
+                    { name: 'Deviled Eggs', price: '$7.10', image: 'https://tse4.mm.bing.net/th?id=OIP.QUZ0--hojQe1OV40SJlBDgHaE8&pid=Api&P=0&h=180' }
+                ],
+                'alcohol': [
+                    { name: 'Martini', price: '$12.00', image: 'https://tse1.mm.bing.net/th?id=OIP.3ZV0fYQZbEmRY2y8yehM1wHaHa&pid=Api&P=0&h=180' },
+                    { name: 'Margarita', price: '$8.50', image: 'https://tse3.mm.bing.net/th?id=OIP.Zljihe1OVdpMs8JO5C0C_AHaE8&pid=Api&P=0&h=180' },
+                    { name: 'Old Fashioned', price: '$12.50', image: 'https://tse1.mm.bing.net/th?id=OIP.STfR97mTboXVcMYRVhHMfAHaHa&pid=Api&P=0&h=180' },
+                    { name: 'Mojito', price: '$11.45', image: 'https://tse2.mm.bing.net/th?id=OIP._Zeuj-mSku2-dVCgVaEDMAHaHa&pid=Api&P=0&h=180' },
+                    { name: 'Craft Beer (pint)', price: '$6.50', image: 'https://tse2.mm.bing.net/th?id=OIP.lg2YFtzLZx8pz8Jx0q6qsAHaEm&pid=Api&P=0&h=180' },
+                    { name: 'Wine by the Glass', price: '$13.20', image: 'https://tse2.mm.bing.net/th?id=OIP.fE_O2ERZDAeMVIBZijFAjQHaE8&pid=Api&P=0&h=180' },
+                    { name: 'Whiskey Sour', price: '$14.00', image: 'https://tse1.mm.bing.net/th?id=OIP.-qaun2STZ7J1C9q1RADaBwHaE8&pid=Api&P=0&h=180' },
+                    { name: 'Cosmopolitan', price: '$16.20', image: 'https://tse4.mm.bing.net/th?id=OIP.GNomUD5tyfXSJ4MHRC0qJQHaHa&pid=Api&P=0&h=180' }
+                ],
+                'nonAlcohol': [
+                    { name: 'Lemonade', price: '$3.99', image: 'https://tse2.mm.bing.net/th?id=OIP.O4-BlwnK5XddkVPnAKuEVQHaE8&pid=Api&P=0&h=180' },
+                    { name: 'Virgin Mojito', price: '$7.00', image: 'https://tse2.mm.bing.net/th?id=OIP.srPfMqNzMSam8jw0JpYnEQHaHa&pid=Api&P=0&h=180' },
+                    { name: 'Shirley Temple', price: '$4.00', image: 'https://tse1.mm.bing.net/th?id=OIP.M8OS8YtsYUVzT738-yKeLAHaHa&pid=Api&P=0&h=180' },
+                    { name: 'Iced Tea', price: '$3.00', image: 'https://tse2.mm.bing.net/th?id=OIP.E_gCRT8XQRVS_WM6U8oLTgHaFj&pid=Api&P=0&h=180' },
+                    { name: 'Soda (per can)', price: '$3.00', image: 'https://tse4.mm.bing.net/th?id=OIP.HuiZ0wKn4fJzdUo9nFpqOQHaFj&pid=Api&P=0&h=180' },
+                    { name: 'Mocktail (non-alcoholic)', price: '$7.69', image: 'https://tse1.mm.bing.net/th?id=OIP.i6Po_-gOp0NXSJXIhA_ODQHaJ9&pid=Api&P=0&h=180' },
+                    { name: 'Brewed Coffee', price: '$5.35', image: 'https://tse1.mm.bing.net/th?id=OIP.gyi2811SPA3O1YcuPtJiSwHaHa&pid=Api&P=0&h=180' },
+                    { name: 'Matchless Coffee', price: '$6.10', image: 'https://tse1.mm.bing.net/th?id=OIP.7UntTq1JqkCiTLMEB-IwvwHaE8&pid=Api&P=0&h=180' }
+                ],
+                'dessert': [
+                    { name: 'Chocolate Lava Cake', price: '$12.50', image: 'https://tse4.mm.bing.net/th?id=OIP.UqPA6l0j5zEUC34D2WyFpAHaJw&pid=Api&P=0&h=180' },
+                    { name: 'Cheesecake (slice)', price: '$10.99', image: 'https://tse1.mm.bing.net/th?id=OIP.S-q_0M8EpT3xB4SviRG9tAHaHa&pid=Api&P=0&h=180' },
+                    { name: 'Tiramisu', price: '$14.00', image: 'https://tse2.mm.bing.net/th?id=OIP.g6OCL5qbY-Nnp-jUe3qzeQHaE7&pid=Api&P=0&h=180' },
+                    { name: 'Apple Pie (slice)', price: '$5.20', image: 'https://tse4.mm.bing.net/th?id=OIP.DuFc4e9W7H6789dtveuQcQHaE8&pid=Api&P=0&h=180' },
+                    { name: 'Crème Brûlée', price: '$13.22', image: 'https://tse4.mm.bing.net/th?id=OIP.1Xc5cFVVnIY6b-rACqGqeQHaE7&pid=Api&P=0&h=180' },
+                    { name: 'Brownie Sundae', price: '$14.60', image: 'https://tse3.mm.bing.net/th?id=OIP.TxM8wBI4P8J-EBGZaK8a6wHaHa&pid=Api&P=0&h=180' },
+                    { name: 'Key Lime Pie (slice)', price: '$9.35', image: 'https://tse2.mm.bing.net/th?id=OIP.9vdkk310qAFXV-o3B__CcwHaHa&pid=Api&P=0&h=180' },
+                    { name: 'Strawberry Shortcake', price: '$8.10', image: 'https://tse2.mm.bing.net/th?id=OIP.XMYMOFgxzRkPuAoWLF7dCwHaHa&pid=Api&P=0&h=180' }
+                ]
+            };
 
-    let itemCount = 0;
+            const menuList = document.getElementById('menu-list');
+            menuList.innerHTML = '';
 
-    menuCategories.forEach(category => {
-        category.addEventListener('click', function () {
-            const categoryId = this.getAttribute('data-category');
+            const searchInput = document.querySelector('.search input');
+            const searchTerm = searchInput.value.toLowerCase();
 
-            // Reset active class for all categories
-            menuCategories.forEach(cat => {
-                cat.classList.remove('active');
+            menuData[category].forEach(item => {
+            if (item.name.toLowerCase().includes(searchTerm) || searchTerm === '') {
+                const card = document.createElement('div');
+                card.classList.add('menu-card');
+
+                const image = document.createElement('img');
+                image.src = item.image;
+                card.appendChild(image);
+
+                const content = document.createElement('div');
+                content.classList.add('menu-card-content');
+
+                const itemName = document.createElement('h3');
+                itemName.textContent = item.name;
+                content.appendChild(itemName);
+
+                const itemPrice = document.createElement('p');
+                itemPrice.textContent = `Price: ${item.price}`;
+                content.appendChild(itemPrice);
+
+                const quantityContainer = document.createElement('div');
+                quantityContainer.classList.add('quantity-container');
+
+                const minusButton = document.createElement('button');
+                minusButton.textContent = '-';
+                minusButton.addEventListener('click', function () {
+                    updateQuantity(-1, quantityDisplay);
+                });
+                quantityContainer.appendChild(minusButton);
+
+                const quantityDisplay = document.createElement('span');
+                quantityDisplay.textContent = '0';
+                quantityContainer.appendChild(quantityDisplay);
+
+                const plusButton = document.createElement('button');
+                plusButton.textContent = '+';
+                plusButton.addEventListener('click', function () {
+                    updateQuantity(1, quantityDisplay);
+                });
+                quantityContainer.appendChild(plusButton);
+
+                content.appendChild(quantityContainer);
+
+                const addToCartButton = document.createElement('button');
+                addToCartButton.textContent = 'Add to Cart';
+                addToCartButton.addEventListener('click', function () {
+                    addToCart(item.name, item.price, quantityDisplay.innerText);
+                });
+                content.appendChild(addToCartButton);
+
+                card.appendChild(content);
+
+                menuList.appendChild(card);
+            }
+        });
+
+            // Hapus kelas 'active' dari semua menu-options
+            document.querySelectorAll('.menu-options a').forEach(link => {
+                link.classList.remove('active');
             });
 
-            // Add active class to the clicked category
-            this.classList.add('active');
+            // Tambahkan kelas 'active' ke menu-option yang dipilih
+            const activeLink = document.querySelector(`.menu-options a[href="#"][onclick="showMenu('${category}')"]`);
+            activeLink.classList.add('active');
 
-            scrollToCategory(categoryId);
-        });
-    });
+            // Tambahkan kelas slide-out untuk menyembunyikan konten sebelum diubah
+            menuList.classList.add('slide-out');
 
-    addToCartButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            itemCount++;
-            cartCount.textContent = itemCount;
-        });
-    });
+            // Set Timeout untuk memberikan waktu animasi slide-out selesai sebelum konten diganti
+            setTimeout(() => {
+                menuData[category].forEach(item => {
+                    // ... (kode yang sudah ada) ...
+                });
 
-    cartPopup.addEventListener('click', function () {
-        // Redirect to the cart/order page
-        window.location.href = "order";
-    });
-
-    // Function to scroll to the selected category
-    function scrollToCategory(categoryId) {
-        const targetSection = document.getElementById(categoryId);
-
-        if (targetSection) {
-            targetSection.scrollIntoView({
-                behavior: 'smooth'
-            });
+                // Hapus kelas slide-out dan tambahkan kelas slide-in untuk menampilkan konten baru
+                menuList.classList.remove('slide-out');
+                menuList.classList.add('slide-in');
+            }, 500); 
         }
+ function navigateToOrder() {
+        // Convert the selected items to JSON and store it in a session or pass it to the server
+        const selectedItemsJSON = JSON.stringify(selectedItems);
+        // You may want to use AJAX to send this data to the server if needed
+
+        // Set the session or send the data to the server (example using local storage)
+        localStorage.setItem('selectedItems', selectedItemsJSON);
+
+        // Redirect to the order page
+        window.location.href = 'order';
     }
-});
+    function addToCart(itemName, itemPrice, quantity) {
+        // Add the selected item to the global variable
+        selectedItems.push({
+            name: itemName,
+            price: parseFloat(itemPrice.replace('$', '')), // Convert price to a number
+            quantity: parseInt(quantity, 10),
+        });
 
+        // Save selected items to localStorage
+        localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
 
-    </script>
+        // Provide feedback to the user (you can replace this with your desired UI)
+        alert(`Added to Cart:\n${itemName}\nPrice: ${itemPrice}\nQuantity: ${quantity}`);
+    }
 
+        // Add an event listener to the search input
+        document.querySelector('.search input').addEventListener('input', function () {
+            const category = 'snack'; // Set the default category, you can change it as needed
+            showMenu(category);
+        });
+
+        // Set the active menu option when the page loads
+        document.addEventListener('DOMContentLoaded', function () {
+            const defaultCategory = 'appetizer'; // Ganti dengan kategori default yang diinginkan
+            showMenu(defaultCategory);
+
+            // Atur menu options yang aktif (active)
+            const menuOptions = document.getElementById('menu-options');
+            const activeLink = menuOptions.querySelector(`a[href="#"][onclick="showMenu('${defaultCategory}')"]`);
+            activeLink.classList.add('active');
+        });
+
+        function updateQuantity(change, display) {
+        let quantity = parseInt(display.innerText, 10);
+        quantity = Math.max(0, quantity + change);
+        display.innerText = quantity;
+    }
+
+    
+
+</script>
 </body>
-
 </html>
