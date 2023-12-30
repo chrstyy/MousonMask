@@ -256,7 +256,7 @@
     <div class="menu-list" id="menu-list">
             
     </div>
-    <div id="cart-icon" onclick="addToCart()">
+    <div id="cart-icon" onclick="navigateToOrder()">
         <img src="icons/cart-icon.png" alt="Add to Cart Icon">
     </div>
 
@@ -323,60 +323,60 @@
             const searchTerm = searchInput.value.toLowerCase();
 
             menuData[category].forEach(item => {
-            if (item.name.toLowerCase().includes(searchTerm) || searchTerm === '') {
-                const card = document.createElement('div');
-                card.classList.add('menu-card');
+                if (item.name.toLowerCase().includes(searchTerm) || searchTerm === '') {
+                    const card = document.createElement('div');
+                    card.classList.add('menu-card');
 
-                const image = document.createElement('img');
-                image.src = item.image;
-                card.appendChild(image);
+                    const image = document.createElement('img');
+                    image.src = item.image;
+                    card.appendChild(image);
 
-                const content = document.createElement('div');
-                content.classList.add('menu-card-content');
+                    const content = document.createElement('div');
+                    content.classList.add('menu-card-content');
 
-                const itemName = document.createElement('h3');
-                itemName.textContent = item.name;
-                content.appendChild(itemName);
+                    const itemName = document.createElement('h3');
+                    itemName.textContent = item.name;
+                    content.appendChild(itemName);
 
-                const itemPrice = document.createElement('p');
-                itemPrice.textContent = `Price: ${item.price}`;
-                content.appendChild(itemPrice);
+                    const itemPrice = document.createElement('p');
+                    itemPrice.textContent = `Price: ${item.price}`;
+                    content.appendChild(itemPrice);
 
-                const quantityContainer = document.createElement('div');
-                quantityContainer.classList.add('quantity-container');
+                    const quantityContainer = document.createElement('div');
+                    quantityContainer.classList.add('quantity-container');
 
-                const minusButton = document.createElement('button');
-                minusButton.textContent = '-';
-                minusButton.addEventListener('click', function () {
-                    updateQuantity(-1, quantityDisplay);
-                });
-                quantityContainer.appendChild(minusButton);
+                    const minusButton = document.createElement('button');
+                    minusButton.textContent = '-';
+                    minusButton.addEventListener('click', function () {
+                        updateQuantity(-1, quantityDisplay);
+                    });
+                    quantityContainer.appendChild(minusButton);
 
-                const quantityDisplay = document.createElement('span');
-                quantityDisplay.textContent = '0';
-                quantityContainer.appendChild(quantityDisplay);
+                    const quantityDisplay = document.createElement('span');
+                    quantityDisplay.textContent = '0';
+                    quantityContainer.appendChild(quantityDisplay);
 
-                const plusButton = document.createElement('button');
-                plusButton.textContent = '+';
-                plusButton.addEventListener('click', function () {
-                    updateQuantity(1, quantityDisplay);
-                });
-                quantityContainer.appendChild(plusButton);
+                    const plusButton = document.createElement('button');
+                    plusButton.textContent = '+';
+                    plusButton.addEventListener('click', function () {
+                        updateQuantity(1, quantityDisplay);
+                    });
+                    quantityContainer.appendChild(plusButton);
 
-                content.appendChild(quantityContainer);
+                    content.appendChild(quantityContainer);
 
-                const addToCartButton = document.createElement('button');
-                addToCartButton.textContent = 'Add to Cart';
-                addToCartButton.addEventListener('click', function () {
-                    addToCart(item.name, item.price, quantityDisplay.innerText);
-                });
-                content.appendChild(addToCartButton);
+                    const addToCartButton = document.createElement('button');
+                    addToCartButton.textContent = 'Add to Cart';
+                    addToCartButton.addEventListener('click', function () {
+                        addToCart(item.name, item.price, quantityDisplay.innerText);
+                    });
+                    content.appendChild(addToCartButton);
 
-                card.appendChild(content);
+                    card.appendChild(content);
 
-                menuList.appendChild(card);
-            }
-        });
+                    menuList.appendChild(card);
+                }
+            });
 
             // Hapus kelas 'active' dari semua menu-options
             document.querySelectorAll('.menu-options a').forEach(link => {
@@ -401,31 +401,39 @@
                 menuList.classList.add('slide-in');
             }, 500); 
         }
- function navigateToOrder() {
-        // Convert the selected items to JSON and store it in a session or pass it to the server
-        const selectedItemsJSON = JSON.stringify(selectedItems);
-        // You may want to use AJAX to send this data to the server if needed
+        function navigateToOrder() {
+            // Convert the selected items to JSON and store it in a session or pass it to the server
+            const selectedItemsJSON = JSON.stringify(selectedItems);
+            // You may want to use AJAX to send this data to the server if needed
 
-        // Set the session or send the data to the server (example using local storage)
-        localStorage.setItem('selectedItems', selectedItemsJSON);
+            // Set the session or send the data to the server (example using local storage)
+            localStorage.setItem('selectedItems', selectedItemsJSON);
 
-        // Redirect to the order page
-        window.location.href = 'order';
-    }
-    function addToCart(itemName, itemPrice, quantity) {
-        // Add the selected item to the global variable
-        selectedItems.push({
-            name: itemName,
-            price: parseFloat(itemPrice.replace('$', '')), // Convert price to a number
-            quantity: parseInt(quantity, 10),
-        });
+            // Redirect to the order page
+            window.location.href = 'order';
+        }
 
-        // Save selected items to localStorage
-        localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
+        function addToCart(itemName, itemPrice, quantity) {
+            // Validate quantity
+            if (parseInt(quantity, 10) === 0) {
+                alert('Harap pilih jumlah item lebih dari 0');
+                return;
+            }
 
-        // Provide feedback to the user (you can replace this with your desired UI)
-        alert(`Added to Cart:\n${itemName}\nPrice: ${itemPrice}\nQuantity: ${quantity}`);
-    }
+            // Add the selected item to the global variable
+            selectedItems.push({
+                name: itemName,
+                price: parseFloat(itemPrice.replace('$', '')), // Convert price to a number
+                quantity: parseInt(quantity, 10),
+            });
+
+            // Save selected items to localStorage
+            localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
+
+            // Provide feedback to the user (you can replace this with your desired UI)
+            alert(`Added to Cart:\n${itemName}\nPrice: ${itemPrice}\nQuantity: ${quantity}`);
+        }
+
 
         // Add an event listener to the search input
         document.querySelector('.search input').addEventListener('input', function () {
@@ -445,10 +453,10 @@
         });
 
         function updateQuantity(change, display) {
-        let quantity = parseInt(display.innerText, 10);
-        quantity = Math.max(0, quantity + change);
-        display.innerText = quantity;
-    }
+            let quantity = parseInt(display.innerText, 10);
+            quantity = Math.max(0, quantity + change);
+            display.innerText = quantity;
+        }
 
     
 

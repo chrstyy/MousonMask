@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <div class="logo-container">
-            <img src="{{ asset('images/logo.png') }}" alt="Catije Logo" class="logo">
+            <img src="{{ asset('images/logo.png') }}" alt="Catije Logo">
         </div>
         <div class="content-container">
             <div class="title">Sign Up</div>

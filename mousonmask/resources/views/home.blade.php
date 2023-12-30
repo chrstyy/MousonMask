@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/header_footer.css') }}">
     <link rel="stylesheet" href="https://fonts.google.com/specimen/Moul?query=moul">
 </head>
 

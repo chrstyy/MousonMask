@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms and Conditions - Catije Bar & Restaurant</title>
     <link rel="stylesheet" href="{{ asset('css/about.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/header_footer.css') }}">
 </head>
 
 <body>

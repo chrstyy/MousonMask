@@ -6,52 +6,6 @@ body {
     min-height: 100vh; 
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.5);
-}
-
-.logo img {
-    height: 80px;
-}
-
-nav {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-nav a {
-    color: black;
-    text-decoration: none;
-    font-family: 'Moul', regular;
-    font-size: 25px;
-    font-weight: bold;
-    margin: 0 40px;
-}
-
-nav .active {
-    color: red;
-}
-
-nav a#order {
-    display: inline-block;
-    background: #DFD7D7;
-    mix-blend-mode: multiply;
-    line-height: normal;
-}
-
-nav a#myAccount {
-    font-family: 'Moul', regular;
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: -55px;
-    margin-right: 5px;
-}
-
 .about-container {
     display: flex;
 }
@@ -97,29 +51,3 @@ nav a#myAccount {
     opacity: 0.5;
 }
 
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: rgba(47, 124, 103, 0.57);
-    color: #fff;
-    z-index: 2;
-    position: fixed; 
-    bottom: 0; 
-    width: 100%; 
-}
-
-footer a#link {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 20px;
-}
-
-footer a#link:hover {
-    color: #00f;
-}
-
-footer a img {
-    width: 25px;
-    height: auto;
-    margin: 0 20px;
-}

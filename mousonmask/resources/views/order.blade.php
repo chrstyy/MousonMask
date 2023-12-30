@@ -66,23 +66,50 @@
             background-color: rgba(0, 0, 0, 0.5);
             padding: 20px;
             color: white;
+            margin-top: 50px;
+            margin-left: 50px;
+            border-radius: 20px;
+            margin-right: 50px;
+        }
+
+        .left-container h2{
+            font-family: 'Moul';
+            font-size: 30px;
         }
 
         .order-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            font-size: 20px;
         }
 
-        .order-table th, .order-table td {
-            border: 1px solid white;
+        .order-table th {
+            border: 1px solid transparent; /* Set all borders to transparent */
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid white;
+        }
+
+
+        .order-table td {
+            border: 1px solid transparent; /* Set all borders of table data cells to white */
             padding: 10px;
             text-align: left;
         }
 
+
         .right-container {
             flex: 1;
             padding: 20px;
+            margin-top: 50px;
+            border-radius: 20px;
+            margin-right: 20px;
+        }
+
+        .right-container h2{
+            font-family: 'Moul';
+            font-size: 30px;
         }
 
         .order-summary {
@@ -146,10 +173,11 @@
 
         <div class="right-container">
             <div class="order-summary">
-                <h2>Order Summary</h2>
+                
+                <!-- <h2>Order Summary</h2>
                 <p>Order Number: 12345</p>
                 <p>Total Quantity: 3</p>
-                <p>Subtotal: $15.00</p>
+                <p>Subtotal: $15.00</p> -->
             </div>
 
             <div class="order-summary-btn">
