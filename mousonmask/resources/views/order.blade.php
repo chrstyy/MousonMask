@@ -70,6 +70,8 @@
             margin-left: 50px;
             border-radius: 20px;
             margin-right: 50px;
+            width: 40%;
+            align-self: flex-start;
         }
 
         .left-container h2{
@@ -102,9 +104,11 @@
         .right-container {
             flex: 1;
             padding: 20px;
-            margin-top: 50px;
+            margin-top: 30px;
             border-radius: 20px;
             margin-right: 20px;
+            width: 40%;
+            align-self: flex-start;
         }
 
         .right-container h2{
@@ -112,10 +116,18 @@
             font-size: 30px;
         }
 
+        .order-summary-title {
+            background-color: white;
+            border-radius: 20px;
+            padding: 5px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
         .order-summary {
-            background-color: #DFD7D7;
+            background-color: white;
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 20px;
         }
 
         .order-summary h2 {
@@ -124,7 +136,23 @@
 
         .order-summary-btn {
             margin-top: 20px;
+            display: flex;
+            justify-content: center; /* Center the content horizontally */
+            align-items: center; /* Center the content vertically */
+            height: 100%;
         }
+
+        .order-summary-btn button{
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            padding: 5px;
+            font-family: 'Moul';
+            font-size: 20px;
+            border-radius: 10px;
+        }
+
+        
     </style>
 </head>
 
@@ -172,12 +200,13 @@
 
 
         <div class="right-container">
+            <div class="order-summary-title">
+                <h2>Order Summary</h2>
+            </div>
             <div class="order-summary">
-                
-                <!-- <h2>Order Summary</h2>
                 <p>Order Number: 12345</p>
                 <p>Total Quantity: 3</p>
-                <p>Subtotal: $15.00</p> -->
+                <p>Subtotal: $15.00</p>
             </div>
 
             <div class="order-summary-btn">
@@ -185,7 +214,7 @@
             </div>
         </div>
     </div>
-</body>
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Retrieve the selected items from the session or local storage
@@ -213,5 +242,5 @@
         document.querySelector('.order-summary p:nth-child(3)').textContent = `Subtotal: $${subtotal.toFixed(2)}`;
     });
 </script>
-
+</body>
 </html>
