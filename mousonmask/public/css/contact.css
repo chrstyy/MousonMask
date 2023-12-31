@@ -15,27 +15,31 @@ body {
     text-shadow: 2px 2px 4px #ffffff;
 }
 
-.contact h2 {
-    color: black;
-    font-size: 36px;
-    font-weight: bold;
-    margin-bottom: 40px;
-}
+
 
 .contact-form {
     padding: 20px;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.8);
     width: 45%;
+    font-size: 20px;
 }
 
 .contact-info {
     width: 45%;
 }
 
+.contact-info h2 {
+    font-size: 35px;
+}
+
+.contact-info p {
+    font-size: 20px;
+}
+
 .contact-form h4 {
     color: black;
-    font-size: 24px;
+    font-size: 30px;
     font-weight: bold;
     margin-bottom: 20px;
 }
@@ -47,7 +51,7 @@ body {
     margin-bottom: 15px;
     border: none;
     border-radius: 10px;
-
+    font-size: 20px;
 }
 
 .contact-form textarea {
@@ -61,6 +65,7 @@ body {
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    font-size: 20px;
 }
 
 .contact-form label {

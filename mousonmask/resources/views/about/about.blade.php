@@ -9,6 +9,7 @@
     <title>About Us - Catije Bar & Restaurant</title>
 </head>
 
+
 <body>
     <header>
         <div class="logo">
@@ -23,6 +24,7 @@
             <a href="myacc" id="myAccount">My Account</a></div>
         </nav>
     </header>
+    
 
     <div class="about-container">
         <div class="about-content">

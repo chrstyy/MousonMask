@@ -152,6 +152,16 @@
             border-radius: 10px;
         }
 
+        .left-container button {
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            padding: 5px;
+            font-family: 'Moul';
+            font-size: 20px;
+            border-radius: 10px;
+        }
+
 
     </style>
 </head>
@@ -191,11 +201,12 @@
                 <tr>
                     <td>{{ $item['name'] }}</td>
                     <td>{{ $item['quantity'] }}</td>
-                    <td>${{ $item['price'] * $item['quantity'] }}</td>
+                    <td>{{ $item['price'] * $item['quantity'] }}</td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+    <button id="resetButton" onclick="resetSelectedItems()">Reset Selected Items</button>
 </div>
 
 
@@ -243,6 +254,19 @@
         document.querySelector('.order-summary p:nth-child(2)').textContent = `Total Quantity: ${totalQuantity}`;
         document.querySelector('.order-summary p:nth-child(3)').textContent = `Subtotal: $${subtotal.toFixed(2)}`;
     });
+
+    function resetSelectedItems() {
+            // Clear the selected items in session or local storage
+            localStorage.removeItem('selectedItems');
+
+            // Clear the content of the table
+            const orderTableBody = document.querySelector('.order-table tbody');
+            orderTableBody.innerHTML = '';
+
+            // Reset the order summary
+            document.querySelector('.order-summary p:nth-child(2)').textContent = 'Total Quantity: 0';
+            document.querySelector('.order-summary p:nth-child(3)').textContent = 'Subtotal: $0.00';
+        }
 </script>
 </body>
 </html>

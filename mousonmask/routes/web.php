@@ -40,18 +40,18 @@ Route::get('/login', function () {
 
 Route::get('/home', function () {
     return view('home');
-});
+})->name('home');
 
 Route::get('/signup', function () {
     return view('signup');
 })->name('signup');
 
 Route::get('/google', function () {
-    return view('google');
+    return view('continue.google');
 })->name('google');
 
 Route::get('/phone', function () {
-    return view('phone');
+    return view('continue.phone');
 })->name('phone');
 
 Route::get('/about', function () {
