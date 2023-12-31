@@ -87,7 +87,7 @@
         }
 
         .order-table th {
-            border: 1px solid transparent; /* Set all borders to transparent */
+           
             padding: 10px;
             text-align: left;
             border-bottom: 1px solid white;
@@ -95,7 +95,7 @@
 
 
         .order-table td {
-            border: 1px solid transparent; /* Set all borders of table data cells to white */
+            
             padding: 10px;
             text-align: left;
         }

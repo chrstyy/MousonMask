@@ -74,10 +74,12 @@ Route::get('/menu', function () {
     return view('menu');
 })->name('menu');
 
-
-
 Route::get('/order', function () {
     return view('order');
 })->name('order');
+
+Route::get('/myacc', function () {
+    return view('myacc');
+})->name('myacc');
 
 Route::post('/signup', 'AuthController@signup')->name('signup.post');

@@ -137,15 +137,13 @@
             background-color: #000;
             border-radius: 20px;
             flex-direction: column;
-
+            transition: color 0.1s;
         }
 
         .menu-card:hover {
             transform: scale(1.05);
-        }
-
-        .menu-card:hover {
-            transform: scale(1.05);
+            background-color: #FFE4E4;
+            color: black; 
         }
 
         .menu-card img {
@@ -165,6 +163,7 @@
             margin-right: 40px;
             margin-bottom: 10px;
             text-align: center;
+            transition: color 0.1s;
         }
 
         .menu-card-content h3 {
@@ -176,6 +175,10 @@
             margin-top: 10px;
             font-family: 'Barlow';
             font-size: 20px;
+        }
+
+        .menu-card:hover .menu-card-content {
+            color: black; 
         }
 
         #cart-icon {
