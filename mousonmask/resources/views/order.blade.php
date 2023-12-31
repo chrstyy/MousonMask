@@ -152,7 +152,7 @@
             border-radius: 10px;
         }
 
-        
+
     </style>
 </head>
 
@@ -191,7 +191,7 @@
                 <tr>
                     <td>{{ $item['name'] }}</td>
                     <td>{{ $item['quantity'] }}</td>
-                    <td>{{ $item['price'] * $item['quantity'] }}</td>
+                    <td>${{ $item['price'] * $item['quantity'] }}</td>
                 </tr>
             @endforeach
         </tbody>
@@ -228,7 +228,9 @@
             row.innerHTML = `
                 <td>${item.name}</td>
                 <td>${item.quantity}</td>
-                <td>${item.price * item.quantity}</td>
+                <td>$${item.price * item.quantity.toFixed(2)}
+                    ${((item.price * item.quantity) % 1 !== 0) ? '' : '.00'}
+                </td>
             `;
             orderTableBody.appendChild(row);
         });

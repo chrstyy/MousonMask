@@ -61,7 +61,7 @@
             display: flex;
             align-items: flex-start;
             padding: 20px;
-            
+
         }
 
         .menu-options {
@@ -69,7 +69,7 @@
             display: flex;
             flex-direction: row;
             align-items: center;
-            
+
         }
 
         .menu-options a {
@@ -80,7 +80,7 @@
             font-size: 25px;
             font-weight: bold;
             margin-right: 50px;
-           
+
         }
 
         .menu-options a.active {
@@ -95,7 +95,7 @@
             padding: 10px;
             margin-bottom: 10px;
             border-radius: 10px;
-            
+
         }
 
         .search input {
@@ -114,7 +114,7 @@
         }
 
         .menu-list {
-            margin-left: 50px;
+            margin-left: 125px;
             display: grid;
             grid-template-columns: repeat(4, 3fr);
             transition: transform 0.5s ease; /* Tambahkan transisi untuk efek slide */
@@ -137,7 +137,7 @@
             background-color: #000;
             border-radius: 20px;
             flex-direction: column;
-            
+
         }
 
         .menu-card:hover {
@@ -164,7 +164,7 @@
             margin-left: 40px;
             margin-right: 40px;
             margin-bottom: 10px;
-            text-align: center; 
+            text-align: center;
         }
 
         .menu-card-content h3 {
@@ -200,7 +200,7 @@
         .quantity-container {
             display: flex;
             align-items: center;
-            margin-top: 10px; 
+            margin-top: 10px;
             justify-content: center;
         }
 
@@ -208,7 +208,7 @@
             background-color: #DFD7D7;
             border: none;
             cursor: pointer;
-            margin: 0 5px; 
+            margin: 0 5px;
         }
 
         .menu-card-content button {
@@ -251,10 +251,10 @@
             <img src="icons/search.png" alt="Search Icon">
             <input type="text" placeholder="Search...">
         </div>
-        
+
     </div>
     <div class="menu-list" id="menu-list">
-            
+
     </div>
     <div id="cart-icon" onclick="navigateToOrder()">
         <img src="icons/cart-icon.png" alt="Add to Cart Icon">
@@ -399,7 +399,7 @@
                 // Hapus kelas slide-out dan tambahkan kelas slide-in untuk menampilkan konten baru
                 menuList.classList.remove('slide-out');
                 menuList.classList.add('slide-in');
-            }, 500); 
+            }, 500);
         }
         function navigateToOrder() {
             // Convert the selected items to JSON and store it in a session or pass it to the server
@@ -458,7 +458,7 @@
             display.innerText = quantity;
         }
 
-    
+
 
 </script>
 </body>
