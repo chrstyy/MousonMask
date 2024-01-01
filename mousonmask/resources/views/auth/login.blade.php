@@ -1,47 +1,71 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Catije- Login</title>
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-K7T/QD6IfRliU6AtN4gHvdaDR1KkEXPFYLNTm7ofVEK5wDuv2pCievZeaXioqP29V9b7s7I/InMduh+OtMUOMyQ==" crossorigin="anonymous" />
 
-    <form method="POST" action="{{ route('login') }}">
+</head>
+<body>
+
+    <form method="POST" action="{{ route('home') }}">
         @csrf
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        <div class="container">
+            <div class="logo-container">
+                <img src="{{ asset('images/logo.png') }}" alt="Catije Logo" class="logo">
+            </div>
+            <div class="content-container">
+                <div class="title">Login</div>
+                <div class="subtitle">
+                    Don't have an account? <span class="signup-link" onclick="window.location.href='{{ route('register') }}'">Create your account</span>
+                </div>
+                <form action="{{ route('login') }}" method="post">
+                    @csrf
+                    <div class="input-container">
+                        <input type="text" name="username" placeholder="Username" required>
+                    </div>
+                    <div class="input-container">
+                        <input type="password" name="password" id="password" placeholder="Password" required>
+                        <span class="password-icon" onclick="togglePassword('password')">
+
+                        </span>
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+                <div class="or">Or Login with</div>
+                <div class="social-buttons">
+                    <button class="social-button" onclick="window.location.href='{{ route('google') }}'">
+                        <img src="{{ asset('icons/google.png') }}" alt="Google Logo">
+                    </button>
+                    <button class="social-button" onclick="window.location.href='{{ route('phone') }}'">
+                        <img src="{{ asset('icons/phonee.png') }}" alt="Phone Logo">
+                    </button>
+                </div>
+            </div>
         </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+        <script>
+        function togglePassword(inputId) {
+            const passwordInput = document.getElementById(inputId);
+            const icon = document.querySelector(`#${inputId} + .password-icon i`);
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+        </script>
     </form>
-</x-guest-layout>
+
+</body>
+</html>
+

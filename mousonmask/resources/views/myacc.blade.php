@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Catije Bar & Restaurant</title>
-   
+
     <link rel="stylesheet" href="{{ asset('css/header_footer.css') }}">
 </head>
 <style>
@@ -32,7 +32,7 @@
         border-radius: 20px;
         align-self: flex-start;
         margin-right: 50px;
-        
+
     }
 
     .profile-info p{
@@ -46,7 +46,7 @@
     .profile-image {
         border-radius: 50%;
         width: 200px;
-        height: 200px; 
+        height: 200px;
         object-fit: cover;
         border: 10px solid #B4D8CB;
     }
@@ -55,7 +55,7 @@
         margin-top: 50px;
         display: flex;
         flex-direction: column;
-        
+
     }
 
     .log-out-button button{
@@ -72,7 +72,7 @@
     .profile-buttons button:hover{
         background-color: #234D3E;
         color: white;
-    
+
     }
 
     .profile-buttons {
@@ -81,19 +81,19 @@
         flex-direction: column;
         gap: 20px;
         width: 400px;
-        
+
     }
 
     .profile-buttons img {
         width: 30px;
         height: 30px;
-        
+
     }
     .profile-buttons button {
         font-size: 20px;
         border-radius: 20px;
-        display: flex; /* Set display to flex */
-        align-items: center; /* Align items vertically */
+        display: flex;
+        align-items: center;
         gap: 10px;
         padding: 10px;
         background-color: #B4D8CB;
@@ -154,16 +154,18 @@
         <div class="profile-container">
             <img src="images/smurf.jpeg" alt="Profile Image" class="profile-image">
             <div class="profile-info">
-                <p>Account Name</p>
+                <p>{{ Auth::user()->name }}</p>
                 <div class="profile-buttons">
                     <button><img src="icons/account.png" alt="Account Icon"> Personal Details</button>
                     <button><img src="icons/cart.png" alt="Cart Icon"> My Orders</button>
                     <button><img src="icons/fav.png" alt="Favorite Icon"> Wishlist</button>
-                    
+
                 </div>
-                <div class="log-out-button">
-                    <button>Log Out</button>
-                </div>
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <div class="log-out-button">
+                    <button type="submit">Log Out</button></div>
+                </form>
             </div>
         </div>
 
@@ -180,7 +182,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Add dynamic content for order history here -->
+
+
                 </tbody>
             </table>
         </div>

@@ -5,7 +5,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh; 
+  height: 100vh;
 }
 
 .container {
@@ -14,7 +14,7 @@ body {
   align-items: center;
   justify-content: space-between;
   border-radius: 15px;
-  width: 70%;
+  width: 110%;
   height: auto;
 }
 
@@ -51,7 +51,7 @@ border-radius: 15px;
 
 .input-container {
   position: relative;
-  
+
 }
 
 .input-container input {
@@ -98,7 +98,7 @@ button:hover {
 
 .social-buttons {
   justify-content: space-between;
-  
+
 }
 .social-button {
   background-color: #D9D9D9;
