@@ -49,9 +49,8 @@
     document.addEventListener('DOMContentLoaded', function () {
         const backToAboutButton = document.getElementById('backToAbout');
 
-        // Tambahkan event listener untuk tombol "Back to About Us"
         backToAboutButton.addEventListener('click', function () {
-            window.location.href = 'about.blade.php'; // Ganti dengan URL halaman About Us
+            window.location.href = 'about'; // Ganti dengan URL halaman About Us
         });
     });
 </script>

@@ -33,7 +33,7 @@
             <li>We are committed to ensuring that your information is secure. In order to prevent unauthorized access or disclosure, we have put in place suitable physical, electronic, and managerial procedures to safeguard and secure the information we collect online.</li>
         </ol>
         <p>For the complete Privacy Policy, please contact us or visit our physical location.</p>
-    <<button id="backToAbout">Back to About Us</button>  
+        <button id="backToAbout">Back to About Us</button>  
     </div>
     <footer>
         <a href="https://www.facebook.com/" target="_blank"><img src="icons/facebookLogo.png" alt="Facebook"></a>
@@ -41,16 +41,15 @@
         <a href="https://www.twitter.com/" target="_blank"><img src="icons/twitterLogo.png" alt="Twitter"></a>
         <a href="https://www.google.co.id/maps" target="_blank"><img src="icons/gpsLogo.png" alt="Maps"></a>
         <p>&copy; 2023 Catije Bar & Resto. All rights reserved.</p>
-        <p><a id="link" href="terms">Terms & Conditions</a> | <a id="link" href="privacy">Privacy Policy</a></p>
+        <p><a id="termsLink" href="terms">Terms & Conditions</a> | <a id="privacyLink" href="privacy">Privacy Policy</a></p>
     </footer>
 </body>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const backToAboutButton = document.getElementById('backToAbout');
 
-        // Tambahkan event listener untuk tombol "Back to About Us"
         backToAboutButton.addEventListener('click', function () {
-            window.location.href = 'about.blade.php'; // Ganti dengan URL halaman About Us
+            window.location.href = 'about'; 
         });
     });
 </script>

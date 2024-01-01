@@ -54,13 +54,15 @@ footer {
     font-size: 20px;
 }
 
-footer a#link {
+footer a#termsLink,
+footer a#privacyLink {
     color: #fff;
     text-decoration: none;
     margin: 0 20px;
 }
 
-footer a#link:hover {
+footer a#termsLink:hover,
+footer a#privacyLink:hover {
     color: #00f;
 }
 
