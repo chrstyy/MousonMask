@@ -58,7 +58,7 @@
         }
 
         .order-container {
-            display: flex;
+            display: flex; 
         }
 
         .left-container {
@@ -87,7 +87,6 @@
         }
 
         .order-table th {
-           
             padding: 10px;
             text-align: left;
             border-bottom: 1px solid white;
@@ -95,7 +94,6 @@
 
 
         .order-table td {
-            
             padding: 10px;
             text-align: left;
         }
@@ -160,8 +158,18 @@
             font-family: 'Moul';
             font-size: 20px;
             border-radius: 10px;
+            margin-bottom: 20px;
         }
 
+        #resetButton{
+            color: #034E45;
+            font-weight: bold;
+            background-color: #ACCAF6;
+            font-size: 20px;
+            margin-top: 20px;
+            box-shadow: 4px 5px 8px #D8F5C1;
+            border: none;
+        }
 
     </style>
 </head>

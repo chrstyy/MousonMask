@@ -143,7 +143,7 @@
         .menu-card:hover {
             transform: scale(1.05);
             background-color: #FFE4E4;
-            color: black; 
+            color: black;
         }
 
         .menu-card img {
@@ -178,7 +178,7 @@
         }
 
         .menu-card:hover .menu-card-content {
-            color: black; 
+            color: black;
         }
 
         #cart-icon {
@@ -321,6 +321,7 @@
 
             const menuList = document.getElementById('menu-list');
             menuList.innerHTML = '';
+
 
             const searchInput = document.querySelector('.search input');
             const searchTerm = searchInput.value.toLowerCase();
