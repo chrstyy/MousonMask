@@ -56,7 +56,7 @@
         <a href="https://www.twitter.com/" target="_blank"><img src="icons/twitterLogo.png" alt="Twitter"></a>
         <a href="https://www.google.co.id/maps" target="_blank"><img src="icons/gpsLogo.png" alt="Maps"></a>
         <p>&copy; 2023 Catije Bar & Resto. All rights reserved.</p>
-        <p><a id="link" href="terms">Terms & Conditions</a> | <a id="link" href="privacy">Privacy Policy</a></p>
+        <p><a id="termsLink" href="terms">Terms & Conditions</a> | <a id="privacyLink" href="privacy">Privacy Policy</a></p>
     </footer>
 </body>
 <script>

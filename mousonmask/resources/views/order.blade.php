@@ -98,6 +98,17 @@
             text-align: left;
         }
 
+        
+        .left-container button {
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            padding: 5px;
+            font-family: 'Moul';
+            font-size: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
 
         .right-container {
             flex: 1;
@@ -107,6 +118,7 @@
             margin-right: 20px;
             width: 40%;
             align-self: flex-start;
+            
         }
 
         .right-container h2{
@@ -135,8 +147,8 @@
         .order-summary-btn {
             margin-top: 20px;
             display: flex;
-            justify-content: center; /* Center the content horizontally */
-            align-items: center; /* Center the content vertically */
+            justify-content: center; 
+            align-items: center; 
             height: 100%;
         }
 
@@ -150,15 +162,19 @@
             border-radius: 10px;
         }
 
-        .left-container button {
-            background-color: black;
-            color: white;
-            cursor: pointer;
-            padding: 5px;
-            font-family: 'Moul';
+        .order-summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
             font-size: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
+            background-color: white;
+            border-radius: 20px;
+        }
+
+        .order-summary-table th,
+        .order-summary-table td{
+            padding: 10px;
+            text-align: left;
         }
 
         #resetButton{
@@ -185,7 +201,7 @@
             <a href="about">ABOUT US</a>
             <a href="contact">CONTACT US</a>
             <a href="order" id="order" class="nav-link active">ORDER YOUR FOOD</a>
-            <a href="#myacc" id="myAccount">My Account</a>
+            <a href="myacc" id="myAccount">My Account</a>
         </nav>
     </header>
 
@@ -218,29 +234,38 @@
 </div>
 
 
-        <div class="right-container">
-            <div class="order-summary-title">
-                <h2>Order Summary</h2>
-            </div>
-            <div class="order-summary">
-                <p>Order Number: 12345</p>
-                <p>Total Quantity: 3</p>
-                <p>Subtotal: $15.00</p>
-            </div>
+<div class="right-container">
+        <div class="order-summary-title">
+            <h2>Order Summary</h2>
+        </div>
+       
+        <table class="order-summary-table">
+            <tbody>
+                <tr>
+                    <th>Orders</th>
+                    <td id="orderNumber">12345</td>
+                </tr>
+                <tr>
+                    <th>Quantity</th>
+                    <td id="totalQuantity">3</td>
+                </tr>
+                <tr>
+                    <th>Subtotal</th>
+                    <td id="subtotal">$15.00</td>
+                </tr>
+            </tbody>
+        </table>
 
-            <div class="order-summary-btn">
-                <button>Continue to Payment</button>
-            </div>
+        <div class="order-summary-btn">
+            <button onclick="continueToPayment()">Continue to Payment</button>
         </div>
     </div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Retrieve the selected items from the session or local storage
         const selectedItemsJSON = localStorage.getItem('selectedItems');
         const selectedItems = selectedItemsJSON ? JSON.parse(selectedItemsJSON) : [];
-
-        // Display the selected items in the table
+        
         const orderTableBody = document.querySelector('.order-table tbody');
         selectedItems.forEach(item => {
             const row = document.createElement('tr');
@@ -254,27 +279,30 @@
             orderTableBody.appendChild(row);
         });
 
-        // Calculate the order summary based on the selected items
+        const orderNumber = Math.floor(10000 + Math.random() * 90000);
+
         const totalQuantity = selectedItems.reduce((total, item) => total + item.quantity, 0);
         const subtotal = selectedItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
-        // Update the order summary
-        document.querySelector('.order-summary p:nth-child(2)').textContent = `Total Quantity: ${totalQuantity}`;
-        document.querySelector('.order-summary p:nth-child(3)').textContent = `Subtotal: $${subtotal.toFixed(2)}`;
+        document.querySelector('#orderNumber').textContent = orderNumber;
+        document.querySelector('#totalQuantity').textContent = totalQuantity;
+        document.querySelector('#subtotal').textContent = `$${subtotal.toFixed(2)}`;
     });
 
     function resetSelectedItems() {
-            // Clear the selected items in session or local storage
-            localStorage.removeItem('selectedItems');
+        localStorage.removeItem('selectedItems');
 
-            // Clear the content of the table
-            const orderTableBody = document.querySelector('.order-table tbody');
-            orderTableBody.innerHTML = '';
+        const orderTableBody = document.querySelector('.order-table tbody');
+        orderTableBody.innerHTML = '';
 
-            // Reset the order summary
-            document.querySelector('.order-summary p:nth-child(2)').textContent = 'Total Quantity: 0';
-            document.querySelector('.order-summary p:nth-child(3)').textContent = 'Subtotal: $0.00';
-        }
+        document.querySelector('#orderNumber').textContent = '00000'; 
+        document.querySelector('#totalQuantity').textContent = '0';
+        document.querySelector('#subtotal').textContent = '$0.00';
+    }
+
+    function continueToPayment() {
+        window.location.href = 'payment';
+    }
 </script>
 </body>
 </html>

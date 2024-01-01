@@ -117,15 +117,15 @@
             margin-left: 125px;
             display: grid;
             grid-template-columns: repeat(4, 3fr);
-            transition: transform 0.5s ease; /* Tambahkan transisi untuk efek slide */
+            transition: transform 0.5s ease; 
         }
 
         .menu-list.slide-in {
-            transform: translateX(0); /* Atur transformasi ke posisi awal */
+            transform: translateX(0); 
         }
 
         .menu-list.slide-out {
-            transform: translateX(-100%); /* Atur transformasi ke posisi menyembunyikan */
+            transform: translateX(-100%); 
         }
 
 
@@ -269,7 +269,7 @@
             const menuData = {
                 'snack': [
                     { name: 'Torilla with Bolognese and Cheese', price: '$2.99', image: 'https://tse3.mm.bing.net/th?id=OIP.CiuAgf6j3D1taLtQ3EzN9AHaFj&pid=Api&P=0&h=180' },
-                    { name: 'Fried Wonton with Sour Spicy Sauce', price: '$2.69', image: 'https://cravingsjournal.com/wp-content/uploads/2020/06/fried-wontons-1.jpg' },
+                    { name: 'Fried Wonton with Sour Spicy Sauce', price: '$2.69', image: 'https://tse2.mm.bing.net/th?id=OIP.afwIXrNiJKbVLbfHTMGFHQHaJ4&pid=Api&P=0&h=180' },
                     { name: 'Potato Sticks with Dipping Sauce', price: '$2.00', image: 'https://tse4.mm.bing.net/th?id=OIP.G0-VSkKoFW5BHHlmbWBKBwHaFP&pid=Api&P=0&h=180'},
                     { name: 'Popcorn Chicken', price: '$3.00', image: 'https://tse4.mm.bing.net/th?id=OIP.yi3uQb4_pdGvgoLxT9vpjAHaHa&pid=Api&P=0&h=180' },
                     { name: 'Spicy Honey Chicken Wings', price: '$3.22', image: 'https://tse2.mm.bing.net/th?id=OIP.XmbsOTbH3m-zM6Rpx80HgAHaHa&pid=Api&P=0&h=180' },
@@ -322,6 +322,7 @@
             const menuList = document.getElementById('menu-list');
             menuList.innerHTML = '';
 
+            
 
             const searchInput = document.querySelector('.search input');
             const searchTerm = searchInput.value.toLowerCase();
@@ -461,6 +462,8 @@
             quantity = Math.max(0, quantity + change);
             display.innerText = quantity;
         }
+
+        
 
 
 

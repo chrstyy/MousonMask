@@ -41,7 +41,6 @@
                 speedAsDuration: true,
             });
 
-            // Ambil semua link menu
             const menuLinks = document.querySelectorAll('.menu-link');
 
             // Tambahkan event listener pada setiap link menu
