@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu - Catije</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             margin: 0;
@@ -117,15 +118,15 @@
             margin-left: 125px;
             display: grid;
             grid-template-columns: repeat(4, 3fr);
-            transition: transform 0.5s ease; 
+            transition: transform 0.5s ease;
         }
 
         .menu-list.slide-in {
-            transform: translateX(0); 
+            transform: translateX(0);
         }
 
         .menu-list.slide-out {
-            transform: translateX(-100%); 
+            transform: translateX(-100%);
         }
 
 
@@ -224,6 +225,17 @@
             font-size: 18px;
             border-radius: 10px;
         }
+
+        .love-icon {
+            margin: 5px;
+            color: blue;
+            transition: color 0.3s ease;
+        }
+
+        .love-icon.liked {
+            color: red;
+        }
+
     </style>
 </head>
 
@@ -322,7 +334,7 @@
             const menuList = document.getElementById('menu-list');
             menuList.innerHTML = '';
 
-            
+
 
             const searchInput = document.querySelector('.search input');
             const searchTerm = searchInput.value.toLowerCase();
@@ -376,6 +388,15 @@
                         addToCart(item.name, item.price, quantityDisplay.innerText);
                     });
                     content.appendChild(addToCartButton);
+
+                    const addToWishlistButton = document.createElement('i');
+                    addToWishlistButton.innerHTML = '<i class="fas fa-heart"></i>';
+                    addToWishlistButton.classList.add('love-icon');
+                    addToWishlistButton.setAttribute('data-name', item.name);
+                    addToWishlistButton.addEventListener('click', function () {
+                        addToWishlist(item.name, item.price);
+                    });
+                    content.appendChild(addToWishlistButton);
 
                     card.appendChild(content);
 
@@ -463,9 +484,38 @@
             display.innerText = quantity;
         }
 
-        
+        function addToWishlist(itemName, itemPrice) {
+            const existingItem = selectedItems.find(item => item.name === itemName);
 
+            if (existingItem) {
+                // Item sudah ada di dalam wishlist, maka hapus dari wishlist
+                const index = selectedItems.indexOf(existingItem);
+                selectedItems.splice(index, 1);
 
+                // Ambil semua icon love yang memiliki nama yang sama dengan item yang di-klik
+                const loveIcons = document.querySelectorAll(`.love-icon[data-name="${itemName}"]`);
+
+                // Hapus kelas 'liked' dari setiap ikon love dengan nama yang sesuai
+                loveIcons.forEach(icon => {
+                    icon.classList.remove('liked');
+                });
+            } else {
+                // Item belum ada di dalam wishlist, tambahkan ke wishlist
+                selectedItems.push({
+                    name: itemName,
+                    price: parseFloat(itemPrice.replace('$', '')),
+                    quantity: 1,
+                });
+
+                // Ambil semua icon love yang memiliki nama yang sama dengan item yang di-klik
+                const loveIcons = document.querySelectorAll(`.love-icon[data-name="${itemName}"]`);
+
+                // Tambahkan kelas 'liked' ke setiap ikon love dengan nama yang sesuai
+                loveIcons.forEach(icon => {
+                    icon.classList.add('liked');
+                });
+            }
+        }
 
 </script>
 </body>

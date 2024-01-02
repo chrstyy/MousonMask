@@ -101,14 +101,14 @@
         font-family: 'Moul';
     }
 
-    .history-container {
+    #content {
         padding: 20px;
         background-color: rgba(0, 0, 0, 0.5);
         border-radius: 20px;
         width:100%;
     }
 
-    .history-container h2{
+    #content h2{
         font-size: 25px;
         color: white;
         font-family: 'Book Antiqua';
@@ -154,40 +154,76 @@
         <div class="profile-container">
             <img src="images/smurf.jpeg" alt="Profile Image" class="profile-image">
             <div class="profile-info">
-                <p>{{ Auth::user()->name }}</p>
+                @auth
+                    <p>{{ Auth::user()->name }}</p>
+                @endauth
                 <div class="profile-buttons">
-                    <button><img src="icons/account.png" alt="Account Icon"> Personal Details</button>
-                    <button><img src="icons/cart.png" alt="Cart Icon"> My Orders</button>
-                    <button><img src="icons/fav.png" alt="Favorite Icon"> Wishlist</button>
-
+                    <button onclick="showContent('personal')"><img src="icons/account.png" alt="Account Icon"> Personal Details</button>
+                    <button onclick="showContent('order')"><img src="icons/cart.png" alt="Cart Icon"> My Orders</button>
+                    <button onclick="showContent('wishlist')"><img src="icons/fav.png" alt="Favorite Icon"> Wishlist</button>
                 </div>
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <div class="log-out-button">
-                    <button type="submit">Log Out</button></div>
+                        <button type="submit">Log Out</button>
+                    </div>
                 </form>
             </div>
         </div>
 
-        <div class="history-container">
-            <h2>MY ORDERS</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Order ID</th>
-                        <th>Date</th>
-                        <th>Order Total</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
+        <div id="content">
+                <h2>MY ORDERS</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Date</th>
+                            <th>Order Total</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
+
+        <script>
+            function showContent(contentType) {
+              const contentDiv = document.getElementById('content');
+              if (contentType === 'order') {
+                contentDiv.innerHTML = '';
+                contentDiv.innerHTML +=
+                    '<h2>MY ORDERS</h2>' +
+                    '<table>' +
+                    '<thead>' +
+                    '<tr>' +
+                    '<th>Order ID</th>' +
+                    '<th>Date</th>' +
+                    '<th>Order Total</th>' +
+                    '<th>Status</th>' +
+                    '<th>Action</th>' +
+                    '</tr>' +
+                    '</thead>' +
+                    '<tbody>' +
+                    // Isi tabel jika diperlukan
+                    '</tbody>' +
+                    '</table>' +
+                    '</div>';
+
+              } else if (contentType === 'wishlist') {
+                contentDiv.innerHTML = '';
+                contentDiv.innerHTML +=
+                    '<h2>WISHLIST</h2>' ;
+              } else if (contentType === 'personal') {
+                contentDiv.innerHTML = '';
+                contentDiv.innerHTML +=
+                    '<h2>PERSONAL DETAILS</h2>';
+              }
+            }
+          </script>
 </body>
 
 </html>

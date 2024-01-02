@@ -17,6 +17,9 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             // kalo otentikasi berhasil
+            $user = Auth::user();
+            session(['username' => $user->username]);
+
             return redirect()->intended('/home');
         } else {
             // kalo ndak

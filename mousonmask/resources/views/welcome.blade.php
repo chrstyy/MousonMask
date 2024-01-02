@@ -29,7 +29,7 @@
             text-align: left;
             padding: 50px;
             font-size: 30px;
-            
+
         }
 
         .image-container {
@@ -42,7 +42,7 @@
             height: auto;
             border-radius: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            animation: changeImage 5s infinite; /* Change image every 5 seconds */
+            animation: changeImage 3s infinite; /* Change image every 5 seconds */
         }
 
         @keyframes changeImage {
@@ -75,7 +75,7 @@
         <div class="welcome-content">
             <h2>Welcome to Catije Restaurant</h2>
             <p>Experience the finest culinary delights in a warm and inviting atmosphere.</p>
-            <a href="home" class="get-started-button">Get started</a>
+            <a href="login" class="get-started-button">Get started</a>
         </div>
     </div>
 
@@ -97,7 +97,7 @@
         }
 
         // Change image every 5 seconds
-        setInterval(changeImage, 5000);
+        setInterval(changeImage, 3000);
     </script>
 </body>
 

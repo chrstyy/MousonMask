@@ -10,8 +10,7 @@
 
 </head>
 <body>
-
-    <form method="POST" action="{{ route('home') }}">
+    <form method="POST" action="{{ route('login') }}">
         @csrf
 
         <div class="container">
@@ -23,49 +22,72 @@
                 <div class="subtitle">
                     Don't have an account? <span class="signup-link" onclick="window.location.href='{{ route('register') }}'">Create your account</span>
                 </div>
-                <form action="{{ route('login') }}" method="post">
-                    @csrf
-                    <div class="input-container">
-                        <input type="text" name="username" placeholder="Username" required>
-                    </div>
-                    <div class="input-container">
-                        <input type="password" name="password" id="password" placeholder="Password" required>
-                        <span class="password-icon" onclick="togglePassword('password')">
 
-                        </span>
-                    </div>
-                    <button type="submit">Login</button>
-                </form>
-                <div class="or">Or Login with</div>
-                <div class="social-buttons">
-                    <button class="social-button" onclick="window.location.href='{{ route('google') }}'">
-                        <img src="{{ asset('icons/google.png') }}" alt="Google Logo">
-                    </button>
-                    <button class="social-button" onclick="window.location.href='{{ route('phone') }}'">
-                        <img src="{{ asset('icons/phonee.png') }}" alt="Phone Logo">
-                    </button>
-                </div>
-            </div>
+        <!-- Email Address -->
+        <div class="input-container">
+            <x-text-input id="email"  type="email" name="email" :value="old('email')" required autofocus autocomplete="username" placeholder="Username"/>
+            <x-input-error :messages="$errors->get('email')" class="error" />
         </div>
 
-        <script>
-        function togglePassword(inputId) {
-            const passwordInput = document.getElementById(inputId);
-            const icon = document.querySelector(`#${inputId} + .password-icon i`);
+        <!-- Password -->
+        <div class="input-container">
+            <x-text-input id="password" class="block mt-1 w-full"
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            required autocomplete="current-password" />
 
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                icon.classList.remove('fa-eye');
-                icon.classList.add('fa-eye-slash');
-            } else {
-                passwordInput.type = 'password';
-                icon.classList.remove('fa-eye-slash');
-                icon.classList.add('fa-eye');
-            }
-        }
-        </script>
+            <x-input-error :messages="$errors->get('password')" class="error" />
+                <span class="password-icon" onclick="togglePassword('password')"></span>
+        </div>
+
+        <!-- Remember Me -->
+        <div class="block mt-4">
+            <label for="remember_me" class="inline-flex items-center">
+                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
+                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
+            </label>
+        </div>
+
+        <button type="submit">
+            {{ __('Log in') }}
+        </button>
+
+        <div class="flex items-center justify-end mt-4">
+            @if (Route::has('password.request'))
+                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
+                    {{ __('Forgot your password?') }}
+                </a>
+            @endif
+        </div>
     </form>
+        <div class="or">Or Login with</div>
+        <div class="social-buttons">
+            <button class="social-button" onclick="window.location.href='{{ route('google') }}'">
+                <img src="{{ asset('icons/google.png') }}" alt="Google Logo">
+            </button>
+            <button class="social-button" onclick="window.location.href='{{ route('phone') }}'">
+                <img src="{{ asset('icons/phonee.png') }}" alt="Phone Logo">
+            </button>
+        </div>
+    </div>
+    </div>
 
+    <script>
+    function togglePassword(inputId) {
+        const passwordInput = document.getElementById(inputId);
+        const icon = document.querySelector(`#${inputId} + .password-icon i`);
+
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        } else {
+            passwordInput.type = 'password';
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        }
+    }
+    </script>
 </body>
 </html>
-

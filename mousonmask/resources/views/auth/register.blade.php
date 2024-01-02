@@ -99,14 +99,18 @@
         }
 
         .or {
-        margin: 20px 0;
+        position: fixed;
+        margin-top: 500px;
+        margin-left: 600px;
         font-size: 18px;
         font-family: 'Moul', regular;
         }
 
         .social-buttons {
+        position: fixed;
         justify-content: space-between;
-
+        margin-top: 580px;
+        margin-left: 600px;
         }
         .social-button {
         background-color: #D9D9D9;
@@ -128,10 +132,8 @@
     </style>
 </head>
 <body>
-
-    <form action="{{ route('login') }}">
+    <form method="POST" action="{{ route('register') }}">
         @csrf
-
         <div class="container">
             <div class="logo-container">
                 <img src="{{ asset('images/logo.png') }}" alt="Catije Logo">
@@ -142,65 +144,80 @@
                     Already have an account? <span class="login-link"
                         onclick="window.location.href='{{ route('login') }}'">Log in</span>
                 </div>
-                <form action="{{ route('login') }}" method="post">
-                    @csrf
-                    <div class="input-container">
-                        <input type="text" name="username" placeholder="Username" required>
-                    </div>
-                    <div class="input-container">
-                        <input type="email" name="email" placeholder="Email Address" required>
-                    </div>
-                    <div class="input-container">
-                        <input type="password" name="password" id="password" placeholder="Password" required>
-                        <span class="password-icon" onclick="togglePassword('password')"></span>
-                    </div>
-                    <div class="input-container">
-                        <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password"
-                            required>
-                        <span class="password-icon" onclick="togglePassword('confirm_password')"></span>
-                    </div>
-                    <button type="submit">Sign Up</button>
-                </form>
-                <div class="or">Or Sign Up with</div>
-                <div class="social-buttons">
-                    <button class="social-button" onclick="window.location.href='{{ route('google') }}'">
-                        <img src="{{ asset('icons/google.png') }}" alt="Google Logo">
-                    </button>
-                    <button class="social-button" onclick="window.location.href='{{ route('phone') }}'">
-                        <img src="{{ asset('icons/phonee.png') }}" alt="Phone Logo">
-                    </button>
-                </div>
-            </div>
+
+        <!-- Name -->
+        <div class="input-container">
+            <x-text-input id="name" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="Username"/>
+            <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
-        <script>
-            function togglePassword(id) {
-                var input = document.getElementById(id);
-                var icon = document.getElementById("icon_" + id);
+        <!-- Email Address -->
+        <div class="input-container">
+            <x-text-input id="email" type="email" name="email" :value="old('email')" required autocomplete="username" placeholder="Email Address"/>
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        </div>
 
-                if (input.type === "password") {
-                    input.type = "text";
-                    icon.innerHTML = "&#x1F441;"; // Unicode for open eye
-                } else {
-                    input.type = "password";
-                    icon.innerHTML = "&#x1F576;"; // Unicode for hidden eye
-                }
+        <!-- Password -->
+        <div class="input-container">
+            <x-text-input id="password" class="block mt-1 w-full"
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            required autocomplete="new-password" />
+                            <span class="password-icon" onclick="togglePassword('password')"></span>
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="input-container">
+            <x-text-input id="password_confirmation" class="block mt-1 w-full"
+                            type="password"
+                            name="password_confirmation"
+                            placeholder="Confirm Password"
+                            required autocomplete="new-password" />
+            <span class="password-icon" onclick="togglePassword('confirm_password')"></span>
+            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        </div>
+            <button type="submit">
+                {{ __('Sign Up') }}
+            </button>
+        </div>
+        <div class="or">Or Sign Up with</div>
+        <div class="social-buttons">
+            <button class="social-button" onclick="window.location.href='{{ route('google') }}'">
+                <img src="{{ asset('icons/google.png') }}" alt="Google Logo">
+            </button>
+            <button class="social-button" onclick="window.location.href='{{ route('phone') }}'">
+                <img src="{{ asset('icons/phonee.png') }}" alt="Phone Logo">
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword(id) {
+            var input = document.getElementById(id);
+            var icon = document.getElementById("icon_" + id);
+
+            if (input.type === "password") {
+                input.type = "text";
+                icon.innerHTML = "&#x1F441;"; // Unicode for open eye
+            } else {
+                input.type = "password";
+                icon.innerHTML = "&#x1F576;"; // Unicode for hidden eye
             }
+        }
 
-            function navigateTo(page) {
-                switch (page) {
-
-                    case 'google':
-                        window.location.href = '{{ route('google') }}';
-                        break;
-                    case 'phone':
-                        window.location.href = '{{ route('phone') }}';
-                        break;
-                }
+        function navigateTo(page) {
+            switch (page) {
+                case 'google':
+                    window.location.href = '{{ route('google') }}';
+                    break;
+                case 'phone':
+                    window.location.href = '{{ route('phone') }}';
+                    break;
             }
-        </script>
+        }
+    </script>
     </form>
-
 </body>
-
 </html>
