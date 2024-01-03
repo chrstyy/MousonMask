@@ -28,9 +28,10 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/home', function () {
+Route::get('/dashboard', function () {
     return view('home');
 })->name('home');
+
 
 Route::get('/login', function () {
     return view('auth.login');
