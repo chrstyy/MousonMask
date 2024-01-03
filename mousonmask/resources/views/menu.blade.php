@@ -334,8 +334,6 @@
             const menuList = document.getElementById('menu-list');
             menuList.innerHTML = '';
 
-
-
             const searchInput = document.querySelector('.search input');
             const searchTerm = searchInput.value.toLowerCase();
 
@@ -392,9 +390,9 @@
                     const addToWishlistButton = document.createElement('i');
                     addToWishlistButton.innerHTML = '<i class="fas fa-heart"></i>';
                     addToWishlistButton.classList.add('love-icon');
-                    addToWishlistButton.setAttribute('data-name', item.name);
+                    addToWishlistButton.setAttribute('data-name', item.name, 'data-price', item.price, 'data-image', item.image);
                     addToWishlistButton.addEventListener('click', function () {
-                        addToWishlist(item.name, item.price);
+                        addToWishlist(item.name, item.price, item.image);
                     });
                     content.appendChild(addToWishlistButton);
 
@@ -484,7 +482,7 @@
             display.innerText = quantity;
         }
 
-        function addToWishlist(itemName, itemPrice) {
+        function addToWishlist(itemName, itemPrice,itemImage) {
             const existingItem = selectedItems.find(item => item.name === itemName);
 
             if (existingItem) {
@@ -515,7 +513,10 @@
                     icon.classList.add('liked');
                 });
             }
+
+            localStorage.setItem('wishlist', JSON.stringify(selectedItems));
         }
+
 
 </script>
 </body>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Catije Bar & Restaurant</title>
+    <title>My Account - Catije Bar & Restaurant</title>
 
     <link rel="stylesheet" href="{{ asset('css/header_footer.css') }}">
 </head>
@@ -133,6 +133,48 @@
         color: white;
         padding: 5px 50px;
     }
+
+    #wishlist-container{
+        width: 300px;
+        height: 350px;
+        margin-top: 100px;
+        margin-bottom: 50px;
+        background-color: white;
+        border-radius: 20px;
+        flex-direction: column;
+        transition: color 0.1s;
+    }
+
+    #wishlist-container img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        margin-top: -100px;
+        margin-left: 50px;
+        margin-right: 45px;
+        margin-bottom: 10px;
+        object-fit: cover;
+    }
+
+    #wishlist-container-content {
+        color: white;
+        margin-left: 40px;
+        margin-right: 40px;
+        margin-bottom: 10px;
+        text-align: center;
+        transition: color 0.1s;
+    }
+
+    #wishlist-container-content h3 {
+        font-family: 'Barlow';
+        font-size: 20px;
+    }
+
+    #wishlist-container-content p {
+        margin-top: 10px;
+        font-family: 'Barlow';
+        font-size: 20px;
+    }
 </style>
 
 <body>
@@ -196,34 +238,77 @@
               if (contentType === 'order') {
                 contentDiv.innerHTML = '';
                 contentDiv.innerHTML +=
-                    '<h2>MY ORDERS</h2>' +
-                    '<table>' +
-                    '<thead>' +
-                    '<tr>' +
-                    '<th>Order ID</th>' +
-                    '<th>Date</th>' +
-                    '<th>Order Total</th>' +
-                    '<th>Status</th>' +
-                    '<th>Action</th>' +
-                    '</tr>' +
-                    '</thead>' +
-                    '<tbody>' +
+                    '<h2>MY ORDERS</h2>',
+                    '<table>' ,
+                    '<thead>' ,
+                    '<tr>' ,
+                    '<th>Order ID</th>' ,
+                    '<th>Date</th>' ,
+                    '<th>Order Total</th>' ,
+                    '<th>Status</th>' ,
+                    '<th>Action</th>' ,
+                    '</tr>' ,
+                    '</thead>' ,
+                    '<tbody>',
                     // Isi tabel jika diperlukan
-                    '</tbody>' +
-                    '</table>' +
+                    '</tbody>' ,
+                    '</table>' ,
                     '</div>';
 
               } else if (contentType === 'wishlist') {
                 contentDiv.innerHTML = '';
                 contentDiv.innerHTML +=
                     '<h2>WISHLIST</h2>' ;
+                    const separator = document.createElement('hr');
+                    contentDiv.appendChild(separator);
+                    const wishlistContainer = document.createElement('div');
+                    wishlistContainer.id = 'wishlist-container';
+                    contentDiv.appendChild(wishlistContainer);
+                    showWishlist();
+
               } else if (contentType === 'personal') {
                 contentDiv.innerHTML = '';
                 contentDiv.innerHTML +=
                     '<h2>PERSONAL DETAILS</h2>';
+                    const separator = document.createElement('hr');
+                    contentDiv.appendChild(separator);
               }
             }
-          </script>
+
+            function showWishlist() {
+                const wishlistContainer = document.getElementById('wishlist-container');
+                wishlistContainer.innerHTML = '';
+                const wishlistData = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+                if (wishlistData.length === 0) {
+                    wishlistContainer.innerHTML = '<p>Your wishlist is empty.</p>';
+                    return;
+                }
+
+                wishlistData.forEach(item => {
+                    const itemCard = document.createElement('div');
+                    itemCard.classList.add('wishlist-item');
+
+                    const itemName = document.createElement('h3');
+                    itemName.textContent = item.name;
+                    itemCard.appendChild(itemName);
+
+                    const itemPrice = document.createElement('p');
+                    itemPrice.textContent = `Price: $${item.price}`;
+                    itemCard.appendChild(itemPrice);
+
+                    const itemImage = document.createElement('img');
+                    itemImage.src = item.image;
+                    itemImage.alt = item.name;
+                    itemCard.appendChild(itemImage);
+                    wishlistContainer.appendChild(itemCard);
+                });
+            };
+            // Panggil fungsi untuk menampilkan wishlist saat halaman dimuat
+            document.addEventListener('DOMContentLoaded', function () {
+                showWishlist();
+            });
+        </script>
 </body>
 
 </html>

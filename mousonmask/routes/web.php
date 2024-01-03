@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MyAccController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -78,3 +79,7 @@ Route::get('/myacc', function () {
 })->name('myacc');
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/myaccount', [MyAccController::class, 'showWishlist'])->name('myaccount.show');
+Route::post('/wishlist/add/{menuId}', [MyAccController::class, 'addToWishlist'])->name('wishlist.add');
+Route::post('/wishlist/remove/{menuId}', [MyAccController::class, 'removeFromWishlist'])->name('wishlist.remove');
