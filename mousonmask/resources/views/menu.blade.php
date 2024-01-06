@@ -426,14 +426,8 @@
             }, 500);
         }
         function navigateToOrder() {
-            // Convert the selected items to JSON and store it in a session or pass it to the server
             const selectedItemsJSON = JSON.stringify(selectedItems);
-            // You may want to use AJAX to send this data to the server if needed
-
-            // Set the session or send the data to the server (example using local storage)
             localStorage.setItem('selectedItems', selectedItemsJSON);
-
-            // Redirect to the order page
             window.location.href = 'order';
         }
 
@@ -451,23 +445,18 @@
 
             localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
 
-            // Provide feedback to the user (you can replace this with your desired UI)
             alert(`Added to Cart:\n${itemName}\nPrice: ${itemPrice}\nQuantity: ${quantity}`);
         }
 
-
-        // Add an event listener to the search input
         document.querySelector('.search input').addEventListener('input', function () {
-            const category = 'snack'; // Set the default category, you can change it as needed
+            const category = menuData; 
             showMenu(category);
         });
 
-        // Set the active menu option when the page loads
         document.addEventListener('DOMContentLoaded', function () {
-            const defaultCategory = 'appetizer'; // Ganti dengan kategori default yang diinginkan
+            const defaultCategory = 'appetizer'; 
             showMenu(defaultCategory);
 
-            // Atur menu options yang aktif (active)
             const menuOptions = document.getElementById('menu-options');
             const activeLink = menuOptions.querySelector(`a[href="#"][onclick="showMenu('${defaultCategory}')"]`);
             activeLink.classList.add('active');
@@ -479,33 +468,30 @@
             display.innerText = quantity;
         }
 
-        function addToWishlist(itemName, itemPrice,itemImage) {
+        function addToWishlist(itemName, itemPrice, itemImage) {
             const existingItem = selectedItems.find(item => item.name === itemName);
 
             if (existingItem) {
-                // Item sudah ada di dalam wishlist, maka hapus dari wishlist
+                // Item is already in the wishlist, remove it from the wishlist
                 const index = selectedItems.indexOf(existingItem);
                 selectedItems.splice(index, 1);
 
-                // Ambil semua icon love yang memiliki nama yang sama dengan item yang di-klik
+                // Remove 'liked' class from all love icons with the same name
                 const loveIcons = document.querySelectorAll(`.love-icon[data-name="${itemName}"]`);
-
-                // Hapus kelas 'liked' dari setiap ikon love dengan nama yang sesuai
                 loveIcons.forEach(icon => {
                     icon.classList.remove('liked');
                 });
             } else {
-                // Item belum ada di dalam wishlist, tambahkan ke wishlist
+                // Item is not in the wishlist, add it to the wishlist
                 selectedItems.push({
                     name: itemName,
                     price: parseFloat(itemPrice.replace('$', '')),
+                    image: itemImage, // Add image to the wishlist item
                     quantity: 1,
                 });
 
-                // Ambil semua icon love yang memiliki nama yang sama dengan item yang di-klik
+                // Add 'liked' class to all love icons with the same name
                 const loveIcons = document.querySelectorAll(`.love-icon[data-name="${itemName}"]`);
-
-                // Tambahkan kelas 'liked' ke setiap ikon love dengan nama yang sesuai
                 loveIcons.forEach(icon => {
                     icon.classList.add('liked');
                 });

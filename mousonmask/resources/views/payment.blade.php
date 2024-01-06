@@ -146,12 +146,33 @@
         document.getElementById('totalQuantity').textContent = totalQuantity;
         document.getElementById('subtotal').textContent = subtotal;
 
-        // Add any necessary payment processing scripts
         function processPayment() {
-            // Implement payment processing logic here
-            // You can use a third-party payment gateway or handle it as needed
+            // Extract order details
+            const orderNumber = document.getElementById('orderNumber').textContent;
+            const totalQuantity = document.getElementById('totalQuantity').textContent;
+            const subtotal = document.getElementById('subtotal').textContent;
+
+            // Get the current date and time
+            const currentDate = new Date();
+            const formattedDate = currentDate.toLocaleDateString();
+            const formattedTime = currentDate.toLocaleTimeString();
+
+            // Create an object with order details including date and time
+            const orderDetails = {
+                orderNumber: orderNumber,
+                totalQuantity: totalQuantity,
+                subtotal: subtotal,
+                orderDate: formattedDate,
+                orderTime: formattedTime
+            };
+
+            // Save order details to localStorage
+            localStorage.setItem('orderDetails', JSON.stringify(orderDetails));
+
+            // Implement your payment processing logic here
             alert('Payment processed successfully!');
         }
+
     </script>
 </body>
 </html>
