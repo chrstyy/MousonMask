@@ -438,20 +438,17 @@
         }
 
         function addToCart(itemName, itemPrice, quantity) {
-            // Validate quantity
             if (parseInt(quantity, 10) === 0) {
                 alert('Harap pilih jumlah item lebih dari 0');
                 return;
             }
 
-            // Add the selected item to the global variable
             selectedItems.push({
                 name: itemName,
-                price: parseFloat(itemPrice.replace('$', '')), // Convert price to a number
+                price: parseFloat(itemPrice.replace('$', '')), 
                 quantity: parseInt(quantity, 10),
             });
 
-            // Save selected items to localStorage
             localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
 
             // Provide feedback to the user (you can replace this with your desired UI)

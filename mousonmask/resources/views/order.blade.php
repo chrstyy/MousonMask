@@ -187,6 +187,24 @@
             border: none;
         }
 
+        .delete-button {
+            background-color: red;
+            color: white;
+            cursor: pointer;
+            padding: 5px;
+            font-family: 'Moul';
+            font-size: 16px;
+            border-radius: 10px;
+            border: none;
+            
+        }
+
+        .delete-button:hover {
+            background-color: #ff4d4d; 
+            cursor: pointer;
+        }
+
+
     </style>
 </head>
 
@@ -205,30 +223,34 @@
         </nav>
     </header>
 
-    <div class="order-container">
+<div class="order-container">
     <div class="left-container">
     <h2>Selected Items</h2>
-    <table class="order-table">
+    <table class="order-table" id="selected-items-table">
         <thead>
             <tr>
+                <th></th>
                 <th>Item</th>
                 <th>Quantity</th>
                 <th>Price Total</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             @php
                 $selectedItems = session('selectedItems') ?? [];
             @endphp
-
             @foreach($selectedItems as $item)
                 <tr>
+                    <td><img src="{{ $item['image'] }}" alt="{{ $item['name'] }}" width="50"></td>
                     <td>{{ $item['name'] }}</td>
                     <td>{{ $item['quantity'] }}</td>
                     <td>{{ $item['price'] * $item['quantity'] }}</td>
+                    <td><button class="delete-button" onclick="deleteItem(this)">Delete</button></td>
                 </tr>
             @endforeach
         </tbody>
+
     </table>
     <button id="resetButton" onclick="resetSelectedItems()">Reset Selected Items</button>
 </div>
@@ -243,15 +265,15 @@
             <tbody>
                 <tr>
                     <th>Orders</th>
-                    <td id="orderNumber">12345</td>
+                    <td id="orderNumber"></td>
                 </tr>
                 <tr>
                     <th>Quantity</th>
-                    <td id="totalQuantity">3</td>
+                    <td id="totalQuantity"></td>
                 </tr>
                 <tr>
                     <th>Subtotal</th>
-                    <td id="subtotal">$15.00</td>
+                    <td id="subtotal"></td>
                 </tr>
             </tbody>
         </table>
@@ -265,16 +287,16 @@
     document.addEventListener('DOMContentLoaded', function () {
         const selectedItemsJSON = localStorage.getItem('selectedItems');
         const selectedItems = selectedItemsJSON ? JSON.parse(selectedItemsJSON) : [];
-        
+
         const orderTableBody = document.querySelector('.order-table tbody');
         selectedItems.forEach(item => {
             const row = document.createElement('tr');
             row.innerHTML = `
+                <td><img src="${item.image}" alt="${item.name}" width="50"></td>
                 <td>${item.name}</td>
                 <td>${item.quantity}</td>
-                <td>$${item.price * item.quantity.toFixed(2)}
-                    ${((item.price * item.quantity) % 1 !== 0) ? '' : '.00'}
-                </td>
+                <td>$${(item.price * item.quantity).toFixed(2)}</td>
+                <td><button class="delete-button" onclick="deleteItem(this)">Delete</button></td>
             `;
             orderTableBody.appendChild(row);
         });
@@ -295,14 +317,50 @@
         const orderTableBody = document.querySelector('.order-table tbody');
         orderTableBody.innerHTML = '';
 
-        document.querySelector('#orderNumber').textContent = '00000'; 
+        document.querySelector('#orderNumber').textContent = '00000';
         document.querySelector('#totalQuantity').textContent = '0';
         document.querySelector('#subtotal').textContent = '$0.00';
     }
 
     function continueToPayment() {
-        window.location.href = 'payment';
+        const orderNumber = document.querySelector('#orderNumber').textContent;
+        const totalQuantity = document.querySelector('#totalQuantity').textContent;
+        const subtotal = document.querySelector('#subtotal').textContent;
+
+        // Encode order summary information as query parameters
+        const queryParams = `?orderNumber=${orderNumber}&totalQuantity=${totalQuantity}&subtotal=${subtotal}`;
+        window.location.href = `payment${queryParams}`;
     }
+
+    function deleteItem(button) {
+        const row = button.parentNode.parentNode;
+        const itemName = row.querySelector('td:first-child').textContent;
+
+        // Remove the item from the selectedItems array in localStorage
+        const selectedItemsJSON = localStorage.getItem('selectedItems');
+        let selectedItems = selectedItemsJSON ? JSON.parse(selectedItemsJSON) : [];
+        selectedItems = selectedItems.filter(item => item.name !== itemName);
+        localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
+
+        // Remove the row from the table
+        row.parentNode.removeChild(row);
+
+        // Recalculate order summary
+        recalculateOrderSummary();
+    }
+
+    function recalculateOrderSummary() {
+        const orderTableBody = document.querySelector('.order-table tbody');
+        const selectedItems = JSON.parse(localStorage.getItem('selectedItems')) || [];
+
+        const totalQuantity = selectedItems.reduce((total, item) => total + item.quantity, 0);
+        const subtotal = selectedItems.reduce((total, item) => total + item.price * item.quantity, 0);
+
+        document.querySelector('#totalQuantity').textContent = totalQuantity;
+        document.querySelector('#subtotal').textContent = `$${subtotal.toFixed(2)}`;
+    }
+
+
 </script>
 </body>
 </html>

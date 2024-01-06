@@ -5,95 +5,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment - Catije</title>
+    <link rel="stylesheet" href="{{ asset('css/header_footer.css') }}">
     <style>
         body {
             margin: 0;
             background-color: #BAE8DA;
-            font-family: 'Arial', sans-serif;
-        }
-
-        header {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.5);
-        }
-
-        .logo img {
-            height: 80px;
-        }
-
-        nav {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-        }
-
-        nav a {
-            color: black;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-            margin: 0 20px;
+            flex-direction: column;
+            min-height: 100vh;
+            position: relative;
         }
 
         .order-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            padding: 20px;
+            background-color:rgba(0, 0, 0, 0.5);
+            width: 50%;
+            border-radius: 20px;
         }
 
         .payment-summary {
             background-color: white;
-            padding: 20px;
             border-radius: 20px;
-            width: 60%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 5px;
+            text-align: center;
+            margin-bottom: 20px;
+            margin: 20px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.52);
         }
 
         .payment-summary h2 {
             margin-bottom: 20px;
+            font-size: 30px;
         }
 
         .order-details {
+            margin: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .order-details p {
+            font-size: 20px;
+        }
+
+        .back-btn {
+            text-align: center;
+            cursor: pointer;
             margin-bottom: 20px;
         }
 
-        .order-details table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            font-size: 18px;
-        }
-
-        .order-details th,
-        .order-details td {
+        .back-btn a {
+            background-color: #F7E0BE;
+            color: black;
             padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .payment-total {
-            text-align: right;
+            border-radius: 10px;
+            text-decoration: none;
             font-size: 20px;
             font-weight: bold;
         }
 
-        .back-btn {
-            margin-top: 20px;
-            text-align: center;
+        .back-btn a:hover {
+            background-color: #967C56;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
         }
 
-        .back-btn a {
-            background-color: black;
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 8px;
+        .payment-btn {
+            margin-top: 50px;
+            text-align: center;
             cursor: pointer;
+            margin-bottom: 20px;
+            
         }
+
+        .payment-btn button {
+            background-color: #4F7251;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'Moul';
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.52);
+        }
+
+        .payment-btn button:hover {
+            background-color: #C6F7C8;
+            color: black;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        
     </style>
 </head>
 
@@ -111,61 +115,43 @@
             <a href="myacc">My Account</a>
         </nav>
     </header>
-
     <div class="order-container">
         <div class="payment-summary">
             <h2>Payment Summary</h2>
+        </div>
+        
+        <div class="order-details">
+            <p><b>Order Number :</b> <span id="orderNumber"></span></p>
+            <p><b>Total Quantity :</b> <span id="totalQuantity"></span></p>
+            <p><b>Subtotal : </b> <span id="subtotal"></span></p>
+        </div>
 
-            <div class="order-details">
-                <h3>Order Details</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Item</th>
-                            <th>Quantity</th>
-                            <th>Price Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Loop through order items and display them -->
-                        @foreach($selectedItems as $item)
-                            <tr>
-                                <td>{{ $item['name'] }}</td>
-                                <td>{{ $item['quantity'] }}</td>
-                                <td>{{ $item['price'] * $item['quantity'] }}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="payment-total">
-                <p>Total Quantity: {{ $totalQuantity }}</p>
-                <p>Subtotal: ${{ $subtotal }}</p>
-                <!-- You may add more details such as tax, delivery fee, etc. here -->
-            </div>
-
-            <div class="back-btn">
+        <div class="payment-btn">
+            <button onclick="processPayment()">Process Payment</button>
+        </div>
+        <div class="back-btn">
                 <a href="order">Back to Order</a>
-            </div>
         </div>
     </div>
+
+    <script>
+        // Extract query parameters from the URL
+        const queryParams = new URLSearchParams(window.location.search);
+        const orderNumber = queryParams.get('orderNumber');
+        const totalQuantity = queryParams.get('totalQuantity');
+        const subtotal = queryParams.get('subtotal');
+
+        // Display order summary information on the payment page
+        document.getElementById('orderNumber').textContent = orderNumber;
+        document.getElementById('totalQuantity').textContent = totalQuantity;
+        document.getElementById('subtotal').textContent = subtotal;
+
+        // Add any necessary payment processing scripts
+        function processPayment() {
+            // Implement payment processing logic here
+            // You can use a third-party payment gateway or handle it as needed
+            alert('Payment processed successfully!');
+        }
+    </script>
 </body>
-<script>
-public function showPaymentPage() {
-    $selectedItems = session('selectedItems') ?? [];
-
-    // Hitung totalQuantity dan subtotal
-    $totalQuantity = 0;
-    $subtotal = 0;
-    foreach ($selectedItems as $item) {
-        $totalQuantity += $item['quantity'];
-        $subtotal += $item['price'] * $item['quantity'];
-    }
-
-    return view('payment', compact('selectedItems', 'totalQuantity', 'subtotal'));
-}
-
-
-</script>
 </html>

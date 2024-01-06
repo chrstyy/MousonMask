@@ -73,7 +73,9 @@ Route::get('/order', function () {
     return view('order');
 })->name('order');
 
-Route::get('/payment', 'PaymentController@showPaymentPage')->name('payment');
+Route::get('/payment', function(){
+    return view('payment');
+})->name('payment');
 
 Route::get('/myacc', function () {
     return view('myacc');
