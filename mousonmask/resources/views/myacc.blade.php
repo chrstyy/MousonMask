@@ -186,7 +186,7 @@
     }
 
     .wishlist-image {
-        width: 100px; 
+        width: 100px;
         height: 100px;
         object-fit: cover;
         border-radius: 50%;
@@ -230,45 +230,63 @@
         </div>
 
         <div id="content">
-                <h2>MY ORDERS</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Order ID</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th>Order Total</th>
-                            <th>Subtotal</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody id="orderDetailsBody">
-                    </tbody>
-                </table>
-            </div>
+
         </div>
 <script>
         function showContent(contentType) {
             const contentDiv = document.getElementById('content');
             const orderTableBody = document.getElementById('orderDetailsBody');
-            
+
             if (contentType === 'order') {
-                const orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
+                    contentDiv.innerHTML = '';
+                    contentDiv.innerHTML +=
+                        '<h2>MY ORDERS</h2>' +
+                        '<table>' +
+                        '<thead>' +
+                        '<tr>' +
+                        '<th>Order ID</th>' +
+                        '<th>Date</th>' +
+                        '<th>Time</th>' +
+                        '<th>Order Total</th>' +
+                        '<th>Subtotal</th>' +
+                        '<th>Status</th>' +
+                        '</tr>' +
+                        '</thead>' +
+                        '<tbody id="orderDetailsBody">' +
+                        '</tbody>' +
+                        '</table>';
 
-                if (orderDetails) {
-                    const newRow = orderTableBody.insertRow();
+                    // Ambil data riwayat pesanan dari backend
+                    fetch('/api/orders', {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            // Jika diperlukan, tambahkan header Authorization untuk otentikasi
+                            // 'Authorization': 'Bearer <token>'
+                        },
+                    })
+                    .then(response => response.json())
+                    .then(orderHistoryData => {
+                        const orderTableBody = document.getElementById('orderDetailsBody');
+                        orderHistoryData.forEach(order => {
+                            const newRow = orderTableBody.insertRow();
+                            newRow.innerHTML =
+                                `<td>${order.orderId}</td>` +
+                                `<td>${order.date}</td>` +
+                                `<td>${order.time}</td>` +
+                                `<td>${order.orderTotal}</td>` +
+                                `<td>${order.subtotal}</td>` +
+                                `<td>${order.status}</td>`;
+                        });
 
-                    newRow.innerHTML =
-                        `<td style="color: white;">${orderDetails.orderNumber}</td>` +
-                        `<td style="color: white;">${orderDetails.orderDate}</td>` +
-                        `<td style="color: white;">${orderDetails.orderTime}</td>` +
-                        `<td style="color: white;">${orderDetails.totalQuantity}</td>` +
-                        `<td style="color: white;">${orderDetails.subtotal}</td>` +
-                        '<td style="color: white;">Complete</td>';
-                } else {
-                    // Handle the case where there are no order details
-                    contentDiv.innerHTML = '<p>No order details available.</p>';
-                }
+                        if (orderHistoryData.length === 0) {
+                            contentDiv.innerHTML += '<p>No order history available.</p>';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching order history:', error);
+                        contentDiv.innerHTML += '<p>Error fetching order history. Please try again later.</p>';
+                    });
             } else if (contentType === 'wishlist') {
                 contentDiv.innerHTML = '';
                 contentDiv.innerHTML +=

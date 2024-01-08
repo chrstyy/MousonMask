@@ -21,6 +21,8 @@
             background-color:rgba(0, 0, 0, 0.5);
             width: 50%;
             border-radius: 20px;
+           margin-top: 50px;
+           margin-left: 370px;
         }
 
         .payment-summary {
@@ -76,7 +78,7 @@
             text-align: center;
             cursor: pointer;
             margin-bottom: 20px;
-            
+
         }
 
         .payment-btn button {
@@ -97,7 +99,41 @@
             border-radius: 10px;
         }
 
-        
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        nav a {
+            color: black;
+            text-decoration: none;
+            font-family: 'Moul', regular;
+            font-size: 25px;
+            font-weight: bold;
+            margin: 0 40px;
+        }
+
+        nav .active {
+            color: red;
+        }
+
+        nav a#order {
+            display: inline-block;
+            background: #DFD7D7;
+            mix-blend-mode: multiply;
+            line-height: normal;
+        }
+
+        nav a#myAccount {
+            font-family: 'Moul', regular;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: -55px;
+            margin-right: 5px;
+        }
+
+
     </style>
 </head>
 
@@ -111,15 +147,15 @@
             <a href="menu">MENU</a>
             <a href="about">ABOUT US</a>
             <a href="contact">CONTACT US</a>
-            <a href="order" id="order">ORDER YOUR FOOD</a>
-            <a href="myacc">My Account</a>
+            <a href="order" id="order"  class="nav-link active">ORDER YOUR FOOD</a></div>
+            <a href="myacc" id="myAccount">My Account</a></div>
         </nav>
     </header>
     <div class="order-container">
         <div class="payment-summary">
             <h2>Payment Summary</h2>
         </div>
-        
+
         <div class="order-details">
             <p><b>Order Number :</b> <span id="orderNumber"></span></p>
             <p><b>Total Quantity :</b> <span id="totalQuantity"></span></p>

@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->get('/orders', function (Request $request) {
+    $user = $request->user();
+    $orders = $user->orders; 
+
+    return response()->json($orders);
 });

@@ -10,18 +10,6 @@ use App\Http\Controllers\Controller;
 
 class MyAccController extends Controller
 {
-    public function addToWishlist($menuId) {
-        $user = Auth::user();
-        $user->wishlist()->attach($menuId);
-        return redirect()->back()->with('success', 'Menu added to wishlist.');
-    }
-
-    public function removeFromWishlist($menuId)  {
-        $user = Auth::user();
-        $user->wishlist()->detach($menuId);
-        return redirect()->back()->with('success', 'Menu removed from wishlist.');
-    }
-
     public function showWishlist(){
         $user = User::find(auth()->id());
         $wishlist = $user->wishlist;

@@ -1,10 +1,15 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\MyAccController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +33,13 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+
 Route::get('/dashboard', function () {
+    return view('home');
+})->name('home');
+
+
+Route::get('/home', function () {
     return view('home');
 })->name('home');
 
@@ -86,3 +97,6 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/myaccount', [MyAccController::class, 'showWishlist'])->name('myaccount.show');
 Route::post('/wishlist/add/{menuId}', [MyAccController::class, 'addToWishlist'])->name('wishlist.add');
 Route::post('/wishlist/remove/{menuId}', [MyAccController::class, 'removeFromWishlist'])->name('wishlist.remove');
+
+Route::resource('/home', HomeController::class)->middleware(['auth','verified','checkRole:admin']);
+Route::resource('/menu', MenuController::class)->middleware(['auth','verified','checkRole:admin']);

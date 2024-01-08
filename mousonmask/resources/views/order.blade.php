@@ -58,7 +58,7 @@
         }
 
         .order-container {
-            display: flex; 
+            display: flex;
         }
 
         .left-container {
@@ -98,10 +98,9 @@
             text-align: left;
         }
 
-        
+
         .left-container button {
-            background-color: black;
-            color: white;
+            background-color: transparent;
             cursor: pointer;
             padding: 5px;
             font-family: 'Moul';
@@ -116,9 +115,10 @@
             margin-top: 30px;
             border-radius: 20px;
             margin-right: 20px;
-            width: 40%;
+            width: 397px;
+            height: 70px;
             align-self: flex-start;
-            
+
         }
 
         .right-container h2{
@@ -135,9 +135,9 @@
         }
 
         .order-summary {
-            background-color: white;
+            background-color: rgba(16, 15, 15, 0.2);
             padding: 20px;
-            border-radius: 20px;
+            border-radius: 0px;
         }
 
         .order-summary h2 {
@@ -147,8 +147,8 @@
         .order-summary-btn {
             margin-top: 20px;
             display: flex;
-            justify-content: center; 
-            align-items: center; 
+            justify-content: center;
+            align-items: center;
             height: 100%;
         }
 
@@ -188,20 +188,24 @@
         }
 
         .delete-button {
-            background-color: red;
-            color: white;
+            margin-top: 20px;
+            background-color: transparent;
+            border: 2px solid red;
             cursor: pointer;
             padding: 5px;
-            font-family: 'Moul';
-            font-size: 16px;
             border-radius: 10px;
-            border: none;
-            
         }
 
         .delete-button:hover {
-            background-color: #ff4d4d; 
+            background-color: honeydew;
             cursor: pointer;
+        }
+
+        .img-delete{
+            width: 25px;
+            height: 20px;
+            padding-top: 5px;
+            filter: brightness(550%);
         }
 
 
@@ -246,7 +250,8 @@
                     <td>{{ $item['name'] }}</td>
                     <td>{{ $item['quantity'] }}</td>
                     <td>{{ $item['price'] * $item['quantity'] }}</td>
-                    <td><button class="delete-button" onclick="deleteItem(this)">Delete</button></td>
+                    <td><button class="delete-button" onclick="deleteItem(this)">
+                        <img class="img-delete" src="{{ asset('images/delete-icon.png') }}"></button></td>
                 </tr>
             @endforeach
         </tbody>
@@ -260,7 +265,7 @@
         <div class="order-summary-title">
             <h2>Order Summary</h2>
         </div>
-       
+
         <table class="order-summary-table">
             <tbody>
                 <tr>
@@ -296,8 +301,9 @@
                 <td>${item.name}</td>
                 <td>${item.quantity}</td>
                 <td>$${(item.price * item.quantity).toFixed(2)}</td>
-                <td><button class="delete-button" onclick="deleteItem(this)">Delete</button></td>
-            `;
+                <td><button class="delete-button" onclick="deleteItem(this)">
+                    <img class="img-delete" src="{{ asset('images/delete-icon.png') }}"></button></td>
+                `;
             orderTableBody.appendChild(row);
         });
 
