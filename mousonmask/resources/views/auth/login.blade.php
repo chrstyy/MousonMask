@@ -74,20 +74,19 @@
     </div>
 
     <script>
-    function togglePassword(inputId) {
-        const passwordInput = document.getElementById(inputId);
-        const icon = document.querySelector(`#${inputId} + .password-icon i`);
+    function togglePassword(id) {
+            var input = document.getElementById(id);
+            var icon = document.getElementById("icon_" + id);
 
-        if (passwordInput.type === 'password') {
-            passwordInput.type = 'text';
-            icon.classList.remove('fa-eye');
-            icon.classList.add('fa-eye-slash');
-        } else {
-            passwordInput.type = 'password';
-            icon.classList.remove('fa-eye-slash');
-            icon.classList.add('fa-eye');
+            if (input.type === "password") {
+                input.type = "password";
+                icon.innerHTML = "&#x1F576;"; 
+            } else {
+                input.type = "text";
+                icon.innerHTML = "&#x1F441;";
+            }
         }
-    }
+
     </script>
 </body>
 </html>

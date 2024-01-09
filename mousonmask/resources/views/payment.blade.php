@@ -14,15 +14,21 @@
             flex-direction: column;
             min-height: 100vh;
             position: relative;
+            
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
 
         .order-container {
             padding: 20px;
-            background-color:rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.5);
             width: 50%;
             border-radius: 20px;
-           margin-top: 50px;
-           margin-left: 370px;
         }
 
         .payment-summary {
@@ -99,40 +105,7 @@
             border-radius: 10px;
         }
 
-        nav {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-        }
-
-        nav a {
-            color: black;
-            text-decoration: none;
-            font-family: 'Moul', regular;
-            font-size: 25px;
-            font-weight: bold;
-            margin: 0 40px;
-        }
-
-        nav .active {
-            color: red;
-        }
-
-        nav a#order {
-            display: inline-block;
-            background: #DFD7D7;
-            mix-blend-mode: multiply;
-            line-height: normal;
-        }
-
-        nav a#myAccount {
-            font-family: 'Moul', regular;
-            font-size: 20px;
-            font-weight: bold;
-            margin-top: -55px;
-            margin-right: 5px;
-        }
-
+        
 
     </style>
 </head>
@@ -151,6 +124,7 @@
             <a href="myacc" id="myAccount">My Account</a></div>
         </nav>
     </header>
+    <div class="container">
     <div class="order-container">
         <div class="payment-summary">
             <h2>Payment Summary</h2>
@@ -169,7 +143,7 @@
                 <a href="order">Back to Order</a>
         </div>
     </div>
-
+    </div>
     <script>
         // Extract query parameters from the URL
         const queryParams = new URLSearchParams(window.location.search);

@@ -75,11 +75,11 @@
             var icon = document.getElementById("icon_" + id);
 
             if (input.type === "password") {
-                input.type = "text";
-                icon.innerHTML = "&#x1F441;"; // Unicode for open eye
-            } else {
                 input.type = "password";
-                icon.innerHTML = "&#x1F576;"; // Unicode for hidden eye
+                icon.innerHTML = "&#x1F576;"; 
+            } else {
+                input.type = "text";
+                icon.innerHTML = "&#x1F441;";
             }
         }
 

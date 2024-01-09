@@ -175,10 +175,19 @@
         width: 100%;
         border-collapse: collapse;
         margin-top: 20px;
+        
     }
 
-    .wishlist-table th, .wishlist-table td {
-        border: 1px solid #ddd;
+    .wishlist-table th{
+        border-bottom: 1px solid white;
+        border-top: 1px solid white;
+        padding: 8px;
+        text-align: center;
+        color: white;
+        font-size: 20px;
+    }
+    .wishlist-table td {
+        border: none;
         padding: 8px;
         text-align: center;
         color: white;
@@ -190,6 +199,17 @@
         height: 100px;
         object-fit: cover;
         border-radius: 50%;
+    }
+    .remove-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+    }
+
+    .remove-button img {
+        width: 40px; 
+        height: 40px; 
     }
 </style>
 
@@ -305,33 +325,37 @@
                     contentDiv.appendChild(separator);
               }
         }
-        function showWishlist() {
-    const wishlistContainer = document.getElementById('wishlist-container');
-    wishlistContainer.innerHTML = '';
-    const wishlistData = JSON.parse(localStorage.getItem('wishlist')) || [];
+    function showWishlist() {
+        const wishlistContainer = document.getElementById('wishlist-container');
+        wishlistContainer.innerHTML = '';
+        const wishlistData = JSON.parse(localStorage.getItem('wishlist')) || [];
 
-    if (wishlistData.length === 0) {
-        wishlistContainer.innerHTML = '<p>Your wishlist is empty.</p>';
-        return;
-    }
+        if (wishlistData.length === 0) {
+            wishlistContainer.innerHTML = '<p>Your wishlist is empty.</p>';
+            return;
+        }
 
-    const wishlistTable = document.createElement('table');
-    wishlistTable.classList.add('wishlist-table');
+        const wishlistTable = document.createElement('table');
+        wishlistTable.classList.add('wishlist-table');
 
-    const headerRow = wishlistTable.insertRow();
-    const headerName = document.createElement('th');
-    headerName.textContent = 'Item Name';
-    headerRow.appendChild(headerName);
+        const headerRow = wishlistTable.insertRow();
+        const headerName = document.createElement('th');
+        headerName.textContent = 'Item Name';
+        headerRow.appendChild(headerName);
 
-    const headerPrice = document.createElement('th');
-    headerPrice.textContent = 'Price';
-    headerRow.appendChild(headerPrice);
+        const headerPrice = document.createElement('th');
+        headerPrice.textContent = 'Price';
+        headerRow.appendChild(headerPrice);
 
-    const headerImage = document.createElement('th');
-    headerImage.textContent = 'Image';
-    headerRow.appendChild(headerImage);
+        const headerImage = document.createElement('th');
+        headerImage.textContent = 'Image';
+        headerRow.appendChild(headerImage);
 
-    wishlistData.forEach(item => {
+        const headerAction = document.createElement('th');
+        headerAction.textContent = '';
+        headerRow.appendChild(headerAction);
+
+        wishlistData.forEach(item => {
         const itemRow = wishlistTable.insertRow();
 
         const itemNameCell = itemRow.insertCell();
@@ -346,15 +370,35 @@
         itemImage.alt = item.name;
         itemImage.classList.add('wishlist-image');
         itemImageCell.appendChild(itemImage);
+
+        const removeButtonCell = itemRow.insertCell();
+        const removeButton = document.createElement('button');
+        removeButton.classList.add('remove-button'); // Add a class for styling
+        const removeButtonImage = document.createElement('img');
+        removeButtonImage.src = 'icons/removeWishlist.png'; // Provide the correct path to your remove image
+        removeButtonImage.alt = 'Remove';
+        removeButton.appendChild(removeButtonImage);
+        removeButton.addEventListener('click', () => removeFromWishlist(item.name));
+        removeButtonCell.appendChild(removeButton);
+
+        });
+
+
+        wishlistContainer.appendChild(wishlistTable);
+    }
+
+    // Call the function to display order details when the page is loaded
+    document.addEventListener('DOMContentLoaded', function () {
+        showContent(''); // Automatically show order details on page load
     });
 
-    wishlistContainer.appendChild(wishlistTable);
-}
+    function removeFromWishlist(itemName) {
+        let wishlistData = JSON.parse(localStorage.getItem('wishlist')) || [];
+        wishlistData = wishlistData.filter(item => item.name !== itemName);
+        localStorage.setItem('wishlist', JSON.stringify(wishlistData));
 
-        // Call the function to display order details when the page is loaded
-        document.addEventListener('DOMContentLoaded', function () {
-            showContent(''); // Automatically show order details on page load
-        });
+        showWishlist(); // Refresh the wishlist table
+    }
 
 
 </script>

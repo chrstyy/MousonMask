@@ -251,7 +251,8 @@
                     <td>{{ $item['quantity'] }}</td>
                     <td>{{ $item['price'] * $item['quantity'] }}</td>
                     <td><button class="delete-button" onclick="deleteItem(this)">
-                        <img class="img-delete" src="{{ asset('images/delete-icon.png') }}"></button></td>
+                        <img class="img-delete" src="{{ asset('images/delete-icon.png') }}"></button>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
@@ -339,21 +340,21 @@
     }
 
     function deleteItem(button) {
-        const row = button.parentNode.parentNode;
-        const itemName = row.querySelector('td:first-child').textContent;
+    const row = button.parentNode.parentNode;
+    const itemName = row.querySelector('td:nth-child(2)').textContent;
 
-        // Remove the item from the selectedItems array in localStorage
-        const selectedItemsJSON = localStorage.getItem('selectedItems');
-        let selectedItems = selectedItemsJSON ? JSON.parse(selectedItemsJSON) : [];
-        selectedItems = selectedItems.filter(item => item.name !== itemName);
-        localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
+    // Remove the item from the selectedItems array in localStorage
+    let selectedItems = JSON.parse(localStorage.getItem('selectedItems')) || [];
+    selectedItems = selectedItems.filter(item => item.name !== itemName);
+    localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
 
-        // Remove the row from the table
-        row.parentNode.removeChild(row);
+    // Remove the row from the table
+    row.parentNode.removeChild(row);
 
-        // Recalculate order summary
-        recalculateOrderSummary();
-    }
+    // Recalculate order summary
+    recalculateOrderSummary();
+}
+
 
     function recalculateOrderSummary() {
         const orderTableBody = document.querySelector('.order-table tbody');
@@ -365,6 +366,7 @@
         document.querySelector('#totalQuantity').textContent = totalQuantity;
         document.querySelector('#subtotal').textContent = `$${subtotal.toFixed(2)}`;
     }
+
 
 
 </script>
