@@ -49,5 +49,10 @@ class User extends Authenticatable
         return $this->belongsToMany(Menu::class, 'user_menu', 'user_id', 'menu_id')->withTimestamps();
     }
 
+    protected $guarded = [];
+    public function customer()
+    {
+        return $this->hasOne(Customer::class);
+    }
 
 }

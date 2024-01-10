@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\BookingController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\MyAccController;
 use App\Http\Controllers\ProfileController;
@@ -94,9 +94,14 @@ Route::get('/myacc', function () {
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/myaccount', [MyAccController::class, 'showWishlist'])->name('myaccount.show');
+Route::get('/myacc', [MyAccController::class, 'showWishlist'])->name('myacc.show');
 Route::post('/wishlist/add/{menuId}', [MyAccController::class, 'addToWishlist'])->name('wishlist.add');
 Route::post('/wishlist/remove/{menuId}', [MyAccController::class, 'removeFromWishlist'])->name('wishlist.remove');
 
 Route::resource('/home', HomeController::class)->middleware(['auth','verified','checkRole:admin']);
-Route::resource('/menu', MenuController::class)->middleware(['auth','verified','checkRole:admin']);
+Route::resource('/menu', MenuController::class)->middleware(['auth','verified','checkRole:customer']);
+
+
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/add/{idMenu}', [CartController::class, 'addToCart'])->name('cart.addToCart');
+Route::get('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');

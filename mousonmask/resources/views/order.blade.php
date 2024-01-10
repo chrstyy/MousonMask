@@ -241,17 +241,16 @@
             </tr>
         </thead>
         <tbody>
-            @php
-                $selectedItems = session('selectedItems') ?? [];
-            @endphp
-            @foreach($selectedItems as $item)
+            @foreach($detailPesanan as $item)
                 <tr>
-                    <td><img src="{{ $item['image'] }}" alt="{{ $item['name'] }}" width="50"></td>
-                    <td>{{ $item['name'] }}</td>
-                    <td>{{ $item['quantity'] }}</td>
-                    <td>{{ $item['price'] * $item['quantity'] }}</td>
-                    <td><button class="delete-button" onclick="deleteItem(this)">
-                        <img class="img-delete" src="{{ asset('images/delete-icon.png') }}"></button>
+                    <td><img src="{{ $detail->menu->image }}" alt="{{ $detail->menu->name }}" width="50"></td>
+                    <td>{{ $detail->menu->name }}</td>
+                    <td>{{ $detail->jumlah }}</td>
+                    <td>{{ $detail->total_harga }}</td>
+                    <td>
+                        <button class="delete-button" onclick="deleteItem({{ $detail->id_detail }})">
+                            <img class="img-delete" src="{{ asset('images/delete-icon.png') }}">
+                        </button>
                     </td>
                 </tr>
             @endforeach
@@ -271,15 +270,15 @@
             <tbody>
                 <tr>
                     <th>Orders</th>
-                    <td id="orderNumber"></td>
+                    <td id="orderNumber">{{ $order->id_order }}</td>
                 </tr>
                 <tr>
                     <th>Quantity</th>
-                    <td id="totalQuantity"></td>
+                    <td id="totalQuantity">{{ $order->detailPesanan->sum('jumlah') }}</td>
                 </tr>
                 <tr>
                     <th>Subtotal</th>
-                    <td id="subtotal"></td>
+                    <td id="subtotal">{{ $totalHarga }}</td>
                 </tr>
             </tbody>
         </table>

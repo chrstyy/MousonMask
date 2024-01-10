@@ -13,4 +13,9 @@ class Menu extends Model
         $menus = Menu::all();
         return view('menu', compact('menus'));
     }
+
+    public function detailPesanan()
+    {
+        return $this->hasMany(DetailPesanan::class, 'id_menu');
+    }
 }
