@@ -21,7 +21,9 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'username', 
         'password',
+        'level', 
     ];
 
     /**
@@ -44,15 +46,15 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function wishlist()
-    {
-        return $this->belongsToMany(Menu::class, 'user_menu', 'user_id', 'menu_id')->withTimestamps();
-    }
+    // public function wishlist()
+    // {
+    //     return $this->belongsToMany(Menu::class, 'user_menu', 'user_id', 'menu_id')->withTimestamps();
+    // }
 
-    protected $guarded = [];
-    public function customer()
-    {
-        return $this->hasOne(Customer::class);
-    }
+    // protected $guarded = [];
+    // public function customer()
+    // {
+    //     return $this->hasOne(Customer::class);
+    // }
 
 }

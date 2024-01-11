@@ -227,40 +227,37 @@
         </nav>
     </header>
 
-<div class="order-container">
+    <div class="order-container">
     <div class="left-container">
-    <h2>Selected Items</h2>
-    <table class="order-table" id="selected-items-table">
-        <thead>
-            <tr>
-                <th></th>
-                <th>Item</th>
-                <th>Quantity</th>
-                <th>Price Total</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($detailPesanan as $item)
+        <h2>Selected Items</h2>
+        <table class="order-table" id="selected-items-table">
+            <thead>
                 <tr>
-                    <td><img src="{{ $detail->menu->image }}" alt="{{ $detail->menu->name }}" width="50"></td>
-                    <td>{{ $detail->menu->name }}</td>
-                    <td>{{ $detail->jumlah }}</td>
-                    <td>{{ $detail->total_harga }}</td>
-                    <td>
-                        <button class="delete-button" onclick="deleteItem({{ $detail->id_detail }})">
-                            <img class="img-delete" src="{{ asset('images/delete-icon.png') }}">
-                        </button>
-                    </td>
+                    <th></th>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Price Total</th>
+                    <th></th>
                 </tr>
-            @endforeach
-        </tbody>
-
-    </table>
-    <button id="resetButton" onclick="resetSelectedItems()">Reset Selected Items</button>
-</div>
-
-
+            </thead>
+            <tbody>
+                @foreach($detailPesanan as $detail)
+                    <tr>
+                        <td><img src="{{ $detail->menu->image }}" alt="{{ $detail->menu->name }}" width="50"></td>
+                        <td>{{ $detail->menu->name }}</td>
+                        <td>{{ $detail->jumlah }}</td>
+                        <td>{{ $detail->subtotal }}</td>
+                        <td>
+                            <button class="delete-button" onclick="deleteItem({{ $detail->id_detail }})">
+                                <img class="img-delete" src="{{ asset('images/delete-icon.png') }}">
+                            </button>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+        <button id="resetButton" onclick="resetSelectedItems()">Reset Selected Items</button>
+    </div>
 <div class="right-container">
         <div class="order-summary-title">
             <h2>Order Summary</h2>

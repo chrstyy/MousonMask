@@ -8,15 +8,30 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    // protected $guarded = [];
 
-    public function customer()
-    {
-        return $this->belongsTo(Customer::class, 'id_customer');
-    }
+    // public function customer()
+    // {
+    //     return $this->belongsTo(Customer::class, 'id_customer');
+    // }
 
-    public function detailPesanan()
+    // public function detailPesanan()
+    // {
+    //     return $this->hasMany(DetailPesanan::class, 'id_order');
+    // }
+    use HasFactory;
+
+    protected $table = 'orders';
+    protected $primaryKey = 'id_order';
+
+    protected $fillable = [
+        'tanggal_order',
+        'status',
+        'id_menu',
+    ];
+
+    public function menu()
     {
-        return $this->hasMany(DetailPesanan::class, 'id_order');
+        return $this->belongsTo(Menu::class, 'id_menu');
     }
 }

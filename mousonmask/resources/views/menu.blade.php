@@ -249,8 +249,8 @@
             <a href="menu" class="nav-link active">MENU</a>
             <a href="about">ABOUT US</a>
             <a href="contact">CONTACT US</a>
-            <a href="order" id="order">ORDER YOUR FOOD</a></div>
-            <a href="myacc" id="myAccount">My Account</a></div>
+            <a href="order" id="order">ORDER YOUR FOOD</a>
+            <a href="myacc" id="myAccount">My Account</a>
         </nav>
     </header>
 
