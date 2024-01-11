@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-            $table->enum('role', ['admin','customer'])->default('customer')->after('password');
+        Schema::create('menus', function (Blueprint $table) {
+            $table->id('id_menu');
+            $table->string('nama_menu', 100);
+            $table->decimal('harga', 10, 2);
+            $table->text('deskripsi');
+            $table->timestamps();
         });
     }
 
@@ -22,8 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('menus');
     }
 };

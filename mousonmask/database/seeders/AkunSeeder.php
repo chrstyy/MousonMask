@@ -17,24 +17,31 @@ class AkunSeeder extends Seeder
         //
         $user = [
             [
-                'username'=>'admin',
-                'name'=>'AkunAdmin',
-                'email'=>'admin@gmail.com',
+                'username'=>'callista',
+                'name'=>'Callista',
+                'email'=>'callista@gmail.com',
                 'level'=>'admin',
                 'password'=>Hash::make('123456')
             ],
 
             [
-                'username'=>'user1',
-                'name'=>'AkunUser1',
-                'email'=>'user1@gmail.com',
-                'level'=>'user',
+                'username'=>'christy',
+                'name'=>'Christy',
+                'email'=>'christy@gmail.com',
+                'level'=>'admin',
                 'password'=>Hash::make('123456')
             ],
             [
-                'username'=>'user2',
-                'name'=>'AkunUser2',
-                'email'=>'user2@gmail.com',
+                'username'=>'jennifer',
+                'name'=>'Jennifer',
+                'email'=>'jennifer@gmail.com',
+                'level'=>'admin',
+                'password'=>Hash::make('123456')
+            ],
+            [
+                'username'=>'user',
+                'name'=>'User',
+                'email'=>'user@gmail.com',
                 'level'=>'user',
                 'password'=>Hash::make('123456')
             ],

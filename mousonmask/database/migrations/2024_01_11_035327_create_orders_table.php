@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('order', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id('id_order');
+            $table->date('tanggal_order');
+            $table->string('status');
             $table->unsignedBigInteger('id_menu');
-            $table->integer('status');
-            $table->decimal('tanggal_order');
+            $table->foreign('id_menu')->references('id_menu')->on('menus');
             $table->timestamps();
-
-            $table->foreign('id_menu')->references('id_menu')->on('menu');
         });
     }
 
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('order');
+        Schema::dropIfExists('orders');
     }
 };
