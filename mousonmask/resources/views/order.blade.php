@@ -267,11 +267,14 @@
             <tbody>
                 <tr>
                     <th>Orders</th>
-                    <td id="orderNumber">{{ $order->id_order }}</td>
+                    <td id="orderNumber">{{ $order->id_order ?? 'N/A'}}</td>
                 </tr>
+                @php
+                    $detailPesanan = \App\Models\DetailPesanan::where('id_order', $order->id_order)->first();
+                @endphp
                 <tr>
                     <th>Quantity</th>
-                    <td id="totalQuantity">{{ $order->detailPesanan->sum('jumlah') }}</td>
+                    <td id="totalQuantity">{{ $detailPesanan->sum('jumlah') }}</td>
                 </tr>
                 <tr>
                     <th>Subtotal</th>
@@ -313,6 +316,7 @@
         document.querySelector('#totalQuantity').textContent = totalQuantity;
         document.querySelector('#subtotal').textContent = `$${subtotal.toFixed(2)}`;
     });
+
 
     function resetSelectedItems() {
         localStorage.removeItem('selectedItems');

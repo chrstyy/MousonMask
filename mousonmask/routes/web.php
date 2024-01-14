@@ -95,16 +95,19 @@ Route::get('/myacc', function () {
 Route::get('/home', function () {
     return view('home');
 })->name('home');
-// Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Route::get('/myacc', [MyAccController::class, 'showWishlist'])->name('myacc.show');
-// Route::post('/wishlist/add/{menuId}', [MyAccController::class, 'addToWishlist'])->name('wishlist.add');
-// Route::post('/wishlist/remove/{menuId}', [MyAccController::class, 'removeFromWishlist'])->name('wishlist.remove');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Route::resource('/home', HomeController::class)->middleware(['auth','verified','checkRole:admin']);
-// Route::resource('/menu', MenuController::class)->middleware(['auth','verified','checkRole:customer']);
+Route::get('/myacc', [MyAccController::class, 'showWishlist'])->name('myacc.show');
+Route::post('/wishlist/add/{menuId}', [MyAccController::class, 'addToWishlist'])->name('wishlist.add');
+Route::post('/wishlist/remove/{menuId}', [MyAccController::class, 'removeFromWishlist'])->name('wishlist.remove');
+
+Route::resource('/home', HomeController::class)->middleware(['auth','verified','checkRole:admin']);
+Route::resource('/menu', MenuController::class)->middleware(['auth','verified','checkRole:customer']);
 
 
-// Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-// Route::post('/cart/add/{idMenu}', [CartController::class, 'addToCart'])->name('cart.addToCart');
-// Route::get('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/add/{idMenu}', [CartController::class, 'addToCart'])->name('cart.addToCart');
+Route::get('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+
+Route::get('/order', [CartController::class, 'showOrder']);

@@ -85,7 +85,7 @@
         }
 
         .menu-options a.active {
-            color: red;
+            color: #468B01;
         }
 
         .search {
@@ -96,7 +96,7 @@
             padding: 10px;
             margin-bottom: 10px;
             border-radius: 10px;
-
+            margin-left: 50px;
         }
 
         .search input {
@@ -236,6 +236,16 @@
             color: red;
         }
 
+        .line{
+            position: absolute;
+            width: 855px;
+            height: 0px;
+            left: 24px;
+            top: 196px;
+
+            border: 1px solid #000000;
+        }
+
     </style>
 </head>
 
@@ -262,6 +272,7 @@
             <a href="#" onclick="showMenu('nonAlcohol')">Non-Alcohol Drinks</a>
             <a href="#" onclick="showMenu('dessert')">Dessert</a>
         </div>
+        <div class="line"></div>
         <div class="search">
             <img src="icons/search.png" alt="Search Icon">
             <input type="text" placeholder="Search...">
@@ -439,7 +450,7 @@
 
             selectedItems.push({
                 name: itemName,
-                price: parseFloat(itemPrice.replace('$', '')), 
+                price: parseFloat(itemPrice.replace('$', '')),
                 quantity: parseInt(quantity, 10),
             });
 
@@ -449,12 +460,12 @@
         }
 
         document.querySelector('.search input').addEventListener('input', function () {
-            const category = menuData; 
+            const category = menuData;
             showMenu(category);
         });
 
         document.addEventListener('DOMContentLoaded', function () {
-            const defaultCategory = 'appetizer'; 
+            const defaultCategory = 'appetizer';
             showMenu(defaultCategory);
 
             const menuOptions = document.getElementById('menu-options');

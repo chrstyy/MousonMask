@@ -5,26 +5,36 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use App\Models\DetailPesanan;
 use App\Models\Menu;
+use App\Models\Order;
+use App\Models\DetailPesanan;
 
 class CartController extends Controller
 {
     public function index()
     {
-        // Mendapatkan semua item dalam keranjang pengguna saat ini
-        $user = Auth::user();
-        $customer = $user->customer;
-        $order = $customer->orders()->where('status', 'cart')->first();
+        // // Mendapatkan semua item dalam keranjang pengguna saat ini
+        // $user = Auth::user();
+        // // $customer = $user->customer;
+        // $user = User::all();
+        // $order = Order::all();
+        // $customer = $user;
+        // // $order = $customer->orders()->where('status', 'cart')->first();
+        // $orders = $customer->$order->first();
+        // $detailPesanan = $orders->detailPesanan;
 
-        if (!$order) {
-            // Jika tidak ada pesanan dalam keranjang, redirect ke halaman menu
-            return redirect()->route('menu.index')->with('error', 'Keranjang belanja kosong.');
-        }
+        // if (!$order) {
+        //     // Jika tidak ada pesanan dalam keranjang, redirect ke halaman menu
+        //     return redirect()->route('menu.index')->with('error', 'Keranjang belanja kosong.');
+        // }
 
-        $detailPesanan = $order->detailPesanan;
 
-        return view('cart.index', compact('order', 'detailPesanan'));
+
+        // return view('cart.index', compact('order', 'detailPesanan'));
+        $order = Order::with('menus')->get();
+        $order = Order::all();
+
+        return view('cart.index',compact('order'));
     }
 
     public function addToCart(Request $request, $idMenu)
@@ -81,4 +91,12 @@ class CartController extends Controller
 
         return view('cart.checkout', compact('order', 'totalHarga'));
     }
+
+    public function showOrder()
+{
+        $detailPesanan = DetailPesanan::all();
+        $order = Order::first();
+
+        return view('order', compact('detailPesanan','order'));
+}
 }
