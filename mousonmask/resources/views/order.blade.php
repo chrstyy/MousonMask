@@ -241,12 +241,14 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($detailPesanan as $detail)
+                @php
+                    $selectedItems = session('selectedItems') ?? [];
+                @endphp
+                @foreach($selectedItems as $item)
                     <tr>
-                        <td><img src="{{ $detail->menu->image }}" alt="{{ $detail->menu->name }}" width="50"></td>
-                        <td>{{ $detail->menu->name }}</td>
-                        <td>{{ $detail->jumlah }}</td>
-                        <td>{{ $detail->subtotal }}</td>
+                        <td>{{ $item['name'] }}</td>
+                        <td>{{ $item['quantity'] }}</td>
+                        <td>{{ $item['price'] * $item['quantity'] }}</td>
                         <td>
                             <button class="delete-button" onclick="deleteItem({{ $detail->id_detail }})">
                                 <img class="img-delete" src="{{ asset('images/delete-icon.png') }}">

@@ -175,7 +175,7 @@
         width: 100%;
         border-collapse: collapse;
         margin-top: 20px;
-        
+
     }
 
     .wishlist-table th{
@@ -208,8 +208,50 @@
     }
 
     .remove-button img {
-        width: 40px; 
-        height: 40px; 
+        width: 40px;
+        height: 40px;
+    }
+
+    .form-container {
+        padding-top: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 300px;
+        margin: auto;
+    }
+
+    .form-container label {
+        color: white;
+        font-size: 18px;
+    }
+
+    .form-container input {
+        padding: 8px;
+        border: 1px solid #B4D8CB;
+        border-radius: 5px;
+    }
+
+    .form-container select {
+        padding: 8px;
+        border: 1px solid #B4D8CB;
+        border-radius: 5px;
+    }
+
+    .form-container button {
+        padding: 10px;
+        background-color: #B4D8CB;
+        color: #AD0000;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+        margin-top: 20px;
+    }
+
+    .form-container button:hover {
+        background-color: #234D3E;
+        color: white;
     }
 </style>
 
@@ -249,9 +291,7 @@
             </div>
         </div>
 
-        <div id="content">
-
-        </div>
+        <div id="content"></div>
 <script>
         function showContent(contentType) {
             const contentDiv = document.getElementById('content');
@@ -318,13 +358,39 @@
                     contentDiv.appendChild(wishlistContainer);
                     showWishlist();
             } else if (contentType === 'personal') {
-                contentDiv.innerHTML = '';
+                contentDiv.innerHTML = '<h2>PERSONAL DETAILS</h2>';
+
+                const separatorAboveForm = document.createElement('hr');
+                contentDiv.appendChild(separatorAboveForm);
+
+                @auth
+                    const username = "{{ Auth::user()->name }}";
+                @endauth
+
                 contentDiv.innerHTML +=
-                    '<h2>PERSONAL DETAILS</h2>';
-                    const separator = document.createElement('hr');
-                    contentDiv.appendChild(separator);
+                '<div class="form-container" id="personalDetailsForm">' +
+                '<label for="firstName">First Name:</label>' +
+                '<input type="text" id="firstName" name="firstName" required>' +
+
+                '<label for="lastName">Last Name:</label>' +
+                '<input type="text" id="lastName" name="lastName" required>' +
+
+                '<label for="username">Username:</label>' +
+                `<input type="text" id="firstName" name="firstName" value="${username ? username : ''}" ${username ? 'readonly' : ''} required>` +
+
+                '<label for="gender">Gender:</label>' +
+                '<select id="gender" name="gender">' +
+                '<option value="male">Male</option>' +
+                '<option value="female">Female</option>' +
+                '</select>' +
+
+                '<button onclick="submitPersonalDetails()">Save Changes</button>' +
+                '<button onclick="enableEdit()">Edit All</button>' +
+                '</div>';
+                contentDiv.appendChild(separator);
               }
         }
+
     function showWishlist() {
         const wishlistContainer = document.getElementById('wishlist-container');
         wishlistContainer.innerHTML = '';
@@ -399,6 +465,42 @@
 
         showWishlist(); // Refresh the wishlist table
     }
+
+    function submitPersonalDetails() {
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const username = document.getElementById('username').value;
+            const gender = document.getElementById('gender').value;
+
+            // Lakukan sesuatu dengan data yang telah diisi, misalnya simpan ke database atau tampilkan di halaman
+            console.log("First Name:", firstName);
+            console.log("Last Name:", lastName);
+            console.log("Username:", username);
+            console.log("Gender:", gender);
+
+    }
+
+    function toggleEdit(field) {
+        const displayElement = document.getElementById(`${field}Display`);
+        const inputElement = document.getElementById(field);
+
+        displayElement.style.display = displayElement.style.display === 'none' ? 'inline' : 'none';
+        inputElement.style.display = inputElement.style.display === 'none' ? 'inline' : 'none';
+    }
+
+    function enableEdit() {
+        const editableElements = document.querySelectorAll('.editable');
+        const inputElements = document.querySelectorAll('.form-container input');
+
+        editableElements.forEach(element => {
+            element.style.display = 'inline';
+        });
+
+        inputElements.forEach(input => {
+            input.style.display = 'inline';
+        });
+    }
+
 
 
 </script>

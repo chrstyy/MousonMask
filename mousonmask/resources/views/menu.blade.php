@@ -436,6 +436,7 @@
                 menuList.classList.add('slide-in');
             }, 500);
         }
+
         function navigateToOrder() {
             const selectedItemsJSON = JSON.stringify(selectedItems);
             localStorage.setItem('selectedItems', selectedItemsJSON);

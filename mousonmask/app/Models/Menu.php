@@ -29,8 +29,8 @@ class Menu extends Model
     protected $primaryKey = 'id_menu';
 
     protected $fillable = [
-        'nama_menu',
-        'harga',
-        'foto',
+        'name',
+        'price',
+        'image',
     ];
 }
