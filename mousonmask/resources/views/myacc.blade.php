@@ -1,3 +1,4 @@
+my acc:
 <!DOCTYPE html>
 <html lang="en">
 
@@ -134,48 +135,48 @@
         padding: 5px 50px;
     }
 
-    /* #wishlist-container{
-        margin-top: 100px;
-        margin-bottom: 50px;
-        background-color: white;
-        border-radius: 20px;
+    .form-container {
+        padding-top: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 300px;
+        margin: auto;
     }
-
-    #wishlist-container img {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        margin-top: -100px;
-        margin-left: 50px;
-        margin-right: 45px;
-        margin-bottom: 10px;
-        object-fit: cover;
-    }
-
-    #wishlist-container-content {
+    .form-container label {
         color: white;
-        margin-left: 40px;
-        margin-right: 40px;
-        margin-bottom: 10px;
-        text-align: center;
+        font-size: 18px;
     }
-
-    #wishlist-container-content h3 {
-        font-family: 'Barlow';
-        font-size: 20px;
+    .form-container input {
+        padding: 8px;
+        border: 1px solid #B4D8CB;
+        border-radius: 5px;
     }
-
-    #wishlist-container-content p {
-        margin-top: 10px;
-        font-family: 'Barlow';
-        font-size: 20px;
-    } */
+    .form-container select {
+        padding: 8px;
+        border: 1px solid #B4D8CB;
+        border-radius: 5px;
+    }
+    .form-container button {
+        padding: 10px;
+        background-color: #B4D8CB;
+        color: #AD0000;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+        margin-top: 20px;
+    }
+    .form-container button:hover {
+        background-color: #234D3E;
+        color: white;
+    }
 
     .wishlist-table {
         width: 100%;
         border-collapse: collapse;
         margin-top: 20px;
-
+        
     }
 
     .wishlist-table th{
@@ -208,51 +209,46 @@
     }
 
     .remove-button img {
-        width: 40px;
-        height: 40px;
+        width: 40px; 
+        height: 40px; 
     }
 
-    .form-container {
-        padding-top: 40px;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        width: 300px;
-        margin: auto;
-    }
-
-    .form-container label {
-        color: white;
-        font-size: 18px;
-    }
-
-    .form-container input {
-        padding: 8px;
-        border: 1px solid #B4D8CB;
-        border-radius: 5px;
-    }
-
-    .form-container select {
-        padding: 8px;
-        border: 1px solid #B4D8CB;
-        border-radius: 5px;
-    }
-
-    .form-container button {
-        padding: 10px;
-        background-color: #B4D8CB;
-        color: #AD0000;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s, color 0.3s;
+    table {
+        width: 100%;
+        border-collapse: collapse;
         margin-top: 20px;
     }
 
-    .form-container button:hover {
-        background-color: #234D3E;
-        color: white;
+    td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+        color: white; 
+        font-size: 18px; 
     }
+
+    th {
+        border-bottom: 1px solid white;
+        font-size: 20px;
+        color: white;
+        padding: 5px 50px;
+    }
+    .reset-btn {
+            background-color: maroon;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 20px auto;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .reset-btn:hover {
+            background-color: darkred; 
+        }
+
+
 </style>
 
 <body>
@@ -291,74 +287,66 @@
             </div>
         </div>
 
-        <div id="content"></div>
+        <div id="content">
+
+        </div>
 <script>
-        function showContent(contentType) {
-            const contentDiv = document.getElementById('content');
-            const orderTableBody = document.getElementById('orderDetailsBody');
+document.addEventListener('DOMContentLoaded', function () {
+    showContent('');
+});
 
-            if (contentType === 'order') {
-                    contentDiv.innerHTML = '';
-                    contentDiv.innerHTML +=
-                        '<h2>MY ORDERS</h2>' +
-                        '<table>' +
-                        '<thead>' +
-                        '<tr>' +
-                        '<th>Order ID</th>' +
-                        '<th>Date</th>' +
-                        '<th>Time</th>' +
-                        '<th>Order Total</th>' +
-                        '<th>Subtotal</th>' +
-                        '<th>Status</th>' +
-                        '</tr>' +
-                        '</thead>' +
-                        '<tbody id="orderDetailsBody">' +
-                        '</tbody>' +
-                        '</table>';
+function showContent(contentType) {
+    const contentDiv = document.getElementById('content');
 
-                    // Ambil data riwayat pesanan dari backend
-                    fetch('/api/orders', {
-                        method: 'GET',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            // Jika diperlukan, tambahkan header Authorization untuk otentikasi
-                            // 'Authorization': 'Bearer <token>'
-                        },
-                    })
-                    .then(response => response.json())
-                    .then(orderHistoryData => {
-                        const orderTableBody = document.getElementById('orderDetailsBody');
-                        orderHistoryData.forEach(order => {
-                            const newRow = orderTableBody.insertRow();
-                            newRow.innerHTML =
-                                `<td>${order.orderId}</td>` +
-                                `<td>${order.date}</td>` +
-                                `<td>${order.time}</td>` +
-                                `<td>${order.orderTotal}</td>` +
-                                `<td>${order.subtotal}</td>` +
-                                `<td>${order.status}</td>`;
-                        });
+    if (contentType === 'order') {
+        contentDiv.innerHTML = '';
+        contentDiv.innerHTML +=
+            '<h2>MY ORDERS</h2>' +
+            '<table>' +
+            '<thead>' +
+            '<tr>' +
+            '<th>Order ID</th>' +
+            '<th>Date</th>' +
+            '<th>Time</th>' +
+            '<th>Total Quantity</th>' +
+            '<th>Subtotal</th>' +
+            '<th>Status</th>' +
+            '</tr>' +
+            '</thead>' +
+            '<tbody id="orderDetailsBody">' +
+            '</tbody>' +
+            '</table>'+
+            '<button class="reset-btn" onclick="resetOrderHistory()">Reset History</button>'; 
 
-                        if (orderHistoryData.length === 0) {
-                            contentDiv.innerHTML += '<p>No order history available.</p>';
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error fetching order history:', error);
-                        contentDiv.innerHTML += '<p>Error fetching order history. Please try again later.</p>';
-                    });
-            } else if (contentType === 'wishlist') {
-                contentDiv.innerHTML = '';
-                contentDiv.innerHTML +=
-                    '<h2>WISHLIST</h2>' ;
-                    const separator = document.createElement('hr');
-                    contentDiv.appendChild(separator);
-                    const wishlistContainer = document.createElement('div');
-                    wishlistContainer.id = 'wishlist-container';
-                    contentDiv.appendChild(wishlistContainer);
-                    showWishlist();
-            } else if (contentType === 'personal') {
-                contentDiv.innerHTML = '<h2>PERSONAL DETAILS</h2>';
+        const orderHistoryData = JSON.parse(localStorage.getItem('orderHistory')) || [];
+
+        const orderTableBody = document.getElementById('orderDetailsBody');
+        orderHistoryData.forEach(order => {
+            const newRow = orderTableBody.insertRow();
+            newRow.innerHTML =
+                `<td>${order.orderNumber}</td>` +
+                `<td>${order.orderDate}</td>` +
+                `<td>${order.orderTime}</td>` +
+                `<td>${order.totalQuantity}</td>` +
+                `<td>${order.subtotal}</td>` +
+                `<td>Processing</td>`;
+        });
+
+        if (orderHistoryData.length === 0) {
+            contentDiv.innerHTML += '<p>No order history available.</p>';
+        }
+    } else if (contentType === 'wishlist') {
+            contentDiv.innerHTML = '';
+            contentDiv.innerHTML +=
+                '<h2>WISHLIST</h2>';
+            const separator = document.createElement('hr');
+            contentDiv.appendChild(separator);
+            const wishlistContainer = document.createElement('div');
+            wishlistContainer.id = 'wishlist-container';
+            contentDiv.appendChild(wishlistContainer);
+            showWishlist();
+        } else if (contentType === 'personal') {
+            contentDiv.innerHTML = '<h2>PERSONAL DETAILS</h2>';
 
                 const separatorAboveForm = document.createElement('hr');
                 contentDiv.appendChild(separatorAboveForm);
@@ -389,8 +377,12 @@
                 '</div>';
                 contentDiv.appendChild(separator);
               }
-        }
+    }
+    function resetOrderHistory() {
+            localStorage.removeItem('orderHistory');
 
+            showContent('order');
+    }
     function showWishlist() {
         const wishlistContainer = document.getElementById('wishlist-container');
         wishlistContainer.innerHTML = '';
@@ -453,17 +445,35 @@
         wishlistContainer.appendChild(wishlistTable);
     }
 
-    // Call the function to display order details when the page is loaded
-    document.addEventListener('DOMContentLoaded', function () {
-        showContent(''); // Automatically show order details on page load
-    });
+    const orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
+
+    if (orderDetails) {
+    showContent('order');
+
+    const orderTableBody = document.getElementById('orderDetailsBody');
+    const newRow = orderTableBody.insertRow();
+    newRow.innerHTML =
+        `<td>${orderDetails.orderNumber}</td>` +
+        `<td>${orderDetails.orderDate}</td>` +
+        `<td>${orderDetails.orderTime}</td>` +
+        `<td>${orderDetails.totalQuantity}</td>` +
+        `<td>${orderDetails.subtotal}</td>` +
+        `<td>Processing</td>`;
+
+   
+    const orderHistoryData = JSON.parse(localStorage.getItem('orderHistory')) || [];
+    orderHistoryData.push(orderDetails);
+    localStorage.setItem('orderHistory', JSON.stringify(orderHistoryData));
+} else {
+    showContent('');
+}
 
     function removeFromWishlist(itemName) {
         let wishlistData = JSON.parse(localStorage.getItem('wishlist')) || [];
         wishlistData = wishlistData.filter(item => item.name !== itemName);
         localStorage.setItem('wishlist', JSON.stringify(wishlistData));
 
-        showWishlist(); // Refresh the wishlist table
+        showWishlist();
     }
 
     function submitPersonalDetails() {
@@ -471,36 +481,28 @@
             const lastName = document.getElementById('lastName').value;
             const username = document.getElementById('username').value;
             const gender = document.getElementById('gender').value;
-
             // Lakukan sesuatu dengan data yang telah diisi, misalnya simpan ke database atau tampilkan di halaman
             console.log("First Name:", firstName);
             console.log("Last Name:", lastName);
             console.log("Username:", username);
             console.log("Gender:", gender);
-
     }
-
     function toggleEdit(field) {
         const displayElement = document.getElementById(`${field}Display`);
         const inputElement = document.getElementById(field);
-
         displayElement.style.display = displayElement.style.display === 'none' ? 'inline' : 'none';
         inputElement.style.display = inputElement.style.display === 'none' ? 'inline' : 'none';
     }
-
     function enableEdit() {
         const editableElements = document.querySelectorAll('.editable');
         const inputElements = document.querySelectorAll('.form-container input');
-
         editableElements.forEach(element => {
             element.style.display = 'inline';
         });
-
         inputElements.forEach(input => {
             input.style.display = 'inline';
         });
     }
-
 
 
 </script>

@@ -260,35 +260,46 @@
         </table>
         <button id="resetButton" onclick="resetSelectedItems()">Reset Selected Items</button>
     </div>
-<div class="right-container">
-        <div class="order-summary-title">
-            <h2>Order Summary</h2>
-        </div>
-
-        <table class="order-summary-table">
-            <tbody>
-                <tr>
-                    <th>Orders</th>
-                    <td id="orderNumber">{{ $order->id_order ?? 'N/A'}}</td>
-                </tr>
-                @php
-                    $detailPesanan = \App\Models\DetailPesanan::where('id_order', $order->id_order)->first();
-                @endphp
-                <tr>
-                    <th>Quantity</th>
-                    <td id="totalQuantity">{{ $detailPesanan->sum('jumlah') }}</td>
-                </tr>
-                <tr>
-                    <th>Subtotal</th>
-                    <td id="subtotal">{{ $totalHarga }}</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="order-summary-btn">
-            <button onclick="continueToPayment()">Continue to Payment</button>
-        </div>
+    <div class="right-container">
+    <div class="order-summary-title">
+        <h2>Order Summary</h2>
     </div>
+
+    <table class="order-summary-table">
+        <tbody>
+            <tr>
+                <th>Orders</th>
+                <td id="orderNumber">{{ $order ? $order->id_order : 'N/A' }}</td>
+            </tr>
+            @php
+                $totalQuantity = 0;
+                $subtotal = 0;
+
+                if ($order) {
+                    $detailPesanan = \App\Models\DetailPesanan::where('id_order', $order->id_order)->first();
+
+                    if ($detailPesanan) {
+                        $totalQuantity = $detailPesanan->sum('jumlah');
+                        $subtotal = $totalHarga; // Assuming $totalHarga is defined elsewhere in your code
+                    }
+                }
+            @endphp
+            <tr>
+                <th>Quantity</th>
+                <td id="totalQuantity">{{ $totalQuantity }}</td>
+            </tr>
+            <tr>
+                <th>Subtotal</th>
+                <td id="subtotal">{{ $subtotal }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="order-summary-btn">
+        <button onclick="continueToPayment()">Continue to Payment</button>
+    </div>
+</div>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {

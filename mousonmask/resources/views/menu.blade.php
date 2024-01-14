@@ -1,3 +1,4 @@
+menu: 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -272,6 +273,7 @@
             <a href="#" onclick="showMenu('nonAlcohol')">Non-Alcohol Drinks</a>
             <a href="#" onclick="showMenu('dessert')">Dessert</a>
         </div>
+
         <div class="line"></div>
         <div class="search">
             <img src="icons/search.png" alt="Search Icon">
@@ -347,91 +349,91 @@
 
             const searchInput = document.querySelector('.search input');
             const searchTerm = searchInput.value.toLowerCase();
+            
+           
+                menuData[category].forEach(item => {
+                    if (item.name.toLowerCase().includes(searchTerm) || searchTerm === '') {
+                        const card = document.createElement('div');
+                        card.classList.add('menu-card');
 
-            menuData[category].forEach(item => {
-                if (item.name.toLowerCase().includes(searchTerm) || searchTerm === '') {
-                    const card = document.createElement('div');
-                    card.classList.add('menu-card');
+                        const image = document.createElement('img');
+                        image.src = item.image;
+                        card.appendChild(image);
 
-                    const image = document.createElement('img');
-                    image.src = item.image;
-                    card.appendChild(image);
+                        const content = document.createElement('div');
+                        content.classList.add('menu-card-content');
 
-                    const content = document.createElement('div');
-                    content.classList.add('menu-card-content');
+                        const itemName = document.createElement('h3');
+                        itemName.textContent = item.name;
+                        content.appendChild(itemName);
 
-                    const itemName = document.createElement('h3');
-                    itemName.textContent = item.name;
-                    content.appendChild(itemName);
+                        const itemPrice = document.createElement('p');
+                        itemPrice.textContent = `Price: ${item.price}`;
+                        content.appendChild(itemPrice);
 
-                    const itemPrice = document.createElement('p');
-                    itemPrice.textContent = `Price: ${item.price}`;
-                    content.appendChild(itemPrice);
+                        const quantityContainer = document.createElement('div');
+                        quantityContainer.classList.add('quantity-container');
 
-                    const quantityContainer = document.createElement('div');
-                    quantityContainer.classList.add('quantity-container');
+                        const minusButton = document.createElement('button');
+                        minusButton.textContent = '-';
+                        minusButton.addEventListener('click', function () {
+                            updateQuantity(-1, quantityDisplay);
+                        });
+                        quantityContainer.appendChild(minusButton);
 
-                    const minusButton = document.createElement('button');
-                    minusButton.textContent = '-';
-                    minusButton.addEventListener('click', function () {
-                        updateQuantity(-1, quantityDisplay);
-                    });
-                    quantityContainer.appendChild(minusButton);
+                        const quantityDisplay = document.createElement('span');
+                        quantityDisplay.textContent = '0';
+                        quantityContainer.appendChild(quantityDisplay);
 
-                    const quantityDisplay = document.createElement('span');
-                    quantityDisplay.textContent = '0';
-                    quantityContainer.appendChild(quantityDisplay);
+                        const plusButton = document.createElement('button');
+                        plusButton.textContent = '+';
+                        plusButton.addEventListener('click', function () {
+                            updateQuantity(1, quantityDisplay);
+                        });
+                        quantityContainer.appendChild(plusButton);
 
-                    const plusButton = document.createElement('button');
-                    plusButton.textContent = '+';
-                    plusButton.addEventListener('click', function () {
-                        updateQuantity(1, quantityDisplay);
-                    });
-                    quantityContainer.appendChild(plusButton);
+                        content.appendChild(quantityContainer);
 
-                    content.appendChild(quantityContainer);
+                        const addToCartButton = document.createElement('button');
+                        addToCartButton.textContent = 'Add to Cart';
+                        addToCartButton.addEventListener('click', function () {
+                            addToCart(item.name, item.price, quantityDisplay.innerText);
+                        });
+                        content.appendChild(addToCartButton);
 
-                    const addToCartButton = document.createElement('button');
-                    addToCartButton.textContent = 'Add to Cart';
-                    addToCartButton.addEventListener('click', function () {
-                        addToCart(item.name, item.price, quantityDisplay.innerText);
-                    });
-                    content.appendChild(addToCartButton);
+                        const addToWishlistButton = document.createElement('i');
+                        addToWishlistButton.innerHTML = '<i class="fas fa-heart"></i>';
+                        addToWishlistButton.classList.add('love-icon');
+                        addToWishlistButton.setAttribute('data-name', item.name, 'data-price', item.price, 'data-image', item.image);
+                        addToWishlistButton.addEventListener('click', function () {
+                            addToWishlist(item.name, item.price, item.image);
+                        });
+                        content.appendChild(addToWishlistButton);
 
-                    const addToWishlistButton = document.createElement('i');
-                    addToWishlistButton.innerHTML = '<i class="fas fa-heart"></i>';
-                    addToWishlistButton.classList.add('love-icon');
-                    addToWishlistButton.setAttribute('data-name', item.name, 'data-price', item.price, 'data-image', item.image);
-                    addToWishlistButton.addEventListener('click', function () {
-                        addToWishlist(item.name, item.price, item.image);
-                    });
-                    content.appendChild(addToWishlistButton);
+                        card.appendChild(content);
 
-                    card.appendChild(content);
+                        menuList.appendChild(card);
+                    }
+                });
+            
 
-                    menuList.appendChild(card);
-                }
-            });
-
-            // Hapus kelas 'active' dari semua menu-options
+           
             document.querySelectorAll('.menu-options a').forEach(link => {
                 link.classList.remove('active');
             });
 
-            // Tambahkan kelas 'active' ke menu-option yang dipilih
+           
             const activeLink = document.querySelector(`.menu-options a[href="#"][onclick="showMenu('${category}')"]`);
             activeLink.classList.add('active');
 
-            // Tambahkan kelas slide-out untuk menyembunyikan konten sebelum diubah
+            
             menuList.classList.add('slide-out');
 
-            // Set Timeout untuk memberikan waktu animasi slide-out selesai sebelum konten diganti
+           
             setTimeout(() => {
                 menuData[category].forEach(item => {
-                    // ... (kode yang sudah ada) ...
                 });
 
-                // Hapus kelas slide-out dan tambahkan kelas slide-in untuk menampilkan konten baru
                 menuList.classList.remove('slide-out');
                 menuList.classList.add('slide-in');
             }, 500);
@@ -461,7 +463,7 @@
         }
 
         document.querySelector('.search input').addEventListener('input', function () {
-            const category = menuData;
+            const category = 'snack';
             showMenu(category);
         });
 
@@ -484,25 +486,25 @@
             const existingItem = selectedItems.find(item => item.name === itemName);
 
             if (existingItem) {
-                // Item is already in the wishlist, remove it from the wishlist
+                
                 const index = selectedItems.indexOf(existingItem);
                 selectedItems.splice(index, 1);
 
-                // Remove 'liked' class from all love icons with the same name
+               
                 const loveIcons = document.querySelectorAll(`.love-icon[data-name="${itemName}"]`);
                 loveIcons.forEach(icon => {
                     icon.classList.remove('liked');
                 });
             } else {
-                // Item is not in the wishlist, add it to the wishlist
+                
                 selectedItems.push({
                     name: itemName,
                     price: parseFloat(itemPrice.replace('$', '')),
-                    image: itemImage, // Add image to the wishlist item
+                    image: itemImage, 
                     quantity: 1,
                 });
 
-                // Add 'liked' class to all love icons with the same name
+                
                 const loveIcons = document.querySelectorAll(`.love-icon[data-name="${itemName}"]`);
                 loveIcons.forEach(icon => {
                     icon.classList.add('liked');
