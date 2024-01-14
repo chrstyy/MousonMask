@@ -15,7 +15,7 @@
             <img src="images/catije.png" alt="Catije Logo" id="logo">
         </div>
         <nav>
-            <a href="home">HOME</a>
+            <a href="{{route('home')}}">HOME</a>
             <a href="menu">MENU</a>
             <a href="about">ABOUT US</a>
             <a href="contact"  class="nav-link active">CONTACT US</a>
@@ -32,7 +32,7 @@
             <p>+123 456 789</p>
             <p>123 Restaurant Street, Catyvilleje</p>
         </div>
-        
+
         <div class="contact-form">
             <h4>Send Us a Message</h4>
             <form action="#" method="post">
